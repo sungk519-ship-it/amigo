@@ -1,43 +1,43 @@
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;ko&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-  &lt;title&gt;AMIGO 기구물 및 자재 재고관리 시스템 (클라우드 연동판)&lt;/title&gt;
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMIGO 기구물 및 자재 재고관리 시스템 (클라우드 연동판)</title>
 
-  &lt;!-- Tailwind CSS CDN --&gt;
-  &lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
-  &lt;!-- FontAwesome 6 Free CDN --&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;\[suspicious link removed\]&quot;&gt;
-  &lt;!-- ExcelJS CDN for Styled Excel Export --&gt;
-  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js&quot;&gt;&lt;/script&gt;
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 Free CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- ExcelJS CDN for Styled Excel Export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
 
-  &lt;script&gt;
+  <script>
     if (window.tailwind) {
       tailwind.config = {
         theme: {
           extend: {
             colors: {
               brand: {
-                50: &#39;#eff6ff&#39;,
-                100: &#39;#dbeafe&#39;,
-                500: &#39;#3b82f6&#39;,
-                600: &#39;#2563eb&#39;,
-                700: &#39;#1d4ed8&#39;,
-                800: &#39;#1e40af&#39;,
-                900: &#39;#1e3a8a&#39;,
+                50: '#eff6ff',
+                100: '#dbeafe',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1d4ed8',
+                800: '#1e40af',
+                900: '#1e3a8a',
               }
             }
           }
         }
       };
     }
-  &lt;/script&gt;
+  </script>
 
-  &lt;style&gt;
-    @import url(&#39;https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&amp;display=swap&#39;);
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap');
     body {
-      font-family: &#39;Pretendard&#39;, -apple-system, BlinkMacSystemFont, &quot;Malgun Gothic&quot;, sans-serif;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
       letter-spacing: -0.015em;
       background-color: #f8fafc;
       color: #0f172a;
@@ -72,11 +72,11 @@
     .pulse-subtle {
       animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body class=&quot;bg-slate-50 text-slate-900 min-h-screen pb-16 antialiased&quot;&gt;
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen pb-16 antialiased">
 
-  &lt;div class=&quot;max-w-[1720px] mx-auto px-4 sm:px-6 pt-4&quot;&gt;
+  <div class="max-w-[1720px] mx-auto px-4 sm:px-6 pt-4">
 
     <!-- Top System Header -->
     <header class="bg-white rounded-2xl border border-slate-200/80 p-4 shadow-xs mb-4 flex flex-col xl:flex-row xl:items-center justify-between gap-4">
@@ -356,17 +356,17 @@
       </div>
     </section>
 
-  &lt;/div&gt;
+  </div>
 
-  &lt;!-- Modal 1: Stock Movement Action Modal (IN / OUT / DEFECT + DEFECT_OUT tabs) --&gt;
-  &lt;div id=&quot;actionModal&quot; class=&quot;fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4&quot;&gt;
-    &lt;div class=&quot;bg-white rounded-2xl border border-slate-200 shadow-xl max-w-md w-full p-5 overflow-hidden&quot;&gt;
-      &lt;div class=&quot;flex items-center justify-between pb-3 border-b border-slate-100&quot;&gt;
-        &lt;h3 id=&quot;modalActionTitle&quot; class=&quot;text-base font-extrabold text-slate-900&quot;&gt;수불 처리&lt;/h3&gt;
-        &lt;button type=&quot;button&quot; onclick=&quot;closeActionModal()&quot; class=&quot;w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center cursor-pointer&quot;&gt;
-          &lt;i class=&quot;fa-solid fa-xmark&quot;&gt;&lt;/i&gt;
-        &lt;/button&gt;
-      &lt;/div&gt;
+  <!-- Modal 1: Stock Movement Action Modal (IN / OUT / DEFECT + DEFECT_OUT tabs) -->
+  <div id="actionModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-xl max-w-md w-full p-5 overflow-hidden">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <h3 id="modalActionTitle" class="text-base font-extrabold text-slate-900">수불 처리</h3>
+        <button type="button" onclick="closeActionModal()" class="w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
 
       <!-- Defect Mode Tab Switcher ([불량 등록] / [불량 출고]) -->
       <div id="defectModeTabs" class="hidden grid grid-cols-2 gap-1.5 mt-3 p-1 rounded-xl bg-slate-100 border border-slate-200">
@@ -408,19 +408,19 @@
         </div>
       </div>
     </div>
-  &lt;/div&gt;
+  </div>
 
-  &lt;!-- Modal 2: Add New Item Modal --&gt;
-  &lt;div id=&quot;addItemModal&quot; class=&quot;fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4&quot;&gt;
-    &lt;div class=&quot;bg-white rounded-2xl border border-slate-200 shadow-xl max-w-lg w-full p-5 overflow-hidden&quot;&gt;
-      &lt;div class=&quot;flex items-center justify-between pb-3 border-b border-slate-100&quot;&gt;
-        &lt;h3 class=&quot;text-base font-extrabold text-slate-900 flex items-center gap-1.5&quot;&gt;
-          &lt;i class=&quot;fa-solid fa-plus-circle text-brand-600&quot;&gt;&lt;/i&gt; 신규 품목 추가
-        &lt;/h3&gt;
-        &lt;button type=&quot;button&quot; onclick=&quot;closeAddItemModal()&quot; class=&quot;w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center cursor-pointer&quot;&gt;
-          &lt;i class=&quot;fa-solid fa-xmark&quot;&gt;&lt;/i&gt;
-        &lt;/button&gt;
-      &lt;/div&gt;
+  <!-- Modal 2: Add New Item Modal -->
+  <div id="addItemModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-xl max-w-lg w-full p-5 overflow-hidden">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-1.5">
+          <i class="fa-solid fa-plus-circle text-brand-600"></i> 신규 품목 추가
+        </h3>
+        <button type="button" onclick="closeAddItemModal()" class="w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
 
       <div class="space-y-3.5 my-4">
         <div class="grid grid-cols-2 gap-3">
@@ -474,19 +474,19 @@
         </div>
       </div>
     </div>
-  &lt;/div&gt;
+  </div>
 
-  &lt;!-- Modal 3: Edit Transaction History Modal (입고 / 출고 / 불량 / 불량출고) --&gt;
-  &lt;div id=&quot;editHistoryModal&quot; class=&quot;fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4&quot;&gt;
-    &lt;div class=&quot;bg-white rounded-2xl border border-slate-200 shadow-xl max-w-md w-full p-5 overflow-hidden&quot;&gt;
-      &lt;div class=&quot;flex items-center justify-between pb-3 border-b border-slate-100&quot;&gt;
-        &lt;h3 class=&quot;text-base font-extrabold text-slate-900 flex items-center gap-1.5&quot;&gt;
-          &lt;i class=&quot;fa-solid fa-pen-to-square text-brand-600&quot;&gt;&lt;/i&gt; 수불 내역 수정 (유형 / 수량 / 사유)
-        &lt;/h3&gt;
-        &lt;button type=&quot;button&quot; onclick=&quot;closeEditHistoryModal()&quot; class=&quot;w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center cursor-pointer&quot;&gt;
-          &lt;i class=&quot;fa-solid fa-xmark&quot;&gt;&lt;/i&gt;
-        &lt;/button&gt;
-      &lt;/div&gt;
+  <!-- Modal 3: Edit Transaction History Modal (입고 / 출고 / 불량 / 불량출고) -->
+  <div id="editHistoryModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-xl max-w-md w-full p-5 overflow-hidden">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-1.5">
+          <i class="fa-solid fa-pen-to-square text-brand-600"></i> 수불 내역 수정 (유형 / 수량 / 사유)
+        </h3>
+        <button type="button" onclick="closeEditHistoryModal()" class="w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
 
       <div class="my-3.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
         <div id="editHistoryItemHeader" class="text-xs font-bold text-slate-800"></div>
@@ -547,19 +547,19 @@
         </div>
       </div>
     </div>
-  &lt;/div&gt;
+  </div>
 
-  &lt;!-- Modal 4: Direct Item Stock Edit Modal (총수량 자동 합산 고정 + 구버전 예외 + 조정사유 필수) --&gt;
-  &lt;div id=&quot;editItemModal&quot; class=&quot;fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4&quot;&gt;
-    &lt;div class=&quot;bg-white rounded-2xl border border-slate-200 shadow-xl max-w-lg w-full p-5 overflow-hidden&quot;&gt;
-      &lt;div class=&quot;flex items-center justify-between pb-3 border-b border-slate-100&quot;&gt;
-        &lt;h3 class=&quot;text-base font-extrabold text-slate-900 flex items-center gap-1.5&quot;&gt;
-          &lt;i class=&quot;fa-solid fa-sliders text-brand-600&quot;&gt;&lt;/i&gt; 품목 정보 및 재고 직접 수정
-        &lt;/h3&gt;
-        &lt;button type=&quot;button&quot; onclick=&quot;closeEditItemModal()&quot; class=&quot;w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center cursor-pointer&quot;&gt;
-          &lt;i class=&quot;fa-solid fa-xmark&quot;&gt;&lt;/i&gt;
-        &lt;/button&gt;
-      &lt;/div&gt;
+  <!-- Modal 4: Direct Item Stock Edit Modal (총수량 자동 합산 고정 + 구버전 예외 + 조정사유 필수) -->
+  <div id="editItemModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-xl max-w-lg w-full p-5 overflow-hidden">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-1.5">
+          <i class="fa-solid fa-sliders text-brand-600"></i> 품목 정보 및 재고 직접 수정
+        </h3>
+        <button type="button" onclick="closeEditItemModal()" class="w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
 
       <div class="space-y-3.5 my-4">
         <input type="hidden" id="editItemTargetId">
@@ -622,25 +622,25 @@
         </div>
       </div>
     </div>
-  &lt;/div&gt;
+  </div>
 
-  &lt;!-- Modal 5: Google Sheets Cloud Sync Settings Modal --&gt;
-  &lt;div id=&quot;syncModal&quot; class=&quot;fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4&quot;&gt;
-    &lt;div class=&quot;bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-lg w-full p-5 overflow-hidden&quot;&gt;
-      &lt;div class=&quot;flex items-center justify-between pb-3 border-b border-slate-100&quot;&gt;
-        &lt;div class=&quot;flex items-center gap-2&quot;&gt;
-          &lt;div class=&quot;w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center&quot;&gt;
-            &lt;i class=&quot;fa-solid fa-cloud&quot;&gt;&lt;/i&gt;
-          &lt;/div&gt;
-          &lt;div&gt;
-            &lt;h3 class=&quot;text-base font-extrabold text-slate-900&quot;&gt;구글 시트 클라우드 연동&lt;/h3&gt;
-            &lt;p class=&quot;text-[11px] text-slate-400&quot;&gt;창고 노트북 &amp; 사무실 PC &amp; 휴대폰 20초 자동 동기화&lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;button type=&quot;button&quot; onclick=&quot;closeSyncModal()&quot; class=&quot;w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center cursor-pointer&quot;&gt;
-          &lt;i class=&quot;fa-solid fa-xmark&quot;&gt;&lt;/i&gt;
-        &lt;/button&gt;
-      &lt;/div&gt;
+  <!-- Modal 5: Google Sheets Cloud Sync Settings Modal -->
+  <div id="syncModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-lg w-full p-5 overflow-hidden">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+            <i class="fa-solid fa-cloud"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-extrabold text-slate-900">구글 시트 클라우드 연동</h3>
+            <p class="text-[11px] text-slate-400">창고 노트북 & 사무실 PC & 휴대폰 20초 자동 동기화</p>
+          </div>
+        </div>
+        <button type="button" onclick="closeSyncModal()" class="w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
 
       <div class="my-4 space-y-3.5 text-xs">
         <div>
@@ -681,28 +681,28 @@
         </div>
       </div>
     </div>
-  &lt;/div&gt;
+  </div>
 
-  &lt;!-- Modal 6: Professional Excel Sheet Preview Modal --&gt;
-  &lt;div id=&quot;excelPreviewModal&quot; class=&quot;fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-3 sm:p-5&quot;&gt;
-    &lt;div class=&quot;bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-5xl w-full h-[88vh] flex flex-col overflow-hidden&quot;&gt;
-      &lt;div class=&quot;px-5 py-3.5 bg-slate-800 text-white flex items-center justify-between shrink-0&quot;&gt;
-        &lt;div class=&quot;flex items-center gap-2.5&quot;&gt;
-          &lt;i class=&quot;fa-solid fa-file-excel text-emerald-400 text-lg&quot;&gt;&lt;/i&gt;
-          &lt;div&gt;
-            &lt;h3 class=&quot;text-sm font-bold tracking-tight&quot;&gt;AMIGO 기구물 및 자재 재고 현황 - 엑셀 서식 미리보기&lt;/h3&gt;
-            &lt;p class=&quot;text-[10px] text-slate-400&quot;&gt;다운로드 시 생성되는 실제 엑셀 시트 서식(열 너비, 헤더 테마, 숫자 서식, 합계 이중선)과 동일합니다.&lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;flex items-center gap-2&quot;&gt;
-          &lt;button onclick=&quot;exportToExcel()&quot; class=&quot;px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer&quot;&gt;
-            &lt;i class=&quot;fa-solid fa-download&quot;&gt;&lt;/i&gt; 이 서식으로 다운로드
-          &lt;/button&gt;
-          &lt;button onclick=&quot;closeExcelPreviewModal()&quot; class=&quot;w-7 h-7 rounded-lg text-slate-300 hover:text-white hover:bg-slate-700 flex items-center justify-center cursor-pointer&quot;&gt;
-            &lt;i class=&quot;fa-solid fa-xmark&quot;&gt;&lt;/i&gt;
-          &lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+  <!-- Modal 6: Professional Excel Sheet Preview Modal -->
+  <div id="excelPreviewModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-3 sm:p-5">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-5xl w-full h-[88vh] flex flex-col overflow-hidden">
+      <div class="px-5 py-3.5 bg-slate-800 text-white flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-2.5">
+          <i class="fa-solid fa-file-excel text-emerald-400 text-lg"></i>
+          <div>
+            <h3 class="text-sm font-bold tracking-tight">AMIGO 기구물 및 자재 재고 현황 - 엑셀 서식 미리보기</h3>
+            <p class="text-[10px] text-slate-400">다운로드 시 생성되는 실제 엑셀 시트 서식(열 너비, 헤더 테마, 숫자 서식, 합계 이중선)과 동일합니다.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="exportToExcel()" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer">
+            <i class="fa-solid fa-download"></i> 이 서식으로 다운로드
+          </button>
+          <button onclick="closeExcelPreviewModal()" class="w-7 h-7 rounded-lg text-slate-300 hover:text-white hover:bg-slate-700 flex items-center justify-center cursor-pointer">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
 
       <div class="bg-slate-200/90 px-4 pt-2 flex items-center gap-1.5 border-b border-slate-300 shrink-0">
         <button id="excelTab1" onclick="switchExcelPreviewSheet(1)" class="px-4 py-2 rounded-t-lg text-xs font-bold bg-white text-brand-800 border-t-2 border-brand-600 shadow-xs flex items-center gap-1.5 cursor-pointer">
@@ -717,35 +717,35 @@
         <div id="excelPreviewContent" class="bg-white border border-slate-300 rounded shadow-xs overflow-hidden"></div>
       </div>
     </div>
-  &lt;/div&gt;
+  </div>
 
-  &lt;!-- Safe Confirmation Dialog --&gt;
-  &lt;div id=&quot;safeConfirmModal&quot; class=&quot;fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[70] hidden items-center justify-center p-4&quot;&gt;
-    &lt;div class=&quot;bg-white rounded-2xl border border-slate-200 shadow-xl max-w-sm w-full p-5 overflow-hidden&quot;&gt;
-      &lt;div class=&quot;flex items-center gap-3 mb-3&quot;&gt;
-        &lt;div id=&quot;confirmIconContainer&quot; class=&quot;w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg font-bold shrink-0&quot;&gt;
-          &lt;i class=&quot;fa-solid fa-circle-question&quot;&gt;&lt;/i&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-          &lt;h4 id=&quot;confirmModalTitle&quot; class=&quot;text-sm font-extrabold text-slate-900&quot;&gt;확인 요청&lt;/h4&gt;
-          &lt;p id=&quot;confirmModalMessage&quot; class=&quot;text-xs text-slate-600 mt-0.5 leading-relaxed whitespace-pre-line&quot;&gt;진행하시겠습니까?&lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;flex items-center justify-end gap-2 mt-4 pt-2 border-t border-slate-100&quot;&gt;
-        &lt;button type=&quot;button&quot; id=&quot;confirmCancelBtn&quot; class=&quot;px-3.5 py-1.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-100 text-xs font-bold cursor-pointer&quot;&gt;
+  <!-- Safe Confirmation Dialog -->
+  <div id="safeConfirmModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[70] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-xl max-w-sm w-full p-5 overflow-hidden">
+      <div class="flex items-center gap-3 mb-3">
+        <div id="confirmIconContainer" class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg font-bold shrink-0">
+          <i class="fa-solid fa-circle-question"></i>
+        </div>
+        <div>
+          <h4 id="confirmModalTitle" class="text-sm font-extrabold text-slate-900">확인 요청</h4>
+          <p id="confirmModalMessage" class="text-xs text-slate-600 mt-0.5 leading-relaxed whitespace-pre-line">진행하시겠습니까?</p>
+        </div>
+      </div>
+      <div class="flex items-center justify-end gap-2 mt-4 pt-2 border-t border-slate-100">
+        <button type="button" id="confirmCancelBtn" class="px-3.5 py-1.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-100 text-xs font-bold cursor-pointer">
           취소
-        &lt;/button&gt;
-        &lt;button type=&quot;button&quot; id=&quot;confirmProceedBtn&quot; class=&quot;px-4 py-1.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold shadow-xs cursor-pointer&quot;&gt;
+        </button>
+        <button type="button" id="confirmProceedBtn" class="px-4 py-1.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold shadow-xs cursor-pointer">
           확인
-        &lt;/button&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
+        </button>
+      </div>
+    </div>
+  </div>
 
-  &lt;!-- Toast Notification Container --&gt;
-  &lt;div id=&quot;toastContainer&quot; class=&quot;fixed bottom-5 right-5 z-[80] flex flex-col gap-2 pointer-events-none&quot;&gt;&lt;/div&gt;
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 z-[80] flex flex-col gap-2 pointer-events-none"></div>
 
-  &lt;script&gt;
+  <script>
     const SafeStorage = {
       getItem(key) {
         try { return localStorage.getItem(key); } catch (e) { return null; }
@@ -758,18 +758,18 @@
       }
     };
 
-    const DEFAULT_GAS_URL = &quot;https://script.google.com/macros/s/AKfycbwVy1Sv4tIZFI0-2WCIp9xK6LLMTrtp874PFYG2Kuq1HT1-d48rnR00k89Up90MDF_3hQ/exec&quot;;
+    const DEFAULT_GAS_URL = "https://script.google.com/macros/s/AKfycbwVy1Sv4tIZFI0-2WCIp9xK6LLMTrtp874PFYG2Kuq1HT1-d48rnR00k89Up90MDF_3hQ/exec";
     const AUTO_SYNC_INTERVAL_MS = 20000;
     const POST_SAVE_PULL_COOLDOWN_MS = 6000;
 
     let inventory = [];
     let historyLedger = [];
-    let allocationPolicy = &#39;COMMON&#39;;
-    let historyFilter = &#39;ALL&#39;;
+    let allocationPolicy = 'COMMON';
+    let historyFilter = 'ALL';
     let currentExcelPreviewSheet = 1;
     let activeAction = null;
     let activeEditHistoryId = null;
-    let selectedEditHistoryType = &#39;출고&#39;;
+    let selectedEditHistoryType = '출고';
     let gasUrl = DEFAULT_GAS_URL;
 
     // Sync state guards
@@ -782,20 +782,20 @@
     let hasLoadedFromCloud = false;
     let lastPushCompletedAt = 0;
 
-    const norm = str =&gt; (str || &#39;&#39;).toLowerCase().replace(/\s+/g, &#39;&#39;);
+    const norm = str => (str || '').toLowerCase().replace(/\s+/g, '');
 
     function isOldVersionItem(itemOrNote) {
-      const note = typeof itemOrNote === &#39;string&#39; ? itemOrNote : (itemOrNote &amp;&amp; itemOrNote.note ? itemOrNote.note : &#39;&#39;);
-      return String(note).includes(&#39;구버전&#39;);
+      const note = typeof itemOrNote === 'string' ? itemOrNote : (itemOrNote && itemOrNote.note ? itemOrNote.note : '');
+      return String(note).includes('구버전');
     }
 
     function formatNowStr() {
       const now = new Date();
-      return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, &#39;0&#39;)}-${String(now.getDate()).padStart(2, &#39;0&#39;)} ${String(now.getHours()).padStart(2, &#39;0&#39;)}:${String(now.getMinutes()).padStart(2, &#39;0&#39;)}`;
+      return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
     }
 
     function formatHistoryDate(dateStr) {
-      if (!dateStr) return &#39;&#39;;
+      if (!dateStr) return '';
       const str = String(dateStr).trim();
       if (/^\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}/.test(str)) {
         return str.slice(0, 16);
@@ -803,13 +803,13 @@
       const d = new Date(str);
       if (!isNaN(d.getTime())) {
         const y = d.getFullYear();
-        const m = String(d.getMonth() + 1).padStart(2, &#39;0&#39;);
-        const day = String(d.getDate()).padStart(2, &#39;0&#39;);
-        const h = String(d.getHours()).padStart(2, &#39;0&#39;);
-        const min = String(d.getMinutes()).padStart(2, &#39;0&#39;);
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        const h = String(d.getHours()).padStart(2, '0');
+        const min = String(d.getMinutes()).padStart(2, '0');
         return `${y}-${m}-${day} ${h}:${min}`;
       }
-      return str.replace(/GMT\+.*$/, &#39;&#39;).trim();
+      return str.replace(/GMT\+.*$/, '').trim();
     }
 
     function generateHistoryId() {
@@ -817,10 +817,10 @@
     }
 
     function isAnyModalOpen() {
-      const ids = [&#39;actionModal&#39;, &#39;addItemModal&#39;, &#39;editHistoryModal&#39;, &#39;editItemModal&#39;, &#39;syncModal&#39;, &#39;excelPreviewModal&#39;, &#39;safeConfirmModal&#39;];
-      return ids.some(id =&gt; {
+      const ids = ['actionModal', 'addItemModal', 'editHistoryModal', 'editItemModal', 'syncModal', 'excelPreviewModal', 'safeConfirmModal'];
+      return ids.some(id => {
         const el = document.getElementById(id);
-        return el &amp;&amp; !el.classList.contains(&#39;hidden&#39;);
+        return el && !el.classList.contains('hidden');
       });
     }
 
@@ -828,17 +828,17 @@
       const active = document.activeElement;
       if (!active) return false;
       const tag = active.tagName;
-      return tag === &#39;INPUT&#39; || tag === &#39;TEXTAREA&#39; || tag === &#39;SELECT&#39;;
+      return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT';
     }
 
     function loadLocalCache() {
       try {
-        const savedUrl = SafeStorage.getItem(&#39;amigo_gas_url&#39;);
+        const savedUrl = SafeStorage.getItem('amigo_gas_url');
         if (savedUrl) gasUrl = savedUrl;
 
-        const savedInv = SafeStorage.getItem(&#39;amigo_inventory_master&#39;) || SafeStorage.getItem(&#39;amigo_inventory_data&#39;);
-        const savedHist = SafeStorage.getItem(&#39;amigo_history_ledger&#39;) || SafeStorage.getItem(&#39;amigo_inventory_history&#39;);
-        const savedPolicy = SafeStorage.getItem(&#39;amigo_allocation_policy&#39;);
+        const savedInv = SafeStorage.getItem('amigo_inventory_master') || SafeStorage.getItem('amigo_inventory_data');
+        const savedHist = SafeStorage.getItem('amigo_history_ledger') || SafeStorage.getItem('amigo_inventory_history');
+        const savedPolicy = SafeStorage.getItem('amigo_allocation_policy');
 
         if (savedInv) {
           const parsed = JSON.parse(savedInv);
@@ -852,11 +852,11 @@
           allocationPolicy = savedPolicy;
         }
 
-        inventory.forEach((item, idx) =&gt; {
+        inventory.forEach((item, idx) => {
           if (item.id == null) item.id = idx + 1;
         });
       } catch (e) {
-        console.warn(&#39;loadLocalCache fallback:&#39;, e);
+        console.warn('loadLocalCache fallback:', e);
         inventory = [];
         historyLedger = [];
       }
@@ -864,111 +864,111 @@
 
     function saveState(triggerCloud = true) {
       try {
-        SafeStorage.setItem(&#39;amigo_inventory_master&#39;, JSON.stringify(inventory));
-        SafeStorage.setItem(&#39;amigo_history_ledger&#39;, JSON.stringify(historyLedger));
-        SafeStorage.setItem(&#39;amigo_allocation_policy&#39;, allocationPolicy);
-        SafeStorage.setItem(&#39;amigo_gas_url&#39;, gasUrl);
+        SafeStorage.setItem('amigo_inventory_master', JSON.stringify(inventory));
+        SafeStorage.setItem('amigo_history_ledger', JSON.stringify(historyLedger));
+        SafeStorage.setItem('amigo_allocation_policy', allocationPolicy);
+        SafeStorage.setItem('amigo_gas_url', gasUrl);
 
         if (triggerCloud) {
           hasPendingChanges = true;
           debouncePushToSheets();
         }
       } catch (e) {
-        console.error(&#39;saveState error:&#39;, e);
+        console.error('saveState error:', e);
       }
     }
 
-    function showToast(message, type = &#39;info&#39;) {
-      const container = document.getElementById(&#39;toastContainer&#39;);
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toastContainer');
       if (!container) return;
 
-      const toast = document.createElement(&#39;div&#39;);
-      toast.className = &#39;px-4 py-2.5 rounded-xl shadow-lg text-xs font-bold text-white flex items-center gap-2 transform transition-all duration-200 translate-y-2 opacity-0 pointer-events-auto&#39;;
+      const toast = document.createElement('div');
+      toast.className = 'px-4 py-2.5 rounded-xl shadow-lg text-xs font-bold text-white flex items-center gap-2 transform transition-all duration-200 translate-y-2 opacity-0 pointer-events-auto';
 
-      if (type === &#39;success&#39;) {
-        toast.classList.add(&#39;bg-emerald-600&#39;);
-        toast.innerHTML = `&lt;i class=&quot;fa-solid fa-circle-check&quot;&gt;&lt;/i&gt; ${escapeHtml(message)}`;
-      } else if (type === &#39;error&#39;) {
-        toast.classList.add(&#39;bg-rose-600&#39;);
-        toast.innerHTML = `&lt;i class=&quot;fa-solid fa-circle-xmark&quot;&gt;&lt;/i&gt; ${escapeHtml(message)}`;
-      } else if (type === &#39;warning&#39;) {
-        toast.classList.add(&#39;bg-amber-600&#39;);
-        toast.innerHTML = `&lt;i class=&quot;fa-solid fa-triangle-exclamation&quot;&gt;&lt;/i&gt; ${escapeHtml(message)}`;
+      if (type === 'success') {
+        toast.classList.add('bg-emerald-600');
+        toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${escapeHtml(message)}`;
+      } else if (type === 'error') {
+        toast.classList.add('bg-rose-600');
+        toast.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> ${escapeHtml(message)}`;
+      } else if (type === 'warning') {
+        toast.classList.add('bg-amber-600');
+        toast.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${escapeHtml(message)}`;
       } else {
-        toast.classList.add(&#39;bg-slate-800&#39;);
-        toast.innerHTML = `&lt;i class=&quot;fa-solid fa-circle-info&quot;&gt;&lt;/i&gt; ${escapeHtml(message)}`;
+        toast.classList.add('bg-slate-800');
+        toast.innerHTML = `<i class="fa-solid fa-circle-info"></i> ${escapeHtml(message)}`;
       }
 
       container.appendChild(toast);
-      requestAnimationFrame(() =&gt; toast.classList.remove(&#39;translate-y-2&#39;, &#39;opacity-0&#39;));
+      requestAnimationFrame(() => toast.classList.remove('translate-y-2', 'opacity-0'));
 
-      setTimeout(() =&gt; {
-        toast.classList.add(&#39;opacity-0&#39;, &#39;translate-y-2&#39;);
-        setTimeout(() =&gt; toast.remove(), 250);
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 250);
       }, 3200);
     }
 
     function openSafeConfirm({ title, message, onConfirm }) {
-      const modal = document.getElementById(&#39;safeConfirmModal&#39;);
-      const titleEl = document.getElementById(&#39;confirmModalTitle&#39;);
-      const msgEl = document.getElementById(&#39;confirmModalMessage&#39;);
-      const proceedBtn = document.getElementById(&#39;confirmProceedBtn&#39;);
-      const cancelBtn = document.getElementById(&#39;confirmCancelBtn&#39;);
+      const modal = document.getElementById('safeConfirmModal');
+      const titleEl = document.getElementById('confirmModalTitle');
+      const msgEl = document.getElementById('confirmModalMessage');
+      const proceedBtn = document.getElementById('confirmProceedBtn');
+      const cancelBtn = document.getElementById('confirmCancelBtn');
 
-      titleEl.textContent = title || &#39;확인 요청&#39;;
-      msgEl.textContent = message || &#39;진행하시겠습니까?&#39;;
+      titleEl.textContent = title || '확인 요청';
+      msgEl.textContent = message || '진행하시겠습니까?';
 
-      modal.classList.remove(&#39;hidden&#39;);
-      modal.classList.add(&#39;flex&#39;);
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
 
-      const cleanup = () =&gt; {
-        modal.classList.add(&#39;hidden&#39;);
-        modal.classList.remove(&#39;flex&#39;);
+      const cleanup = () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
         proceedBtn.onclick = null;
         cancelBtn.onclick = null;
       };
 
-      proceedBtn.onclick = () =&gt; {
+      proceedBtn.onclick = () => {
         cleanup();
-        if (typeof onConfirm === &#39;function&#39;) onConfirm();
+        if (typeof onConfirm === 'function') onConfirm();
       };
       cancelBtn.onclick = cleanup;
     }
 
     function setCloudStatus(status, text) {
-      const badge = document.getElementById(&#39;cloudSyncBadge&#39;);
-      const dot = document.getElementById(&#39;syncDot&#39;);
-      const txt = document.getElementById(&#39;syncText&#39;);
-      const icon = document.getElementById(&#39;syncBtnIcon&#39;);
+      const badge = document.getElementById('cloudSyncBadge');
+      const dot = document.getElementById('syncDot');
+      const txt = document.getElementById('syncText');
+      const icon = document.getElementById('syncBtnIcon');
 
       if (!badge || !dot || !txt) return;
 
-      if (status === &#39;syncing&#39;) {
-        dot.className = &#39;w-2 h-2 rounded-full bg-amber-400 animate-spin&#39;;
-        txt.textContent = text || &#39;동기화 중...&#39;;
-        badge.className = &#39;cursor-pointer text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 transition&#39;;
-        if (icon) icon.classList.add(&#39;fa-spin&#39;);
-      } else if (status === &#39;online&#39;) {
-        dot.className = &#39;w-2 h-2 rounded-full bg-emerald-500 pulse-subtle&#39;;
-        txt.textContent = text || &#39;구글 시트 연동됨&#39;;
-        badge.className = &#39;cursor-pointer text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 hover:bg-emerald-100 transition&#39;;
-        if (icon) icon.classList.remove(&#39;fa-spin&#39;);
-      } else if (status === &#39;error&#39;) {
-        dot.className = &#39;w-2 h-2 rounded-full bg-rose-500&#39;;
-        txt.textContent = text || &#39;저장 실패 (재시도 필요)&#39;;
-        badge.className = &#39;cursor-pointer text-[11px] font-semibold bg-rose-50 text-rose-700 border border-rose-300 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 hover:bg-rose-100 transition&#39;;
-        if (icon) icon.classList.remove(&#39;fa-spin&#39;);
+      if (status === 'syncing') {
+        dot.className = 'w-2 h-2 rounded-full bg-amber-400 animate-spin';
+        txt.textContent = text || '동기화 중...';
+        badge.className = 'cursor-pointer text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 transition';
+        if (icon) icon.classList.add('fa-spin');
+      } else if (status === 'online') {
+        dot.className = 'w-2 h-2 rounded-full bg-emerald-500 pulse-subtle';
+        txt.textContent = text || '구글 시트 연동됨';
+        badge.className = 'cursor-pointer text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 hover:bg-emerald-100 transition';
+        if (icon) icon.classList.remove('fa-spin');
+      } else if (status === 'error') {
+        dot.className = 'w-2 h-2 rounded-full bg-rose-500';
+        txt.textContent = text || '저장 실패 (재시도 필요)';
+        badge.className = 'cursor-pointer text-[11px] font-semibold bg-rose-50 text-rose-700 border border-rose-300 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 hover:bg-rose-100 transition';
+        if (icon) icon.classList.remove('fa-spin');
       } else {
-        dot.className = &#39;w-2 h-2 rounded-full bg-slate-400&#39;;
-        txt.textContent = text || &#39;오프라인 (로컬 보관)&#39;;
-        badge.className = &#39;cursor-pointer text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-200 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 transition&#39;;
-        if (icon) icon.classList.remove(&#39;fa-spin&#39;);
+        dot.className = 'w-2 h-2 rounded-full bg-slate-400';
+        txt.textContent = text || '오프라인 (로컬 보관)';
+        badge.className = 'cursor-pointer text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-200 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 transition';
+        if (icon) icon.classList.remove('fa-spin');
       }
     }
 
     function debouncePushToSheets() {
       if (cloudSyncTimer) clearTimeout(cloudSyncTimer);
-      cloudSyncTimer = setTimeout(() =&gt; {
+      cloudSyncTimer = setTimeout(() => {
         cloudSyncTimer = null;
         pushToSheets(true, false);
       }, 900);
@@ -978,9 +978,9 @@
       if (!gasUrl) return false;
 
       // 최초 클라우드 로드 전 자동 덮어쓰기 방지 (수동 Push/복원만 허용)
-      if (!hasLoadedFromCloud &amp;&amp; !forceManual) {
-        setCloudStatus(&#39;error&#39;, &#39;클라우드 미연결 (저장 보류)&#39;);
-        if (!silent) showToast(&#39;구글 시트 최신 데이터를 먼저 불러온 뒤 저장해 주세요.&#39;, &#39;warning&#39;);
+      if (!hasLoadedFromCloud && !forceManual) {
+        setCloudStatus('error', '클라우드 미연결 (저장 보류)');
+        if (!silent) showToast('구글 시트 최신 데이터를 먼저 불러온 뒤 저장해 주세요.', 'warning');
         return false;
       }
 
@@ -990,38 +990,38 @@
       }
 
       isSaving = true;
-      setCloudStatus(&#39;syncing&#39;, &#39;구글 시트 저장 중...&#39;);
+      setCloudStatus('syncing', '구글 시트 저장 중...');
 
       try {
         const payload = {
-          allowEmptyInventory: inventory.length === 0 &amp;&amp; forceManual,
-          inventory: inventory.map(it =&gt; ({
+          allowEmptyInventory: inventory.length === 0 && forceManual,
+          inventory: inventory.map(it => ({
             id: Number(it.id),
-            category: it.category || &#39;&#39;,
-            company: it.company || &#39;&#39;,
-            name: it.name || &#39;&#39;,
+            category: it.category || '',
+            company: it.company || '',
+            name: it.name || '',
             total: Number(it.total) || 0,
             defect: Number(it.defect) || 0,
             good: Number(it.good) || 0,
-            notes: it.note || &#39;&#39;
+            notes: it.note || ''
           })),
-          history: historyLedger.map(h =&gt; ({
+          history: historyLedger.map(h => ({
             id: String(h.id || generateHistoryId()),
             date: formatHistoryDate(h.time),
-            category: h.category || &#39;&#39;,
-            company: h.company || &#39;&#39;,
-            itemName: h.name || &#39;&#39;,
-            itemNote: h.itemNote || &#39;&#39;,
-            type: h.type || &#39;&#39;,
+            category: h.category || '',
+            company: h.company || '',
+            itemName: h.name || '',
+            itemNote: h.itemNote || '',
+            type: h.type || '',
             qty: Number(h.qty) || 0,
-            reason: h.reason || &#39;&#39;,
-            itemId: h.itemId != null ? Number(h.itemId) : &#39;&#39;
+            reason: h.reason || '',
+            itemId: h.itemId != null ? Number(h.itemId) : ''
           }))
         };
 
         const res = await fetch(gasUrl, {
-          method: &#39;POST&#39;,
-          headers: { &#39;Content-Type&#39;: &#39;text/plain;charset=utf-8&#39; },
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(payload)
         });
 
@@ -1030,34 +1030,34 @@
         }
 
         const result = await res.json();
-        if (!result || result.status !== &#39;success&#39;) {
-          throw new Error((result &amp;&amp; result.message) ? result.message : &#39;서버 응답 오류&#39;);
+        if (!result || result.status !== 'success') {
+          throw new Error((result && result.message) ? result.message : '서버 응답 오류');
         }
 
         hasPendingChanges = false;
         lastPushCompletedAt = Date.now();
 
         const now = new Date();
-        const timeStr = `${String(now.getHours()).padStart(2, &#39;0&#39;)}:${String(now.getMinutes()).padStart(2, &#39;0&#39;)}:${String(now.getSeconds()).padStart(2, &#39;0&#39;)}`;
-        SafeStorage.setItem(&#39;amigo_last_sync_time&#39;, timeStr);
-        setCloudStatus(&#39;online&#39;, &#39;구글 시트 연동됨&#39;);
+        const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+        SafeStorage.setItem('amigo_last_sync_time', timeStr);
+        setCloudStatus('online', '구글 시트 연동됨');
 
-        const mTime = document.getElementById(&#39;modalSyncTime&#39;);
+        const mTime = document.getElementById('modalSyncTime');
         if (mTime) mTime.textContent = `마지막 동기화: ${timeStr}`;
 
-        if (!silent) showToast(&#39;구글 스프레드시트에 정상 저장되었습니다.&#39;, &#39;success&#39;);
+        if (!silent) showToast('구글 스프레드시트에 정상 저장되었습니다.', 'success');
         return true;
       } catch (err) {
-        console.error(&#39;PushToSheets failed:&#39;, err);
+        console.error('PushToSheets failed:', err);
         hasPendingChanges = true;
-        setCloudStatus(&#39;error&#39;, &#39;저장 실패 (재시도 필요)&#39;);
-        showToast(`구글 시트 저장 실패: ${err.message || &#39;네트워크 오류&#39;}`, &#39;error&#39;);
+        setCloudStatus('error', '저장 실패 (재시도 필요)');
+        showToast(`구글 시트 저장 실패: ${err.message || '네트워크 오류'}`, 'error');
         return false;
       } finally {
         isSaving = false;
         if (queuedPushAfterSave) {
           queuedPushAfterSave = false;
-          setTimeout(() =&gt; pushToSheets(true, forceManual), 300);
+          setTimeout(() => pushToSheets(true, forceManual), 300);
         }
       }
     }
@@ -1068,61 +1068,61 @@
       // 자동 새로고침 시 충돌 방지 가드
       if (isAuto) {
         if (isSaving || hasPendingChanges || cloudSyncTimer !== null) return;
-        if (Date.now() - lastPushCompletedAt &lt; POST_SAVE_PULL_COOLDOWN_MS) return;
+        if (Date.now() - lastPushCompletedAt < POST_SAVE_PULL_COOLDOWN_MS) return;
         if (isAnyModalOpen() || isUserEditingInput()) return;
       }
 
       isPulling = true;
-      if (!isAuto) setCloudStatus(&#39;syncing&#39;, &#39;최신 수량 불러오는 중...&#39;);
+      if (!isAuto) setCloudStatus('syncing', '최신 수량 불러오는 중...');
 
       try {
-        const sep = gasUrl.includes(&#39;?&#39;) ? &#39;&amp;&#39; : &#39;?&#39;;
-        const res = await fetch(`${gasUrl}${sep}_t=${Date.now()}`, { method: &#39;GET&#39; });
+        const sep = gasUrl.includes('?') ? '&' : '?';
+        const res = await fetch(`${gasUrl}${sep}_t=${Date.now()}`, { method: 'GET' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
 
-        if (!data || data.status !== &#39;success&#39;) {
-          throw new Error((data &amp;&amp; data.message) ? data.message : &#39;응답 형식 오류&#39;);
+        if (!data || data.status !== 'success') {
+          throw new Error((data && data.message) ? data.message : '응답 형식 오류');
         }
 
         // 자동 새로고침 응답이 도착했을 때 그 사이 사용자가 입력을 시작했다면 덮어쓰지 않음
-        if (isAuto &amp;&amp; (isSaving || hasPendingChanges || cloudSyncTimer !== null || isAnyModalOpen() || isUserEditingInput())) {
+        if (isAuto && (isSaving || hasPendingChanges || cloudSyncTimer !== null || isAnyModalOpen() || isUserEditingInput())) {
           return;
         }
 
         if (Array.isArray(data.inventory)) {
-          inventory = data.inventory.map((it, idx) =&gt; ({
+          inventory = data.inventory.map((it, idx) => ({
             id: Number(it.id) || (idx + 1),
-            category: String(it.category || &#39;&#39;),
-            company: String(it.company || &#39;&#39;),
-            name: String(it.name || &#39;&#39;),
+            category: String(it.category || ''),
+            company: String(it.company || ''),
+            name: String(it.name || ''),
             total: Number(it.total) || 0,
             defect: Number(it.defect) || 0,
             good: Number(it.good) || 0,
-            note: String(it.notes != null ? it.notes : (it.note || &#39;&#39;))
+            note: String(it.notes != null ? it.notes : (it.note || ''))
           }));
         }
 
         if (Array.isArray(data.history)) {
           historyLedger = data.history
-            .filter(h =&gt; h &amp;&amp; (h.itemName || h.name || h.type))
-            .map((h, idx) =&gt; {
-              const name = String(h.itemName != null ? h.itemName : (h.name || &#39;&#39;));
-              const company = String(h.company || &#39;&#39;);
+            .filter(h => h && (h.itemName || h.name || h.type))
+            .map((h, idx) => {
+              const name = String(h.itemName != null ? h.itemName : (h.name || ''));
+              const company = String(h.company || '');
               const matchedItem = findItemByMeta(h.itemId, company, name);
               return {
                 id: String(h.id || `h_pull_${Date.now()}_${idx}`),
-                itemId: (h.itemId !== undefined &amp;&amp; h.itemId !== null &amp;&amp; h.itemId !== &#39;&#39;)
+                itemId: (h.itemId !== undefined && h.itemId !== null && h.itemId !== '')
                   ? Number(h.itemId)
                   : (matchedItem ? matchedItem.id : null),
                 time: formatHistoryDate(h.date != null ? h.date : h.time),
-                category: String(h.category || (matchedItem ? matchedItem.category : &#39;&#39;)),
+                category: String(h.category || (matchedItem ? matchedItem.category : '')),
                 company: company,
                 name: name,
-                itemNote: String(h.itemNote != null ? h.itemNote : (matchedItem ? matchedItem.note : &#39;&#39;)),
-                type: String(h.type || &#39;&#39;),
+                itemNote: String(h.itemNote != null ? h.itemNote : (matchedItem ? matchedItem.note : '')),
+                type: String(h.type || ''),
                 qty: Number(h.qty) || 0,
-                reason: String(h.reason || &#39;&#39;)
+                reason: String(h.reason || '')
               };
             });
         }
@@ -1133,19 +1133,19 @@
         renderAll();
 
         const now = new Date();
-        const timeStr = `${String(now.getHours()).padStart(2, &#39;0&#39;)}:${String(now.getMinutes()).padStart(2, &#39;0&#39;)}:${String(now.getSeconds()).padStart(2, &#39;0&#39;)}`;
-        SafeStorage.setItem(&#39;amigo_last_sync_time&#39;, timeStr);
-        setCloudStatus(&#39;online&#39;, &#39;구글 시트 연동됨&#39;);
+        const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+        SafeStorage.setItem('amigo_last_sync_time', timeStr);
+        setCloudStatus('online', '구글 시트 연동됨');
 
-        const mTime = document.getElementById(&#39;modalSyncTime&#39;);
+        const mTime = document.getElementById('modalSyncTime');
         if (mTime) mTime.textContent = `마지막 동기화: ${timeStr}`;
 
-        if (!silent) showToast(&#39;구글 시트에서 최신 재고를 동기화했습니다.&#39;, &#39;success&#39;);
+        if (!silent) showToast('구글 시트에서 최신 재고를 동기화했습니다.', 'success');
       } catch (err) {
-        console.warn(&#39;PullFromSheets error:&#39;, err);
+        console.warn('PullFromSheets error:', err);
         if (!isAuto) {
-          setCloudStatus(&#39;offline&#39;, &#39;오프라인 (로컬 캐시)&#39;);
-          if (!silent) showToast(&#39;구글 시트에 연결하지 못해 로컬 캐시로 표시합니다.&#39;, &#39;warning&#39;);
+          setCloudStatus('offline', '오프라인 (로컬 캐시)');
+          if (!silent) showToast('구글 시트에 연결하지 못해 로컬 캐시로 표시합니다.', 'warning');
         }
       } finally {
         isPulling = false;
@@ -1154,7 +1154,7 @@
 
     async function manualSync() {
       if (hasPendingChanges) {
-        showToast(&#39;미전송 변경 내역을 먼저 구글 시트에 저장합니다...&#39;, &#39;info&#39;);
+        showToast('미전송 변경 내역을 먼저 구글 시트에 저장합니다...', 'info');
         const ok = await pushToSheets(false, true);
         if (!ok) return;
       }
@@ -1163,78 +1163,78 @@
 
     function startAutoSync() {
       if (autoSyncIntervalId) clearInterval(autoSyncIntervalId);
-      autoSyncIntervalId = setInterval(() =&gt; {
-        if (document.visibilityState === &#39;visible&#39;) {
+      autoSyncIntervalId = setInterval(() => {
+        if (document.visibilityState === 'visible') {
           pullFromSheets(true, true);
         }
       }, AUTO_SYNC_INTERVAL_MS);
 
-      document.addEventListener(&#39;visibilitychange&#39;, () =&gt; {
-        if (document.visibilityState === &#39;visible&#39;) {
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
           pullFromSheets(true, true);
         }
       });
     }
 
     function openSyncModal() {
-      document.getElementById(&#39;gasUrlInput&#39;).value = gasUrl;
-      const last = SafeStorage.getItem(&#39;amigo_last_sync_time&#39;) || &#39;-&#39;;
-      const mTime = document.getElementById(&#39;modalSyncTime&#39;);
+      document.getElementById('gasUrlInput').value = gasUrl;
+      const last = SafeStorage.getItem('amigo_last_sync_time') || '-';
+      const mTime = document.getElementById('modalSyncTime');
       if (mTime) mTime.textContent = `마지막 동기화: ${last}`;
 
-      const desc = document.getElementById(&#39;syncModalItemCountDesc&#39;);
+      const desc = document.getElementById('syncModalItemCountDesc');
       if (desc) {
-        desc.innerHTML = `• &lt;b&gt;가져오기&lt;/b&gt;: 구글 스프레드시트의 최신 데이터를 현재 화면으로 불러옵니다.&lt;br&gt;• &lt;b&gt;올리기&lt;/b&gt;: 현재 화면의 &lt;b&gt;${inventory.length}개 품목&lt;/b&gt; 재고 및 &lt;b&gt;${historyLedger.length}건&lt;/b&gt;의 수불대장을 구글 시트로 즉시 전송합니다.`;
+        desc.innerHTML = `• <b>가져오기</b>: 구글 스프레드시트의 최신 데이터를 현재 화면으로 불러옵니다.<br>• <b>올리기</b>: 현재 화면의 <b>${inventory.length}개 품목</b> 재고 및 <b>${historyLedger.length}건</b>의 수불대장을 구글 시트로 즉시 전송합니다.`;
       }
 
-      const modal = document.getElementById(&#39;syncModal&#39;);
-      modal.classList.remove(&#39;hidden&#39;);
-      modal.classList.add(&#39;flex&#39;);
+      const modal = document.getElementById('syncModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
     }
 
     function closeSyncModal() {
-      const modal = document.getElementById(&#39;syncModal&#39;);
-      modal.classList.add(&#39;hidden&#39;);
-      modal.classList.remove(&#39;flex&#39;);
+      const modal = document.getElementById('syncModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
     }
 
     function saveSyncSettings() {
-      const url = document.getElementById(&#39;gasUrlInput&#39;).value.trim();
+      const url = document.getElementById('gasUrlInput').value.trim();
       if (!url) {
-        showToast(&#39;유효한 웹 앱 URL을 입력해주세요.&#39;, &#39;warning&#39;);
+        showToast('유효한 웹 앱 URL을 입력해주세요.', 'warning');
         return;
       }
       gasUrl = url;
-      SafeStorage.setItem(&#39;amigo_gas_url&#39;, gasUrl);
+      SafeStorage.setItem('amigo_gas_url', gasUrl);
       closeSyncModal();
-      showToast(&#39;구글 시트 연동 주소가 저장되었습니다.&#39;);
+      showToast('구글 시트 연동 주소가 저장되었습니다.');
       pullFromSheets(false, false);
     }
 
     function resetGasUrl() {
       gasUrl = DEFAULT_GAS_URL;
-      document.getElementById(&#39;gasUrlInput&#39;).value = DEFAULT_GAS_URL;
-      SafeStorage.setItem(&#39;amigo_gas_url&#39;, DEFAULT_GAS_URL);
-      showToast(&#39;기본 구글 시트 URL로 재설정되었습니다.&#39;);
+      document.getElementById('gasUrlInput').value = DEFAULT_GAS_URL;
+      SafeStorage.setItem('amigo_gas_url', DEFAULT_GAS_URL);
+      showToast('기본 구글 시트 URL로 재설정되었습니다.');
     }
 
     function isSemiFinishedItem(item) {
       if (!item) return false;
       const cat = norm(item.category);
       const name = norm(item.name);
-      if (name === &#39;bottomset&#39; || name.startsWith(&#39;bottomset&#39;)) return false;
-      return name.includes(&#39;반제품&#39;) || cat.includes(&#39;반제품&#39;);
+      if (name === 'bottomset' || name.startsWith('bottomset')) return false;
+      return name.includes('반제품') || cat.includes('반제품');
     }
 
     function calculateAssembly() {
       let commonSemi = 0;
       const otherCompaniesMap = {};
 
-      inventory.forEach(item =&gt; {
+      inventory.forEach(item => {
         if (isSemiFinishedItem(item)) {
-          const comp = (item.company || &#39;&#39;).trim() || &#39;공통&#39;;
+          const comp = (item.company || '').trim() || '공통';
           const goodQty = isOldVersionItem(item) ? 0 : (Number(item.good) || 0);
-          if (comp === &#39;공통&#39;) {
+          if (comp === '공통') {
             commonSemi += goodQty;
           } else {
             otherCompaniesMap[comp] = (otherCompaniesMap[comp] || 0) + goodQty;
@@ -1252,37 +1252,37 @@
       const totalSemi = commonSemi + totalOtherSemi;
 
       // 5종 공통 결합 자재 (T-PLUG 및 구버전 품목 제외)
-      const sumPartQty = (keywords) =&gt; {
+      const sumPartQty = (keywords) => {
         return inventory
-          .filter(i =&gt; {
+          .filter(i => {
             if (isOldVersionItem(i)) return false;
             const n = norm(i.name);
-            return keywords.some(k =&gt; n.includes(norm(k)));
+            return keywords.some(k => n.includes(norm(k)));
           })
-          .reduce((acc, cur) =&gt; acc + (Number(cur.good) || 0), 0);
+          .reduce((acc, cur) => acc + (Number(cur.good) || 0), 0);
       };
 
       const sharedParts = [
-        { name: &#39;단자 커버&#39;, qty: sumPartQty([&#39;단자커버&#39;, &#39;단자 커버&#39;]) },
-        { name: &#39;명판 커버&#39;, qty: sumPartQty([&#39;명판커버&#39;, &#39;명판 커버&#39;]) },
-        { name: &#39;탑 커버&#39;, qty: sumPartQty([&#39;탑커버&#39;, &#39;탑 커버&#39;]) },
-        { name: &#39;배터리&#39;, qty: sumPartQty([&#39;배터리&#39;]) },
-        { name: &#39;Wi-sun chip&#39;, qty: sumPartQty([&#39;wi-sun&#39;, &#39;wisun&#39;, &#39;와이선&#39;]) }
+        { name: '단자 커버', qty: sumPartQty(['단자커버', '단자 커버']) },
+        { name: '명판 커버', qty: sumPartQty(['명판커버', '명판 커버']) },
+        { name: '탑 커버', qty: sumPartQty(['탑커버', '탑 커버']) },
+        { name: '배터리', qty: sumPartQty(['배터리']) },
+        { name: 'Wi-sun chip', qty: sumPartQty(['wi-sun', 'wisun', '와이선']) }
       ];
 
-      const sharedMinLimit = sharedParts.length &gt; 0 ? Math.min(...sharedParts.map(p =&gt; p.qty)) : 0;
+      const sharedMinLimit = sharedParts.length > 0 ? Math.min(...sharedParts.map(p => p.qty)) : 0;
 
       const all6Parts = [
-        { name: &#39;반제품 (전체)&#39;, qty: totalSemi, isSemi: true },
+        { name: '반제품 (전체)', qty: totalSemi, isSemi: true },
         ...sharedParts
       ];
 
       const totalBuildable = Math.min(totalSemi, sharedMinLimit);
 
-      let bottleneckPartName = &#39;반제품 (전체)&#39;;
+      let bottleneckPartName = '반제품 (전체)';
       let minQtyFound = Infinity;
-      all6Parts.forEach(p =&gt; {
-        if (p.qty &lt; minQtyFound) {
+      all6Parts.forEach(p => {
+        if (p.qty < minQtyFound) {
           minQtyFound = p.qty;
           bottleneckPartName = p.name;
         }
@@ -1290,22 +1290,22 @@
 
       let commonBuildable = 0;
       const otherBuildableMap = {};
-      otherCompList.forEach(c =&gt; otherBuildableMap[c.company] = 0);
+      otherCompList.forEach(c => otherBuildableMap[c.company] = 0);
 
-      if (sharedMinLimit &gt;= totalSemi) {
+      if (sharedMinLimit >= totalSemi) {
         commonBuildable = commonSemi;
-        otherCompList.forEach(c =&gt; otherBuildableMap[c.company] = c.semiQty);
+        otherCompList.forEach(c => otherBuildableMap[c.company] = c.semiQty);
       } else {
-        if (allocationPolicy === &#39;COMMON&#39; || allocationPolicy === &#39;COMPANY_공통&#39;) {
+        if (allocationPolicy === 'COMMON' || allocationPolicy === 'COMPANY_공통') {
           commonBuildable = Math.min(commonSemi, sharedMinLimit);
           let remaining = sharedMinLimit - commonBuildable;
-          otherCompList.forEach(c =&gt; {
+          otherCompList.forEach(c => {
             const alloc = Math.min(c.semiQty, remaining);
             otherBuildableMap[c.company] = alloc;
             remaining -= alloc;
           });
-        } else if (allocationPolicy.startsWith(&#39;COMPANY_&#39;)) {
-          const priorityTarget = allocationPolicy.replace(&#39;COMPANY_&#39;, &#39;&#39;);
+        } else if (allocationPolicy.startsWith('COMPANY_')) {
+          const priorityTarget = allocationPolicy.replace('COMPANY_', '');
           const targetSemi = otherCompaniesMap[priorityTarget] || 0;
           const targetAlloc = Math.min(targetSemi, sharedMinLimit);
           otherBuildableMap[priorityTarget] = targetAlloc;
@@ -1314,31 +1314,31 @@
           commonBuildable = Math.min(commonSemi, remaining);
           remaining -= commonBuildable;
 
-          otherCompList.forEach(c =&gt; {
+          otherCompList.forEach(c => {
             if (c.company !== priorityTarget) {
               const alloc = Math.min(c.semiQty, remaining);
               otherBuildableMap[c.company] = alloc;
               remaining -= alloc;
             }
           });
-        } else if (allocationPolicy === &#39;FAIR&#39;) {
-          if (totalSemi &gt; 0) {
+        } else if (allocationPolicy === 'FAIR') {
+          if (totalSemi > 0) {
             commonBuildable = Math.floor(sharedMinLimit * (commonSemi / totalSemi));
             let sumOther = 0;
-            otherCompList.forEach(c =&gt; {
+            otherCompList.forEach(c => {
               const alloc = Math.floor(sharedMinLimit * (c.semiQty / totalSemi));
               otherBuildableMap[c.company] = alloc;
               sumOther += alloc;
             });
             let leftover = sharedMinLimit - (commonBuildable + sumOther);
-            if (leftover &gt; 0 &amp;&amp; commonSemi &gt; commonBuildable) {
+            if (leftover > 0 && commonSemi > commonBuildable) {
               commonBuildable++;
               leftover--;
             }
             let idx = 0;
-            while (leftover &gt; 0 &amp;&amp; idx &lt; otherCompList.length) {
+            while (leftover > 0 && idx < otherCompList.length) {
               const comp = otherCompList[idx].company;
-              if (otherBuildableMap[comp] &lt; otherCompList[idx].semiQty) {
+              if (otherBuildableMap[comp] < otherCompList[idx].semiQty) {
                 otherBuildableMap[comp]++;
                 leftover--;
               }
@@ -1349,7 +1349,7 @@
       }
 
       let totalOtherActualBuildable = 0;
-      otherCompList.forEach(c =&gt; {
+      otherCompList.forEach(c => {
         const actual = otherBuildableMap[c.company] || 0;
         c.actualBuildable = actual;
         c.shortage = Math.max(0, c.semiQty - actual);
@@ -1357,7 +1357,7 @@
       });
 
       const commonObj = {
-        company: &#39;공통&#39;,
+        company: '공통',
         semiQty: commonSemi,
         actualBuildable: commonBuildable,
         shortage: Math.max(0, commonSemi - commonBuildable),
@@ -1366,9 +1366,9 @@
 
       let totalDefect = 0;
       const defectItems = [];
-      inventory.forEach(i =&gt; {
+      inventory.forEach(i => {
         const d = Number(i.defect) || 0;
-        if (d &gt; 0) {
+        if (d > 0) {
           totalDefect += d;
           defectItems.push({ company: i.company, name: i.name, defect: d });
         }
@@ -1391,42 +1391,42 @@
     }
 
     function updateAllocationButtons(asm) {
-      const container = document.getElementById(&#39;allocationButtonsContainer&#39;);
+      const container = document.getElementById('allocationButtonsContainer');
       if (!container) return;
 
-      const otherNames = asm.otherCompanies.map(c =&gt; c.company);
-      container.innerHTML = &#39;&#39;;
+      const otherNames = asm.otherCompanies.map(c => c.company);
+      container.innerHTML = '';
 
-      const addBtn = (policyValue, label, isActive, activeClass, iconHtml = &#39;&#39;) =&gt; {
-        const btn = document.createElement(&#39;button&#39;);
-        btn.type = &#39;button&#39;;
-        btn.className = `btn-action px-2.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1 ${isActive ? activeClass : &#39;bg-slate-100 hover:bg-slate-200 text-slate-700&#39;}`;
-        btn.innerHTML = `${iconHtml}&lt;span&gt;${escapeHtml(label)}&lt;/span&gt;`;
-        btn.addEventListener(&#39;click&#39;, () =&gt; setAllocationPolicy(policyValue));
+      const addBtn = (policyValue, label, isActive, activeClass, iconHtml = '') => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `btn-action px-2.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1 ${isActive ? activeClass : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`;
+        btn.innerHTML = `${iconHtml}<span>${escapeHtml(label)}</span>`;
+        btn.addEventListener('click', () => setAllocationPolicy(policyValue));
         container.appendChild(btn);
       };
 
-      const isCommonActive = (allocationPolicy === &#39;COMMON&#39; || allocationPolicy === &#39;COMPANY_공통&#39;);
-      addBtn(&#39;COMMON&#39;, &#39;공통(자사) 우선&#39;, isCommonActive, &#39;bg-emerald-600 text-white shadow-xs&#39;, &#39;&lt;i class=&quot;fa-solid fa-star text-[10px]&quot;&gt;&lt;/i&gt;&#39;);
+      const isCommonActive = (allocationPolicy === 'COMMON' || allocationPolicy === 'COMPANY_공통');
+      addBtn('COMMON', '공통(자사) 우선', isCommonActive, 'bg-emerald-600 text-white shadow-xs', '<i class="fa-solid fa-star text-[10px]"></i>');
 
-      otherNames.forEach(compName =&gt; {
+      otherNames.forEach(compName => {
         const policyKey = `COMPANY_${compName}`;
-        addBtn(policyKey, `${compName} 우선`, allocationPolicy === policyKey, &#39;bg-brand-600 text-white shadow-xs&#39;);
+        addBtn(policyKey, `${compName} 우선`, allocationPolicy === policyKey, 'bg-brand-600 text-white shadow-xs');
       });
 
-      addBtn(&#39;FAIR&#39;, &#39;비율 균등 배분&#39;, allocationPolicy === &#39;FAIR&#39;, &#39;bg-purple-600 text-white shadow-xs&#39;, &#39;&lt;i class=&quot;fa-solid fa-scale-balanced text-[10px]&quot;&gt;&lt;/i&gt;&#39;);
+      addBtn('FAIR', '비율 균등 배분', allocationPolicy === 'FAIR', 'bg-purple-600 text-white shadow-xs', '<i class="fa-solid fa-scale-balanced text-[10px]"></i>');
 
-      const descEl = document.getElementById(&#39;policyStatusBadge&#39;);
+      const descEl = document.getElementById('policyStatusBadge');
       if (descEl) {
-        if (allocationPolicy === &#39;COMMON&#39; || allocationPolicy === &#39;COMPANY_공통&#39;) {
-          descEl.className = &#39;text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200&#39;;
-          descEl.textContent = &#39;공통(자사) 우선 배정 상태&#39;;
-        } else if (allocationPolicy === &#39;FAIR&#39;) {
-          descEl.className = &#39;text-[11px] font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-800 border border-purple-200&#39;;
-          descEl.textContent = &#39;반제품 보유 비율 균등 배분 상태&#39;;
-        } else if (allocationPolicy.startsWith(&#39;COMPANY_&#39;)) {
-          const target = allocationPolicy.replace(&#39;COMPANY_&#39;, &#39;&#39;);
-          descEl.className = &#39;text-[11px] font-bold px-2 py-0.5 rounded bg-brand-50 text-brand-700 border border-brand-200&#39;;
+        if (allocationPolicy === 'COMMON' || allocationPolicy === 'COMPANY_공통') {
+          descEl.className = 'text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200';
+          descEl.textContent = '공통(자사) 우선 배정 상태';
+        } else if (allocationPolicy === 'FAIR') {
+          descEl.className = 'text-[11px] font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-800 border border-purple-200';
+          descEl.textContent = '반제품 보유 비율 균등 배분 상태';
+        } else if (allocationPolicy.startsWith('COMPANY_')) {
+          const target = allocationPolicy.replace('COMPANY_', '');
+          descEl.className = 'text-[11px] font-bold px-2 py-0.5 rounded bg-brand-50 text-brand-700 border border-brand-200';
           descEl.textContent = `${target} 1순위 최우선 배정 상태`;
         }
       }
@@ -1436,68 +1436,68 @@
       allocationPolicy = policy;
       saveState(false);
       renderAll();
-      showToast(&#39;부품 배정 정책이 변경되었습니다.&#39;, &#39;info&#39;);
+      showToast('부품 배정 정책이 변경되었습니다.', 'info');
     }
 
     function renderKpis(asm) {
-      const totalBuildEl = document.getElementById(&#39;kpiTotalBuildable&#39;);
+      const totalBuildEl = document.getElementById('kpiTotalBuildable');
       if (totalBuildEl) totalBuildEl.textContent = asm.totalBuildable.toLocaleString();
 
-      const totalDescEl = document.getElementById(&#39;kpiTotalBuildableDesc&#39;);
+      const totalDescEl = document.getElementById('kpiTotalBuildableDesc');
       if (totalDescEl) {
-        if (asm.totalSemi &gt; asm.sharedMinLimit) {
-          totalDescEl.innerHTML = `&lt;span class=&quot;text-rose-600 font-bold&quot;&gt;&lt;i class=&quot;fa-solid fa-triangle-exclamation mr-1&quot;&gt;&lt;/i&gt;${escapeHtml(asm.bottleneckPartName)}(${asm.sharedMinLimit}) 부족으로 총량 제한&lt;/span&gt;`;
+        if (asm.totalSemi > asm.sharedMinLimit) {
+          totalDescEl.innerHTML = `<span class="text-rose-600 font-bold"><i class="fa-solid fa-triangle-exclamation mr-1"></i>${escapeHtml(asm.bottleneckPartName)}(${asm.sharedMinLimit}) 부족으로 총량 제한</span>`;
         } else {
-          totalDescEl.innerHTML = `&lt;span class=&quot;text-emerald-700 font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-check mr-1&quot;&gt;&lt;/i&gt;반제품 합계(${asm.totalSemi}) 전량 결합 가능&lt;/span&gt;`;
+          totalDescEl.innerHTML = `<span class="text-emerald-700 font-medium"><i class="fa-solid fa-check mr-1"></i>반제품 합계(${asm.totalSemi}) 전량 결합 가능</span>`;
         }
       }
 
-      const commonQtyEl = document.getElementById(&#39;kpiCommonQty&#39;);
+      const commonQtyEl = document.getElementById('kpiCommonQty');
       if (commonQtyEl) commonQtyEl.textContent = asm.commonComp.actualBuildable.toLocaleString();
 
-      const commonBadge = document.getElementById(&#39;badgeCommonStatus&#39;);
-      const commonDesc = document.getElementById(&#39;kpiCommonDesc&#39;);
-      if (commonBadge &amp;&amp; commonDesc) {
-        if (asm.commonComp.shortage &gt; 0) {
-          commonBadge.className = &#39;text-[9px] bg-rose-600 text-white font-bold px-1.5 py-0.5 rounded&#39;;
-          commonBadge.textContent = &#39;부족&#39;;
+      const commonBadge = document.getElementById('badgeCommonStatus');
+      const commonDesc = document.getElementById('kpiCommonDesc');
+      if (commonBadge && commonDesc) {
+        if (asm.commonComp.shortage > 0) {
+          commonBadge.className = 'text-[9px] bg-rose-600 text-white font-bold px-1.5 py-0.5 rounded';
+          commonBadge.textContent = '부족';
           commonDesc.textContent = `반제품 ${asm.commonComp.semiQty}개 중 단품 부족으로 ${asm.commonComp.shortage}개 조립 제한`;
         } else {
-          commonBadge.className = &#39;text-[9px] bg-emerald-600 text-white font-bold px-1.5 py-0.5 rounded&#39;;
-          commonBadge.textContent = &#39;정상&#39;;
+          commonBadge.className = 'text-[9px] bg-emerald-600 text-white font-bold px-1.5 py-0.5 rounded';
+          commonBadge.textContent = '정상';
           commonDesc.textContent = `공통 반제품 ${asm.commonComp.semiQty} SET 중 전량 조립 가능`;
         }
       }
 
-      const otherQtyEl = document.getElementById(&#39;kpiOtherCompanyQty&#39;);
+      const otherQtyEl = document.getElementById('kpiOtherCompanyQty');
       if (otherQtyEl) otherQtyEl.textContent = asm.totalOtherActualBuildable.toLocaleString();
 
-      const otherBadge = document.getElementById(&#39;badgeOtherStatus&#39;);
-      const otherDesc = document.getElementById(&#39;kpiOtherCompanyDesc&#39;);
-      if (otherBadge &amp;&amp; otherDesc) {
+      const otherBadge = document.getElementById('badgeOtherStatus');
+      const otherDesc = document.getElementById('kpiOtherCompanyDesc');
+      if (otherBadge && otherDesc) {
         const totalOtherLoss = asm.totalOtherSemi - asm.totalOtherActualBuildable;
-        if (totalOtherLoss &gt; 0) {
-          otherBadge.className = &#39;text-[9px] bg-amber-600 text-white font-bold px-1.5 py-0.5 rounded&#39;;
-          otherBadge.textContent = &#39;단품제한&#39;;
+        if (totalOtherLoss > 0) {
+          otherBadge.className = 'text-[9px] bg-amber-600 text-white font-bold px-1.5 py-0.5 rounded';
+          otherBadge.textContent = '단품제한';
           otherDesc.textContent = `외주 보유 ${asm.totalOtherSemi} SET 중 ${totalOtherLoss}개 조립 제한`;
         } else {
-          otherBadge.className = &#39;text-[9px] bg-indigo-600 text-white font-bold px-1.5 py-0.5 rounded&#39;;
-          otherBadge.textContent = &#39;정상&#39;;
+          otherBadge.className = 'text-[9px] bg-indigo-600 text-white font-bold px-1.5 py-0.5 rounded';
+          otherBadge.textContent = '정상';
           otherDesc.textContent = `외주사 보유 반제품 ${asm.totalOtherSemi} SET 전량 가용`;
         }
       }
 
-      const defectQtyEl = document.getElementById(&#39;kpiDefectQty&#39;);
+      const defectQtyEl = document.getElementById('kpiDefectQty');
       if (defectQtyEl) defectQtyEl.textContent = asm.totalDefect.toLocaleString();
 
-      const defectDescEl = document.getElementById(&#39;kpiDefectDesc&#39;);
+      const defectDescEl = document.getElementById('kpiDefectDesc');
       if (defectDescEl) {
         if (asm.totalDefect === 0 || asm.defectItems.length === 0) {
-          defectDescEl.textContent = &#39;현재 등록된 불량 재고가 없습니다&#39;;
+          defectDescEl.textContent = '현재 등록된 불량 재고가 없습니다';
         } else {
-          const sorted = [...asm.defectItems].sort((a, b) =&gt; b.defect - a.defect);
+          const sorted = [...asm.defectItems].sort((a, b) => b.defect - a.defect);
           const top = sorted[0];
-          const extra = sorted.length &gt; 1 ? ` 외 ${sorted.length - 1}건` : &#39;&#39;;
+          const extra = sorted.length > 1 ? ` 외 ${sorted.length - 1}건` : '';
           defectDescEl.textContent = `총 ${sorted.length}개 품목 보유 (${top.company} ${top.name} ${top.defect} EA${extra})`;
         }
       }
@@ -1507,342 +1507,342 @@
     }
 
     function renderCompanyBreakdown(asm) {
-      const container = document.getElementById(&#39;companyBreakdownContainer&#39;);
+      const container = document.getElementById('companyBreakdownContainer');
       if (!container) return;
 
-      const priorityTarget = allocationPolicy.startsWith(&#39;COMPANY_&#39;)
-        ? allocationPolicy.replace(&#39;COMPANY_&#39;, &#39;&#39;)
-        : (allocationPolicy === &#39;COMMON&#39; ? &#39;공통&#39; : &#39;&#39;);
+      const priorityTarget = allocationPolicy.startsWith('COMPANY_')
+        ? allocationPolicy.replace('COMPANY_', '')
+        : (allocationPolicy === 'COMMON' ? '공통' : '');
 
       const allCompanies = [asm.commonComp, ...asm.otherCompanies];
 
-      allCompanies.sort((a, b) =&gt; {
+      allCompanies.sort((a, b) => {
         if (priorityTarget) {
           if (a.company === priorityTarget) return -1;
           if (b.company === priorityTarget) return 1;
         }
         if (a.isCommon) return -1;
         if (b.isCommon) return 1;
-        return (a.company || &#39;&#39;).localeCompare(b.company || &#39;&#39;);
+        return (a.company || '').localeCompare(b.company || '');
       });
 
       const colorPalette = [
-        { border: &#39;border-indigo-200&#39;, dot: &#39;bg-indigo-600&#39;, text: &#39;text-indigo-700&#39;, badge: &#39;bg-indigo-50 text-indigo-700&#39; },
-        { border: &#39;border-sky-200&#39;, dot: &#39;bg-sky-600&#39;, text: &#39;text-sky-700&#39;, badge: &#39;bg-sky-50 text-sky-700&#39; },
-        { border: &#39;border-purple-200&#39;, dot: &#39;bg-purple-600&#39;, text: &#39;text-purple-700&#39;, badge: &#39;bg-purple-50 text-purple-700&#39; },
-        { border: &#39;border-cyan-200&#39;, dot: &#39;bg-cyan-600&#39;, text: &#39;text-cyan-700&#39;, badge: &#39;bg-cyan-50 text-cyan-700&#39; }
+        { border: 'border-indigo-200', dot: 'bg-indigo-600', text: 'text-indigo-700', badge: 'bg-indigo-50 text-indigo-700' },
+        { border: 'border-sky-200', dot: 'bg-sky-600', text: 'text-sky-700', badge: 'bg-sky-50 text-sky-700' },
+        { border: 'border-purple-200', dot: 'bg-purple-600', text: 'text-purple-700', badge: 'bg-purple-50 text-purple-700' },
+        { border: 'border-cyan-200', dot: 'bg-cyan-600', text: 'text-cyan-700', badge: 'bg-cyan-50 text-cyan-700' }
       ];
 
-      container.innerHTML = allCompanies.map((comp, idx) =&gt; {
+      container.innerHTML = allCompanies.map((comp, idx) => {
         const isPriority = (comp.company === priorityTarget);
-        const hasLoss = comp.shortage &gt; 0;
+        const hasLoss = comp.shortage > 0;
         const isCommon = comp.isCommon;
 
-        let cardBg = &#39;&#39;, cardBorder = &#39;&#39;, dotColor = &#39;&#39;, textQtyColor = &#39;&#39;, badgeStyle = &#39;&#39;;
+        let cardBg = '', cardBorder = '', dotColor = '', textQtyColor = '', badgeStyle = '';
         const ringStyle = isPriority
-          ? (isCommon ? &#39;ring-2 ring-emerald-500 shadow-sm&#39; : &#39;ring-2 ring-indigo-500 shadow-sm&#39;)
-          : &#39;&#39;;
+          ? (isCommon ? 'ring-2 ring-emerald-500 shadow-sm' : 'ring-2 ring-indigo-500 shadow-sm')
+          : '';
 
         if (isCommon) {
-          cardBg = hasLoss ? &#39;bg-rose-50/40&#39; : &#39;bg-emerald-50/40&#39;;
-          cardBorder = hasLoss ? &#39;border-rose-300&#39; : &#39;border-emerald-300&#39;;
-          dotColor = &#39;bg-emerald-600&#39;;
-          textQtyColor = hasLoss ? &#39;text-rose-600&#39; : &#39;text-emerald-700&#39;;
-          badgeStyle = hasLoss ? &#39;bg-rose-100 text-rose-700&#39; : &#39;bg-emerald-100 text-emerald-800&#39;;
+          cardBg = hasLoss ? 'bg-rose-50/40' : 'bg-emerald-50/40';
+          cardBorder = hasLoss ? 'border-rose-300' : 'border-emerald-300';
+          dotColor = 'bg-emerald-600';
+          textQtyColor = hasLoss ? 'text-rose-600' : 'text-emerald-700';
+          badgeStyle = hasLoss ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-800';
         } else {
           const style = colorPalette[idx % colorPalette.length];
-          cardBg = hasLoss ? &#39;bg-rose-50/40&#39; : &#39;bg-slate-50&#39;;
-          cardBorder = hasLoss ? &#39;border-rose-300&#39; : style.border;
+          cardBg = hasLoss ? 'bg-rose-50/40' : 'bg-slate-50';
+          cardBorder = hasLoss ? 'border-rose-300' : style.border;
           dotColor = style.dot;
-          textQtyColor = hasLoss ? &#39;text-rose-600&#39; : style.text;
-          badgeStyle = hasLoss ? &#39;bg-rose-100 text-rose-700&#39; : style.badge;
+          textQtyColor = hasLoss ? 'text-rose-600' : style.text;
+          badgeStyle = hasLoss ? 'bg-rose-100 text-rose-700' : style.badge;
         }
 
         const priorityBadge = isPriority
-          ? `&lt;span class=&quot;text-[9px] font-bold px-1.5 py-0.5 rounded text-white flex items-center gap-0.5 ${isCommon ? &#39;bg-emerald-600&#39; : &#39;bg-indigo-600&#39;}&quot;&gt;
-               &lt;i class=&quot;fa-solid fa-star text-[8px]&quot;&gt;&lt;/i&gt; 1순위 배정
-             &lt;/span&gt;`
-          : &#39;&#39;;
+          ? `<span class="text-[9px] font-bold px-1.5 py-0.5 rounded text-white flex items-center gap-0.5 ${isCommon ? 'bg-emerald-600' : 'bg-indigo-600'}">
+               <i class="fa-solid fa-star text-[8px]"></i> 1순위 배정
+             </span>`
+          : '';
 
         return `
-          &lt;div class=&quot;p-3.5 rounded-xl border ${cardBorder} ${cardBg} ${ringStyle} flex flex-col justify-between transition-all duration-200&quot;&gt;
-            &lt;div class=&quot;flex items-center justify-between gap-1 flex-wrap&quot;&gt;
-              &lt;span class=&quot;text-xs font-bold text-slate-800 flex items-center gap-1.5&quot;&gt;
-                &lt;span class=&quot;w-2.5 h-2.5 rounded-full ${dotColor}&quot;&gt;&lt;/span&gt;
-                ${escapeHtml(comp.company)}${isCommon ? &#39; (자사 / 공통)&#39; : &#39;&#39;}
-              &lt;/span&gt;
-              &lt;div class=&quot;flex items-center gap-1&quot;&gt;
+          <div class="p-3.5 rounded-xl border ${cardBorder} ${cardBg} ${ringStyle} flex flex-col justify-between transition-all duration-200">
+            <div class="flex items-center justify-between gap-1 flex-wrap">
+              <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full ${dotColor}"></span>
+                ${escapeHtml(comp.company)}${isCommon ? ' (자사 / 공통)' : ''}
+              </span>
+              <div class="flex items-center gap-1">
                 ${priorityBadge}
-                &lt;span class=&quot;text-[10px] font-mono font-semibold px-2 py-0.5 rounded ${badgeStyle}&quot;&gt;
+                <span class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded ${badgeStyle}">
                   보유: ${comp.semiQty.toLocaleString()} EA
-                &lt;/span&gt;
-              &lt;/div&gt;
-            &lt;/div&gt;
+                </span>
+              </div>
+            </div>
 
-            &lt;div class=&quot;mt-2.5 flex items-baseline justify-between&quot;&gt;
-              &lt;span class=&quot;text-xs text-slate-500 font-medium&quot;&gt;실가용 완제품:&lt;/span&gt;
-              &lt;div class=&quot;flex items-baseline gap-1&quot;&gt;
-                &lt;span class=&quot;text-xl font-extrabold ${textQtyColor} font-mono&quot;&gt;${comp.actualBuildable.toLocaleString()}&lt;/span&gt;
-                &lt;span class=&quot;text-xs font-bold text-slate-600&quot;&gt;SET&lt;/span&gt;
-              &lt;/div&gt;
-            &lt;/div&gt;
+            <div class="mt-2.5 flex items-baseline justify-between">
+              <span class="text-xs text-slate-500 font-medium">실가용 완제품:</span>
+              <div class="flex items-baseline gap-1">
+                <span class="text-xl font-extrabold ${textQtyColor} font-mono">${comp.actualBuildable.toLocaleString()}</span>
+                <span class="text-xs font-bold text-slate-600">SET</span>
+              </div>
+            </div>
 
-            &lt;div class=&quot;text-[10px] mt-2 pt-1.5 border-t border-slate-200/60 ${hasLoss ? &#39;text-rose-600 font-semibold&#39; : &#39;text-slate-500&#39;} truncate&quot;&gt;
+            <div class="text-[10px] mt-2 pt-1.5 border-t border-slate-200/60 ${hasLoss ? 'text-rose-600 font-semibold' : 'text-slate-500'} truncate">
               ${hasLoss
-                ? `&lt;i class=&quot;fa-solid fa-triangle-exclamation mr-1&quot;&gt;&lt;/i&gt;단품 부족으로 ${comp.shortage.toLocaleString()} SET 조립 제한`
-                : &#39;&lt;i class=&quot;fa-solid fa-check text-emerald-600 mr-1&quot;&gt;&lt;/i&gt;공통 결합 부품 100% 충족 확보&#39;}
-            &lt;/div&gt;
-          &lt;/div&gt;
+                ? `<i class="fa-solid fa-triangle-exclamation mr-1"></i>단품 부족으로 ${comp.shortage.toLocaleString()} SET 조립 제한`
+                : '<i class="fa-solid fa-check text-emerald-600 mr-1"></i>공통 결합 부품 100% 충족 확보'}
+            </div>
+          </div>
         `;
-      }).join(&#39;&#39;);
+      }).join('');
     }
 
     function renderBomPartsBar(asm) {
-      const container = document.getElementById(&#39;bomPartsContainer&#39;);
+      const container = document.getElementById('bomPartsContainer');
       if (!container) return;
 
-      container.innerHTML = asm.all6Parts.map(part =&gt; {
+      container.innerHTML = asm.all6Parts.map(part => {
         const isBottleneck = (part.name === asm.bottleneckPartName);
-        const borderClass = isBottleneck ? &#39;border-rose-400 bg-rose-50/50&#39; : &#39;border-slate-200 bg-slate-50/50&#39;;
-        const titleColor = isBottleneck ? &#39;text-rose-700&#39; : &#39;text-slate-700&#39;;
+        const borderClass = isBottleneck ? 'border-rose-400 bg-rose-50/50' : 'border-slate-200 bg-slate-50/50';
+        const titleColor = isBottleneck ? 'text-rose-700' : 'text-slate-700';
         const badge = isBottleneck
-          ? &#39;&lt;span class=&quot;text-[9px] bg-rose-600 text-white font-bold px-1.5 py-0.2 rounded&quot;&gt;최소 병목&lt;/span&gt;&#39;
-          : (part.isSemi ? &#39;&lt;span class=&quot;text-[9px] bg-blue-100 text-blue-700 font-semibold px-1.5 py-0.2 rounded&quot;&gt;반제품합&lt;/span&gt;&#39; : &#39;&#39;);
+          ? '<span class="text-[9px] bg-rose-600 text-white font-bold px-1.5 py-0.2 rounded">최소 병목</span>'
+          : (part.isSemi ? '<span class="text-[9px] bg-blue-100 text-blue-700 font-semibold px-1.5 py-0.2 rounded">반제품합</span>' : '');
 
         return `
-          &lt;div class=&quot;p-2.5 rounded-xl border ${borderClass} flex flex-col justify-between&quot;&gt;
-            &lt;div class=&quot;flex items-center justify-between gap-1&quot;&gt;
-              &lt;span class=&quot;text-[11px] font-bold ${titleColor} truncate&quot;&gt;${escapeHtml(part.name)}&lt;/span&gt;
+          <div class="p-2.5 rounded-xl border ${borderClass} flex flex-col justify-between">
+            <div class="flex items-center justify-between gap-1">
+              <span class="text-[11px] font-bold ${titleColor} truncate">${escapeHtml(part.name)}</span>
               ${badge}
-            &lt;/div&gt;
-            &lt;div class=&quot;mt-1 flex items-baseline justify-between&quot;&gt;
-              &lt;span class=&quot;text-[10px] text-slate-400 font-medium&quot;&gt;가용 양품:&lt;/span&gt;
-              &lt;span class=&quot;text-sm font-mono font-bold ${isBottleneck ? &#39;text-rose-600&#39; : &#39;text-slate-800&#39;}&quot;&gt;
-                ${part.qty.toLocaleString()} &lt;span class=&quot;text-[10px] font-normal text-slate-500&quot;&gt;EA&lt;/span&gt;
-              &lt;/span&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
+            </div>
+            <div class="mt-1 flex items-baseline justify-between">
+              <span class="text-[10px] text-slate-400 font-medium">가용 양품:</span>
+              <span class="text-sm font-mono font-bold ${isBottleneck ? 'text-rose-600' : 'text-slate-800'}">
+                ${part.qty.toLocaleString()} <span class="text-[10px] font-normal text-slate-500">EA</span>
+              </span>
+            </div>
+          </div>
         `;
-      }).join(&#39;&#39;);
+      }).join('');
     }
 
     function renderTable() {
-      const tbody = document.getElementById(&#39;inventoryTableBody&#39;);
+      const tbody = document.getElementById('inventoryTableBody');
       if (!tbody) return;
 
-      const catSelect = document.getElementById(&#39;filterCategory&#39;);
-      const compSelect = document.getElementById(&#39;filterCompany&#39;);
-      const searchInput = document.getElementById(&#39;searchKeyword&#39;);
+      const catSelect = document.getElementById('filterCategory');
+      const compSelect = document.getElementById('filterCompany');
+      const searchInput = document.getElementById('searchKeyword');
 
-      const catFilter = catSelect ? catSelect.value : &#39;&#39;;
-      const compFilter = compSelect ? compSelect.value : &#39;&#39;;
-      const keyword = searchInput ? (searchInput.value || &#39;&#39;).toLowerCase().trim() : &#39;&#39;;
+      const catFilter = catSelect ? catSelect.value : '';
+      const compFilter = compSelect ? compSelect.value : '';
+      const keyword = searchInput ? (searchInput.value || '').toLowerCase().trim() : '';
 
       if (inventory.length === 0) {
         tbody.innerHTML = `
-          &lt;tr&gt;
-            &lt;td colspan=&quot;8&quot; class=&quot;text-center py-10 text-slate-400 text-xs font-medium&quot;&gt;
-              ${hasLoadedFromCloud ? &#39;등록된 품목이 없습니다. 상단 [신규 품목 추가]로 등록해 주세요.&#39; : &#39;구글 시트에서 최신 재고 데이터를 불러오는 중입니다...&#39;}
-            &lt;/td&gt;
-          &lt;/tr&gt;
+          <tr>
+            <td colspan="8" class="text-center py-10 text-slate-400 text-xs font-medium">
+              ${hasLoadedFromCloud ? '등록된 품목이 없습니다. 상단 [신규 품목 추가]로 등록해 주세요.' : '구글 시트에서 최신 재고 데이터를 불러오는 중입니다...'}
+            </td>
+          </tr>
         `;
         return;
       }
 
-      const filtered = inventory.filter(item =&gt; {
-        if (catFilter &amp;&amp; item.category !== catFilter) return false;
-        if (compFilter &amp;&amp; item.company !== compFilter) return false;
+      const filtered = inventory.filter(item => {
+        if (catFilter && item.category !== catFilter) return false;
+        if (compFilter && item.company !== compFilter) return false;
         if (keyword) {
-          const matchName = (item.name || &#39;&#39;).toLowerCase().includes(keyword);
-          const matchNote = (item.note || &#39;&#39;).toLowerCase().includes(keyword);
-          const matchComp = (item.company || &#39;&#39;).toLowerCase().includes(keyword);
-          const matchCat = (item.category || &#39;&#39;).toLowerCase().includes(keyword);
-          if (!matchName &amp;&amp; !matchNote &amp;&amp; !matchComp &amp;&amp; !matchCat) return false;
+          const matchName = (item.name || '').toLowerCase().includes(keyword);
+          const matchNote = (item.note || '').toLowerCase().includes(keyword);
+          const matchComp = (item.company || '').toLowerCase().includes(keyword);
+          const matchCat = (item.category || '').toLowerCase().includes(keyword);
+          if (!matchName && !matchNote && !matchComp && !matchCat) return false;
         }
         return true;
       });
 
       if (filtered.length === 0) {
         tbody.innerHTML = `
-          &lt;tr&gt;
-            &lt;td colspan=&quot;8&quot; class=&quot;text-center py-8 text-slate-400 text-xs font-medium&quot;&gt;
+          <tr>
+            <td colspan="8" class="text-center py-8 text-slate-400 text-xs font-medium">
               조건에 일치하는 품목이 없습니다.
-            &lt;/td&gt;
-          &lt;/tr&gt;
+            </td>
+          </tr>
         `;
         return;
       }
 
-      tbody.innerHTML = filtered.map(item =&gt; {
-        let catBadge = &#39;bg-slate-100 text-slate-700&#39;;
-        if (item.category === &#39;반제품 SET&#39;) catBadge = &#39;bg-blue-100 text-blue-800&#39;;
-        else if (item.category === &#39;BOTTOM&#39;) catBadge = &#39;bg-sky-100 text-sky-800&#39;;
-        else if (item.category === &#39;PCB&#39;) catBadge = &#39;bg-emerald-100 text-emerald-800&#39;;
-        else if (item.category === &#39;TOP COVER&#39;) catBadge = &#39;bg-purple-100 text-purple-800&#39;;
+      tbody.innerHTML = filtered.map(item => {
+        let catBadge = 'bg-slate-100 text-slate-700';
+        if (item.category === '반제품 SET') catBadge = 'bg-blue-100 text-blue-800';
+        else if (item.category === 'BOTTOM') catBadge = 'bg-sky-100 text-sky-800';
+        else if (item.category === 'PCB') catBadge = 'bg-emerald-100 text-emerald-800';
+        else if (item.category === 'TOP COVER') catBadge = 'bg-purple-100 text-purple-800';
 
-        let compBadge = &#39;bg-slate-100 text-slate-700&#39;;
-        if (item.company === &#39;공통&#39;) compBadge = &#39;bg-emerald-50 text-emerald-800 border border-emerald-200&#39;;
-        else if (item.company === &#39;누리 보이스&#39;) compBadge = &#39;bg-indigo-50 text-indigo-700 border border-indigo-200&#39;;
-        else if (item.company === &#39;누리 플렉스&#39;) compBadge = &#39;bg-sky-50 text-sky-700 border border-sky-200&#39;;
-        else compBadge = &#39;bg-brand-50 text-brand-700 border border-brand-200&#39;;
+        let compBadge = 'bg-slate-100 text-slate-700';
+        if (item.company === '공통') compBadge = 'bg-emerald-50 text-emerald-800 border border-emerald-200';
+        else if (item.company === '누리 보이스') compBadge = 'bg-indigo-50 text-indigo-700 border border-indigo-200';
+        else if (item.company === '누리 플렉스') compBadge = 'bg-sky-50 text-sky-700 border border-sky-200';
+        else compBadge = 'bg-brand-50 text-brand-700 border border-brand-200';
 
         const isOldVer = isOldVersionItem(item);
-        const defectDisplay = (Number(item.defect) &gt; 0)
-          ? `&lt;span class=&quot;font-bold text-rose-600&quot;&gt;${Number(item.defect).toLocaleString()}&lt;/span&gt;`
-          : `&lt;span class=&quot;text-slate-300&quot;&gt;-&lt;/span&gt;`;
+        const defectDisplay = (Number(item.defect) > 0)
+          ? `<span class="font-bold text-rose-600">${Number(item.defect).toLocaleString()}</span>`
+          : `<span class="text-slate-300">-</span>`;
 
         const goodDisplay = isOldVer
-          ? `&lt;span class=&quot;text-slate-300&quot; title=&quot;구버전 품목 (양품 가용 비움)&quot;&gt;-&lt;/span&gt;`
-          : ((Number(item.good) &gt; 0)
-            ? `&lt;span class=&quot;font-bold text-emerald-700&quot;&gt;${Number(item.good).toLocaleString()}&lt;/span&gt;`
-            : `&lt;span class=&quot;text-slate-300&quot;&gt;0&lt;/span&gt;`);
+          ? `<span class="text-slate-300" title="구버전 품목 (양품 가용 비움)">-</span>`
+          : ((Number(item.good) > 0)
+            ? `<span class="font-bold text-emerald-700">${Number(item.good).toLocaleString()}</span>`
+            : `<span class="text-slate-300">0</span>`);
 
         return `
-          &lt;tr class=&quot;hover:bg-slate-50/80 transition-colors&quot;&gt;
-            &lt;td class=&quot;py-2.5 px-3 whitespace-nowrap&quot;&gt;
-              &lt;span class=&quot;text-[11px] font-bold px-2 py-0.5 rounded ${catBadge}&quot;&gt;
+          <tr class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-2.5 px-3 whitespace-nowrap">
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded ${catBadge}">
                 ${escapeHtml(item.category)}
-              &lt;/span&gt;
-            &lt;/td&gt;
-            &lt;td class=&quot;py-2.5 px-3 whitespace-nowrap&quot;&gt;
-              &lt;span class=&quot;text-[11px] font-bold px-2 py-0.5 rounded ${compBadge}&quot;&gt;
+              </span>
+            </td>
+            <td class="py-2.5 px-3 whitespace-nowrap">
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded ${compBadge}">
                 ${escapeHtml(item.company)}
-              &lt;/span&gt;
-            &lt;/td&gt;
-            &lt;td class=&quot;py-2.5 px-3 font-bold text-slate-800 whitespace-nowrap&quot;&gt;
+              </span>
+            </td>
+            <td class="py-2.5 px-3 font-bold text-slate-800 whitespace-nowrap">
               ${escapeHtml(item.name)}
-            &lt;/td&gt;
-            &lt;td class=&quot;py-2.5 px-3 text-right font-mono font-bold text-slate-900 whitespace-nowrap&quot;&gt;
+            </td>
+            <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900 whitespace-nowrap">
               ${(Number(item.total) || 0).toLocaleString()}
-            &lt;/td&gt;
-            &lt;td class=&quot;py-2.5 px-3 text-right font-mono whitespace-nowrap&quot;&gt;
+            </td>
+            <td class="py-2.5 px-3 text-right font-mono whitespace-nowrap">
               ${defectDisplay}
-            &lt;/td&gt;
-            &lt;td class=&quot;py-2.5 px-3 text-right font-mono whitespace-nowrap bg-emerald-50/40 font-bold&quot;&gt;
+            </td>
+            <td class="py-2.5 px-3 text-right font-mono whitespace-nowrap bg-emerald-50/40 font-bold">
               ${goodDisplay}
-            &lt;/td&gt;
-            &lt;td class=&quot;py-2.5 px-3 min-w-[200px]&quot;&gt;
-              &lt;input type=&quot;text&quot; value=&quot;${escapeHtml(item.note || &#39;&#39;)}&quot;
-                     placeholder=&quot;비고 입력 (포커스 아웃 시 자동 저장)&quot;
-                     onchange=&quot;updateNote(${item.id}, this.value)&quot;
-                     class=&quot;w-full px-2 py-1 rounded border border-transparent hover:border-slate-300 focus:border-brand-500 focus:bg-white text-xs bg-transparent transition truncate&quot;&gt;
-            &lt;/td&gt;
-            &lt;td class=&quot;py-2.5 px-3 text-center whitespace-nowrap&quot;&gt;
-              &lt;div class=&quot;flex items-center justify-center gap-1&quot;&gt;
-                &lt;button type=&quot;button&quot; onclick=&quot;openActionModal(&#39;IN&#39;, ${item.id})&quot; title=&quot;입고 (양품 및 총수량 동시 증가)&quot; class=&quot;px-2 py-1 rounded bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold text-[11px] transition cursor-pointer&quot;&gt;
+            </td>
+            <td class="py-2.5 px-3 min-w-[200px]">
+              <input type="text" value="${escapeHtml(item.note || '')}"
+                     placeholder="비고 입력 (포커스 아웃 시 자동 저장)"
+                     onchange="updateNote(${item.id}, this.value)"
+                     class="w-full px-2 py-1 rounded border border-transparent hover:border-slate-300 focus:border-brand-500 focus:bg-white text-xs bg-transparent transition truncate">
+            </td>
+            <td class="py-2.5 px-3 text-center whitespace-nowrap">
+              <div class="flex items-center justify-center gap-1">
+                <button type="button" onclick="openActionModal('IN', ${item.id})" title="입고 (양품 및 총수량 동시 증가)" class="px-2 py-1 rounded bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold text-[11px] transition cursor-pointer">
                   입고
-                &lt;/button&gt;
-                &lt;button type=&quot;button&quot; onclick=&quot;openActionModal(&#39;OUT&#39;, ${item.id})&quot; title=&quot;출고 (양품 및 총수량 동시 차감)&quot; class=&quot;px-2 py-1 rounded bg-amber-50 hover:bg-amber-600 text-amber-700 hover:text-white font-bold text-[11px] transition cursor-pointer&quot;&gt;
+                </button>
+                <button type="button" onclick="openActionModal('OUT', ${item.id})" title="출고 (양품 및 총수량 동시 차감)" class="px-2 py-1 rounded bg-amber-50 hover:bg-amber-600 text-amber-700 hover:text-white font-bold text-[11px] transition cursor-pointer">
                   출고
-                &lt;/button&gt;
-                &lt;button type=&quot;button&quot; onclick=&quot;openActionModal(&#39;DEFECT&#39;, ${item.id})&quot; title=&quot;불량 등록 / 불량 출고&quot; class=&quot;px-2 py-1 rounded bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white font-bold text-[11px] transition cursor-pointer&quot;&gt;
+                </button>
+                <button type="button" onclick="openActionModal('DEFECT', ${item.id})" title="불량 등록 / 불량 출고" class="px-2 py-1 rounded bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white font-bold text-[11px] transition cursor-pointer">
                   불량
-                &lt;/button&gt;
-                &lt;button type=&quot;button&quot; onclick=&quot;openEditItemModal(${item.id})&quot; title=&quot;품목 정보 및 재고 직접 수정&quot; class=&quot;px-2 py-1 rounded bg-slate-100 hover:bg-slate-700 hover:text-white text-slate-600 font-bold text-[11px] transition cursor-pointer&quot;&gt;
+                </button>
+                <button type="button" onclick="openEditItemModal(${item.id})" title="품목 정보 및 재고 직접 수정" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-700 hover:text-white text-slate-600 font-bold text-[11px] transition cursor-pointer">
                   수정
-                &lt;/button&gt;
-                &lt;button type=&quot;button&quot; onclick=&quot;confirmDeleteItem(${item.id})&quot; title=&quot;품목 삭제&quot; class=&quot;w-6 h-6 rounded text-slate-300 hover:text-rose-600 hover:bg-rose-50 flex items-center justify-center transition cursor-pointer ml-0.5&quot;&gt;
-                  &lt;i class=&quot;fa-regular fa-trash-can text-xs&quot;&gt;&lt;/i&gt;
-                &lt;/button&gt;
-              &lt;/div&gt;
-            &lt;/td&gt;
-          &lt;/tr&gt;
+                </button>
+                <button type="button" onclick="confirmDeleteItem(${item.id})" title="품목 삭제" class="w-6 h-6 rounded text-slate-300 hover:text-rose-600 hover:bg-rose-50 flex items-center justify-center transition cursor-pointer ml-0.5">
+                  <i class="fa-regular fa-trash-can text-xs"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
         `;
-      }).join(&#39;&#39;);
+      }).join('');
     }
 
     function getHistoryTypeBadgeHtml(type) {
-      if (type === &#39;입고&#39;) return &#39;&lt;span class=&quot;text-[10px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.5 rounded&quot;&gt;입고&lt;/span&gt;&#39;;
-      if (type === &#39;출고&#39;) return &#39;&lt;span class=&quot;text-[10px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.5 rounded&quot;&gt;출고&lt;/span&gt;&#39;;
-      if (type === &#39;불량&#39;) return &#39;&lt;span class=&quot;text-[10px] bg-rose-100 text-rose-800 font-bold px-1.5 py-0.5 rounded&quot;&gt;불량&lt;/span&gt;&#39;;
-      if (type === &#39;불량출고&#39;) return &#39;&lt;span class=&quot;text-[10px] bg-fuchsia-100 text-fuchsia-800 font-bold px-1.5 py-0.5 rounded&quot;&gt;불량출고&lt;/span&gt;&#39;;
-      if (type === &#39;재고조정&#39;) return &#39;&lt;span class=&quot;text-[10px] bg-violet-100 text-violet-800 font-bold px-1.5 py-0.5 rounded&quot;&gt;재고조정&lt;/span&gt;&#39;;
-      if (type === &#39;신규등록&#39;) return &#39;&lt;span class=&quot;text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded&quot;&gt;신규등록&lt;/span&gt;&#39;;
-      return `&lt;span class=&quot;text-[10px] bg-slate-100 text-slate-700 font-bold px-1.5 py-0.5 rounded&quot;&gt;${escapeHtml(type)}&lt;/span&gt;`;
+      if (type === '입고') return '<span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.5 rounded">입고</span>';
+      if (type === '출고') return '<span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.5 rounded">출고</span>';
+      if (type === '불량') return '<span class="text-[10px] bg-rose-100 text-rose-800 font-bold px-1.5 py-0.5 rounded">불량</span>';
+      if (type === '불량출고') return '<span class="text-[10px] bg-fuchsia-100 text-fuchsia-800 font-bold px-1.5 py-0.5 rounded">불량출고</span>';
+      if (type === '재고조정') return '<span class="text-[10px] bg-violet-100 text-violet-800 font-bold px-1.5 py-0.5 rounded">재고조정</span>';
+      if (type === '신규등록') return '<span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">신규등록</span>';
+      return `<span class="text-[10px] bg-slate-100 text-slate-700 font-bold px-1.5 py-0.5 rounded">${escapeHtml(type)}</span>`;
     }
 
     function renderHistory() {
-      const tbody = document.getElementById(&#39;historyTableBody&#39;);
+      const tbody = document.getElementById('historyTableBody');
       if (!tbody) return;
 
-      const filtered = historyLedger.filter(h =&gt; {
-        if (historyFilter === &#39;ALL&#39;) return true;
+      const filtered = historyLedger.filter(h => {
+        if (historyFilter === 'ALL') return true;
         return h.type === historyFilter;
       });
 
       if (filtered.length === 0) {
         tbody.innerHTML = `
-          &lt;tr&gt;
-            &lt;td colspan=&quot;9&quot; class=&quot;text-center py-6 text-slate-400 text-xs&quot;&gt;
+          <tr>
+            <td colspan="9" class="text-center py-6 text-slate-400 text-xs">
               기록된 수불 내역이 없습니다.
-            &lt;/td&gt;
-          &lt;/tr&gt;
+            </td>
+          </tr>
         `;
         return;
       }
 
-      tbody.innerHTML = filtered.map(h =&gt; {
+      tbody.innerHTML = filtered.map(h => {
         const safeId = escapeHtml(String(h.id));
-        const isAdjust = (h.type === &#39;재고조정&#39;);
+        const isAdjust = (h.type === '재고조정');
         const editBtnHtml = isAdjust
-          ? `&lt;span title=&quot;재고조정 내역은 품목 비고와 상세 사유를 표에서 직접 수정할 수 있습니다.&quot; class=&quot;px-2 py-1 rounded bg-slate-50 text-slate-300 font-bold text-[11px] cursor-not-allowed select-none&quot;&gt;조정&lt;/span&gt;`
-          : `&lt;button type=&quot;button&quot; onclick=&quot;openEditHistoryModal(&#39;${safeId}&#39;)&quot; title=&quot;수불 유형 및 수량 수정 (재고 자동 보정)&quot; class=&quot;px-2 py-1 rounded bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-700 font-bold text-[11px] transition cursor-pointer flex items-center gap-0.5&quot;&gt;
-               &lt;i class=&quot;fa-solid fa-pen-to-square text-[10px]&quot;&gt;&lt;/i&gt; 수정
-             &lt;/button&gt;`;
+          ? `<span title="재고조정 내역은 품목 비고와 상세 사유를 표에서 직접 수정할 수 있습니다." class="px-2 py-1 rounded bg-slate-50 text-slate-300 font-bold text-[11px] cursor-not-allowed select-none">조정</span>`
+          : `<button type="button" onclick="openEditHistoryModal('${safeId}')" title="수불 유형 및 수량 수정 (재고 자동 보정)" class="px-2 py-1 rounded bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-700 font-bold text-[11px] transition cursor-pointer flex items-center gap-0.5">
+               <i class="fa-solid fa-pen-to-square text-[10px]"></i> 수정
+             </button>`;
 
         return `
-          &lt;tr class=&quot;hover:bg-slate-50/70 transition-colors&quot;&gt;
-            &lt;td class=&quot;py-2 px-3 text-slate-500 font-mono text-[11px] whitespace-nowrap&quot;&gt;${escapeHtml(h.time)}&lt;/td&gt;
-            &lt;td class=&quot;py-2 px-3 whitespace-nowrap text-slate-600&quot;&gt;${escapeHtml(h.category || &#39;-&#39;)}&lt;/td&gt;
-            &lt;td class=&quot;py-2 px-3 whitespace-nowrap font-medium text-slate-700&quot;&gt;${escapeHtml(h.company)}&lt;/td&gt;
-            &lt;td class=&quot;py-2 px-3 font-bold text-slate-900 whitespace-nowrap&quot;&gt;${escapeHtml(h.name)}&lt;/td&gt;
-            &lt;td class=&quot;py-2 px-3 min-w-[160px]&quot;&gt;
-              &lt;input type=&quot;text&quot; value=&quot;${escapeHtml(h.itemNote || &#39;&#39;)}&quot;
-                     placeholder=&quot;품목 비고 입력&quot;
-                     onchange=&quot;updateHistoryItemNote(&#39;${safeId}&#39;, this.value)&quot;
-                     class=&quot;w-full px-2 py-1 rounded border border-transparent hover:border-slate-300 focus:border-brand-500 focus:bg-white text-xs text-slate-600 bg-transparent transition truncate&quot;&gt;
-            &lt;/td&gt;
-            &lt;td class=&quot;py-2 px-3 text-center whitespace-nowrap&quot;&gt;${getHistoryTypeBadgeHtml(h.type)}&lt;/td&gt;
-            &lt;td class=&quot;py-2 px-3 text-right font-mono font-bold whitespace-nowrap&quot;&gt;${(Number(h.qty) || 0).toLocaleString()}&lt;/td&gt;
-            &lt;td class=&quot;py-2 px-3 min-w-[220px]&quot;&gt;
-              &lt;input type=&quot;text&quot; value=&quot;${escapeHtml(h.reason || &#39;&#39;)}&quot;
-                     placeholder=&quot;상세 사유 입력 후 포커스 아웃 시 자동 저장&quot;
-                     onchange=&quot;updateHistoryReason(&#39;${safeId}&#39;, this.value)&quot;
-                     class=&quot;w-full px-2 py-1 rounded border border-transparent hover:border-slate-300 focus:border-brand-500 focus:bg-white text-xs bg-transparent transition truncate&quot;&gt;
-            &lt;/td&gt;
-            &lt;td class=&quot;py-2 px-3 text-center whitespace-nowrap&quot;&gt;
-              &lt;div class=&quot;flex items-center justify-center gap-1&quot;&gt;
+          <tr class="hover:bg-slate-50/70 transition-colors">
+            <td class="py-2 px-3 text-slate-500 font-mono text-[11px] whitespace-nowrap">${escapeHtml(h.time)}</td>
+            <td class="py-2 px-3 whitespace-nowrap text-slate-600">${escapeHtml(h.category || '-')}</td>
+            <td class="py-2 px-3 whitespace-nowrap font-medium text-slate-700">${escapeHtml(h.company)}</td>
+            <td class="py-2 px-3 font-bold text-slate-900 whitespace-nowrap">${escapeHtml(h.name)}</td>
+            <td class="py-2 px-3 min-w-[160px]">
+              <input type="text" value="${escapeHtml(h.itemNote || '')}"
+                     placeholder="품목 비고 입력"
+                     onchange="updateHistoryItemNote('${safeId}', this.value)"
+                     class="w-full px-2 py-1 rounded border border-transparent hover:border-slate-300 focus:border-brand-500 focus:bg-white text-xs text-slate-600 bg-transparent transition truncate">
+            </td>
+            <td class="py-2 px-3 text-center whitespace-nowrap">${getHistoryTypeBadgeHtml(h.type)}</td>
+            <td class="py-2 px-3 text-right font-mono font-bold whitespace-nowrap">${(Number(h.qty) || 0).toLocaleString()}</td>
+            <td class="py-2 px-3 min-w-[220px]">
+              <input type="text" value="${escapeHtml(h.reason || '')}"
+                     placeholder="상세 사유 입력 후 포커스 아웃 시 자동 저장"
+                     onchange="updateHistoryReason('${safeId}', this.value)"
+                     class="w-full px-2 py-1 rounded border border-transparent hover:border-slate-300 focus:border-brand-500 focus:bg-white text-xs bg-transparent transition truncate">
+            </td>
+            <td class="py-2 px-3 text-center whitespace-nowrap">
+              <div class="flex items-center justify-center gap-1">
                 ${editBtnHtml}
-                &lt;button type=&quot;button&quot; onclick=&quot;confirmDeleteHistory(&#39;${safeId}&#39;)&quot; title=&quot;${isAdjust ? &#39;재고조정 기록만 삭제 (현재 재고 유지)&#39; : &#39;이 수불 기록 삭제 및 재고 원복&#39;}&quot; class=&quot;w-6 h-6 rounded text-slate-300 hover:text-rose-600 hover:bg-rose-50 inline-flex items-center justify-center transition cursor-pointer&quot;&gt;
-                  &lt;i class=&quot;fa-regular fa-trash-can text-xs&quot;&gt;&lt;/i&gt;
-                &lt;/button&gt;
-              &lt;/div&gt;
-            &lt;/td&gt;
-          &lt;/tr&gt;
+                <button type="button" onclick="confirmDeleteHistory('${safeId}')" title="${isAdjust ? '재고조정 기록만 삭제 (현재 재고 유지)' : '이 수불 기록 삭제 및 재고 원복'}" class="w-6 h-6 rounded text-slate-300 hover:text-rose-600 hover:bg-rose-50 inline-flex items-center justify-center transition cursor-pointer">
+                  <i class="fa-regular fa-trash-can text-xs"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
         `;
-      }).join(&#39;&#39;);
+      }).join('');
     }
 
     function setHistoryFilter(type, btn) {
       historyFilter = type;
-      document.querySelectorAll(&#39;.hist-filter-btn&#39;).forEach(b =&gt; {
-        b.className = &#39;hist-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200&#39;;
+      document.querySelectorAll('.hist-filter-btn').forEach(b => {
+        b.className = 'hist-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200';
       });
       if (btn) {
-        btn.className = &#39;hist-filter-btn px-2.5 py-1 rounded text-xs font-bold bg-slate-800 text-white&#39;;
+        btn.className = 'hist-filter-btn px-2.5 py-1 rounded text-xs font-bold bg-slate-800 text-white';
       }
       renderHistory();
     }
 
     function findItemByMeta(itemId, company, name) {
-      if (itemId !== undefined &amp;&amp; itemId !== null &amp;&amp; itemId !== &#39;&#39;) {
-        const byId = inventory.find(i =&gt; Number(i.id) === Number(itemId));
+      if (itemId !== undefined && itemId !== null && itemId !== '') {
+        const byId = inventory.find(i => Number(i.id) === Number(itemId));
         if (byId) return byId;
       }
-      const c = String(company || &#39;&#39;).trim();
-      const n = String(name || &#39;&#39;).trim();
-      return inventory.find(i =&gt; String(i.name || &#39;&#39;).trim() === n &amp;&amp; String(i.company || &#39;&#39;).trim() === c) ||
-             inventory.find(i =&gt; String(i.name || &#39;&#39;).trim() === n) || null;
+      const c = String(company || '').trim();
+      const n = String(name || '').trim();
+      return inventory.find(i => String(i.name || '').trim() === n && String(i.company || '').trim() === c) ||
+             inventory.find(i => String(i.name || '').trim() === n) || null;
     }
 
     function findItemForHistory(entry) {
@@ -1851,112 +1851,112 @@
     }
 
     function openActionModal(type, id) {
-      const item = inventory.find(i =&gt; Number(i.id) === Number(id));
+      const item = inventory.find(i => Number(i.id) === Number(id));
       if (!item) return;
 
       activeAction = { type, id: Number(id) };
-      const modal = document.getElementById(&#39;actionModal&#39;);
-      const defectTabs = document.getElementById(&#39;defectModeTabs&#39;);
-      const headerEl = document.getElementById(&#39;modalItemHeader&#39;);
-      const stockEl = document.getElementById(&#39;modalItemStock&#39;);
-      const reasonInput = document.getElementById(&#39;modalReasonInput&#39;);
-      const qtyInput = document.getElementById(&#39;modalQtyInput&#39;);
+      const modal = document.getElementById('actionModal');
+      const defectTabs = document.getElementById('defectModeTabs');
+      const headerEl = document.getElementById('modalItemHeader');
+      const stockEl = document.getElementById('modalItemStock');
+      const reasonInput = document.getElementById('modalReasonInput');
+      const qtyInput = document.getElementById('modalQtyInput');
 
-      qtyInput.value = &#39;&#39;;
-      reasonInput.value = &#39;&#39;;
+      qtyInput.value = '';
+      reasonInput.value = '';
 
-      const goodText = isOldVersionItem(item) ? &#39;비움(구버전)&#39; : `${Number(item.good).toLocaleString()} EA`;
-      headerEl.textContent = `[${item.company}] ${item.name} (${item.category})${item.note ? &#39; · &#39; + item.note : &#39;&#39;}`;
+      const goodText = isOldVersionItem(item) ? '비움(구버전)' : `${Number(item.good).toLocaleString()} EA`;
+      headerEl.textContent = `[${item.company}] ${item.name} (${item.category})${item.note ? ' · ' + item.note : ''}`;
       stockEl.textContent = `가용 양품: ${goodText} | 불량: ${Number(item.defect).toLocaleString()} EA | 총수량: ${Number(item.total).toLocaleString()} EA`;
 
-      if (type === &#39;DEFECT&#39; || type === &#39;DEFECT_OUT&#39;) {
-        defectTabs.classList.remove(&#39;hidden&#39;);
-        defectTabs.classList.add(&#39;grid&#39;);
+      if (type === 'DEFECT' || type === 'DEFECT_OUT') {
+        defectTabs.classList.remove('hidden');
+        defectTabs.classList.add('grid');
       } else {
-        defectTabs.classList.add(&#39;hidden&#39;);
-        defectTabs.classList.remove(&#39;grid&#39;);
+        defectTabs.classList.add('hidden');
+        defectTabs.classList.remove('grid');
       }
 
       applyActionModalMode(type);
 
-      modal.classList.remove(&#39;hidden&#39;);
-      modal.classList.add(&#39;flex&#39;);
-      setTimeout(() =&gt; qtyInput.focus(), 60);
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      setTimeout(() => qtyInput.focus(), 60);
     }
 
     function switchDefectActionTab(defectMode) {
       if (!activeAction) return;
       activeAction.type = defectMode;
       applyActionModalMode(defectMode);
-      const qtyInput = document.getElementById(&#39;modalQtyInput&#39;);
+      const qtyInput = document.getElementById('modalQtyInput');
       if (qtyInput) qtyInput.focus();
     }
 
     function applyActionModalMode(type) {
-      const titleEl = document.getElementById(&#39;modalActionTitle&#39;);
-      const reasonLabel = document.getElementById(&#39;modalReasonLabel&#39;);
-      const reasonInput = document.getElementById(&#39;modalReasonInput&#39;);
-      const submitBtn = document.getElementById(&#39;modalSubmitBtn&#39;);
-      const tabReg = document.getElementById(&#39;tabDefectReg&#39;);
-      const tabOut = document.getElementById(&#39;tabDefectOut&#39;);
+      const titleEl = document.getElementById('modalActionTitle');
+      const reasonLabel = document.getElementById('modalReasonLabel');
+      const reasonInput = document.getElementById('modalReasonInput');
+      const submitBtn = document.getElementById('modalSubmitBtn');
+      const tabReg = document.getElementById('tabDefectReg');
+      const tabOut = document.getElementById('tabDefectOut');
 
-      if (type === &#39;IN&#39;) {
-        titleEl.textContent = &#39;신규 입고 등록 (양품 &amp; 총수량 동시 증가)&#39;;
-        reasonLabel.textContent = &#39;입고 상세 내역 (선택)&#39;;
-        reasonInput.placeholder = &#39;예: 사출 추가 제작 입고분, 외주 가공처 입고&#39;;
-        submitBtn.className = &#39;px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs cursor-pointer&#39;;
-        submitBtn.textContent = &#39;입고 처리&#39;;
-      } else if (type === &#39;OUT&#39;) {
-        titleEl.textContent = &#39;생산 / 조립 출고 등록 (양품 &amp; 총수량 동시 차감)&#39;;
-        reasonLabel.textContent = &#39;출고 상세 내역 / 사유 (권장)&#39;;
-        reasonInput.placeholder = &#39;예: 수원공장 출고, A라인 완제품 조립 투입&#39;;
-        submitBtn.className = &#39;px-5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-xs cursor-pointer&#39;;
-        submitBtn.textContent = &#39;출고 처리&#39;;
-      } else if (type === &#39;DEFECT&#39;) {
-        titleEl.textContent = &#39;불량 등록 (양품 차감, 불량 증가, 총수량 유지)&#39;;
-        reasonLabel.innerHTML = &#39;불량 상세 사유 &lt;span class=&quot;text-rose-600&quot;&gt;(필수 입력)&lt;/span&gt;&#39;;
-        reasonInput.placeholder = &#39;불량 증상이나 사유를 직접 입력하세요&#39;;
-        submitBtn.className = &#39;px-5 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold shadow-xs cursor-pointer&#39;;
-        submitBtn.textContent = &#39;불량 등록&#39;;
-        if (tabReg &amp;&amp; tabOut) {
-          tabReg.className = &#39;py-2 rounded-lg text-xs font-bold transition cursor-pointer bg-rose-600 text-white shadow-xs&#39;;
-          tabOut.className = &#39;py-2 rounded-lg text-xs font-bold transition cursor-pointer text-slate-600 hover:bg-white&#39;;
+      if (type === 'IN') {
+        titleEl.textContent = '신규 입고 등록 (양품 & 총수량 동시 증가)';
+        reasonLabel.textContent = '입고 상세 내역 (선택)';
+        reasonInput.placeholder = '예: 사출 추가 제작 입고분, 외주 가공처 입고';
+        submitBtn.className = 'px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs cursor-pointer';
+        submitBtn.textContent = '입고 처리';
+      } else if (type === 'OUT') {
+        titleEl.textContent = '생산 / 조립 출고 등록 (양품 & 총수량 동시 차감)';
+        reasonLabel.textContent = '출고 상세 내역 / 사유 (권장)';
+        reasonInput.placeholder = '예: 수원공장 출고, A라인 완제품 조립 투입';
+        submitBtn.className = 'px-5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-xs cursor-pointer';
+        submitBtn.textContent = '출고 처리';
+      } else if (type === 'DEFECT') {
+        titleEl.textContent = '불량 등록 (양품 차감, 불량 증가, 총수량 유지)';
+        reasonLabel.innerHTML = '불량 상세 사유 <span class="text-rose-600">(필수 입력)</span>';
+        reasonInput.placeholder = '불량 증상이나 사유를 직접 입력하세요';
+        submitBtn.className = 'px-5 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold shadow-xs cursor-pointer';
+        submitBtn.textContent = '불량 등록';
+        if (tabReg && tabOut) {
+          tabReg.className = 'py-2 rounded-lg text-xs font-bold transition cursor-pointer bg-rose-600 text-white shadow-xs';
+          tabOut.className = 'py-2 rounded-lg text-xs font-bold transition cursor-pointer text-slate-600 hover:bg-white';
         }
-      } else if (type === &#39;DEFECT_OUT&#39;) {
-        titleEl.textContent = &#39;불량 출고 (불량 차감, 총수량 차감, 양품 유지)&#39;;
-        reasonLabel.innerHTML = &#39;불량 출고 사유 &lt;span class=&quot;text-rose-600&quot;&gt;(필수 입력)&lt;/span&gt;&#39;;
-        reasonInput.placeholder = &#39;불량 출고 사유를 직접 입력하세요&#39;;
-        submitBtn.className = &#39;px-5 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-700 text-white text-xs font-bold shadow-xs cursor-pointer&#39;;
-        submitBtn.textContent = &#39;불량 출고&#39;;
-        if (tabReg &amp;&amp; tabOut) {
-          tabReg.className = &#39;py-2 rounded-lg text-xs font-bold transition cursor-pointer text-slate-600 hover:bg-white&#39;;
-          tabOut.className = &#39;py-2 rounded-lg text-xs font-bold transition cursor-pointer bg-fuchsia-600 text-white shadow-xs&#39;;
+      } else if (type === 'DEFECT_OUT') {
+        titleEl.textContent = '불량 출고 (불량 차감, 총수량 차감, 양품 유지)';
+        reasonLabel.innerHTML = '불량 출고 사유 <span class="text-rose-600">(필수 입력)</span>';
+        reasonInput.placeholder = '불량 출고 사유를 직접 입력하세요';
+        submitBtn.className = 'px-5 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-700 text-white text-xs font-bold shadow-xs cursor-pointer';
+        submitBtn.textContent = '불량 출고';
+        if (tabReg && tabOut) {
+          tabReg.className = 'py-2 rounded-lg text-xs font-bold transition cursor-pointer text-slate-600 hover:bg-white';
+          tabOut.className = 'py-2 rounded-lg text-xs font-bold transition cursor-pointer bg-fuchsia-600 text-white shadow-xs';
         }
       }
     }
 
     function closeActionModal() {
-      const modal = document.getElementById(&#39;actionModal&#39;);
-      modal.classList.add(&#39;hidden&#39;);
-      modal.classList.remove(&#39;flex&#39;);
+      const modal = document.getElementById('actionModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
       activeAction = null;
     }
 
     function confirmAction() {
       if (!activeAction) return;
-      const item = inventory.find(i =&gt; Number(i.id) === Number(activeAction.id));
+      const item = inventory.find(i => Number(i.id) === Number(activeAction.id));
       if (!item) {
-        showToast(&#39;품목을 찾을 수 없습니다.&#39;, &#39;error&#39;);
+        showToast('품목을 찾을 수 없습니다.', 'error');
         return;
       }
 
-      const qtyInput = document.getElementById(&#39;modalQtyInput&#39;);
-      const reasonInput = document.getElementById(&#39;modalReasonInput&#39;);
+      const qtyInput = document.getElementById('modalQtyInput');
+      const reasonInput = document.getElementById('modalReasonInput');
       const qty = parseInt(qtyInput.value, 10);
       const reason = reasonInput.value.trim();
 
-      if (isNaN(qty) || qty &lt;= 0) {
-        showToast(&#39;올바른 수량을 입력해주세요.&#39;, &#39;warning&#39;);
+      if (isNaN(qty) || qty <= 0) {
+        showToast('올바른 수량을 입력해주세요.', 'warning');
         qtyInput.focus();
         return;
       }
@@ -1964,7 +1964,7 @@
       const timeStr = formatNowStr();
       const recordId = generateHistoryId();
 
-      if (activeAction.type === &#39;IN&#39;) {
+      if (activeAction.type === 'IN') {
         item.good = (Number(item.good) || 0) + qty;
         item.total = (Number(item.total) || 0) + qty;
         historyLedger.unshift({
@@ -1974,15 +1974,15 @@
           category: item.category,
           company: item.company,
           name: item.name,
-          itemNote: item.note || &#39;&#39;,
-          type: &#39;입고&#39;,
+          itemNote: item.note || '',
+          type: '입고',
           qty: qty,
-          reason: reason || &#39;일반 입고&#39;
+          reason: reason || '일반 입고'
         });
-        showToast(`[${item.company}] ${item.name} ${qty} EA 입고 완료`, &#39;success&#39;);
-      } else if (activeAction.type === &#39;OUT&#39;) {
-        if (qty &gt; (Number(item.good) || 0)) {
-          showToast(`가용 양품 수량(${item.good} EA)을 초과하여 출고할 수 없습니다.`, &#39;error&#39;);
+        showToast(`[${item.company}] ${item.name} ${qty} EA 입고 완료`, 'success');
+      } else if (activeAction.type === 'OUT') {
+        if (qty > (Number(item.good) || 0)) {
+          showToast(`가용 양품 수량(${item.good} EA)을 초과하여 출고할 수 없습니다.`, 'error');
           qtyInput.focus();
           return;
         }
@@ -1995,20 +1995,20 @@
           category: item.category,
           company: item.company,
           name: item.name,
-          itemNote: item.note || &#39;&#39;,
-          type: &#39;출고&#39;,
+          itemNote: item.note || '',
+          type: '출고',
           qty: qty,
-          reason: reason || &#39;생산 투입 출고&#39;
+          reason: reason || '생산 투입 출고'
         });
-        showToast(`[${item.company}] ${item.name} ${qty} EA 출고 완료`, &#39;success&#39;);
-      } else if (activeAction.type === &#39;DEFECT&#39;) {
+        showToast(`[${item.company}] ${item.name} ${qty} EA 출고 완료`, 'success');
+      } else if (activeAction.type === 'DEFECT') {
         if (!reason) {
-          showToast(&#39;불량 등록 사유를 직접 입력해주세요.&#39;, &#39;warning&#39;);
+          showToast('불량 등록 사유를 직접 입력해주세요.', 'warning');
           reasonInput.focus();
           return;
         }
-        if (qty &gt; (Number(item.good) || 0)) {
-          showToast(`가용 양품 수량(${item.good} EA)을 초과하여 불량 등록할 수 없습니다.`, &#39;error&#39;);
+        if (qty > (Number(item.good) || 0)) {
+          showToast(`가용 양품 수량(${item.good} EA)을 초과하여 불량 등록할 수 없습니다.`, 'error');
           qtyInput.focus();
           return;
         }
@@ -2021,20 +2021,20 @@
           category: item.category,
           company: item.company,
           name: item.name,
-          itemNote: item.note || &#39;&#39;,
-          type: &#39;불량&#39;,
+          itemNote: item.note || '',
+          type: '불량',
           qty: qty,
           reason: reason
         });
-        showToast(`[${item.company}] ${item.name} ${qty} EA 불량 등록 완료`, &#39;warning&#39;);
-      } else if (activeAction.type === &#39;DEFECT_OUT&#39;) {
+        showToast(`[${item.company}] ${item.name} ${qty} EA 불량 등록 완료`, 'warning');
+      } else if (activeAction.type === 'DEFECT_OUT') {
         if (!reason) {
-          showToast(&#39;불량 출고 사유를 직접 입력해주세요.&#39;, &#39;warning&#39;);
+          showToast('불량 출고 사유를 직접 입력해주세요.', 'warning');
           reasonInput.focus();
           return;
         }
-        if (qty &gt; (Number(item.defect) || 0)) {
-          showToast(`현재 불량 수량(${item.defect} EA)을 초과하여 불량 출고할 수 없습니다.`, &#39;error&#39;);
+        if (qty > (Number(item.defect) || 0)) {
+          showToast(`현재 불량 수량(${item.defect} EA)을 초과하여 불량 출고할 수 없습니다.`, 'error');
           qtyInput.focus();
           return;
         }
@@ -2047,12 +2047,12 @@
           category: item.category,
           company: item.company,
           name: item.name,
-          itemNote: item.note || &#39;&#39;,
-          type: &#39;불량출고&#39;,
+          itemNote: item.note || '',
+          type: '불량출고',
           qty: qty,
           reason: reason
         });
-        showToast(`[${item.company}] ${item.name} ${qty} EA 불량 출고 완료`, &#39;success&#39;);
+        showToast(`[${item.company}] ${item.name} ${qty} EA 불량 출고 완료`, 'success');
       }
 
       saveState(true);
@@ -2061,48 +2061,48 @@
     }
 
     function updateNote(id, noteValue) {
-      const item = inventory.find(i =&gt; Number(i.id) === Number(id));
+      const item = inventory.find(i => Number(i.id) === Number(id));
       if (item) {
         item.note = noteValue.trim();
         saveState(true);
         renderAll();
-        showToast(&#39;비고가 자동 저장되었습니다.&#39;, &#39;info&#39;);
+        showToast('비고가 자동 저장되었습니다.', 'info');
       }
     }
 
     function openAddItemModal() {
-      const modal = document.getElementById(&#39;addItemModal&#39;);
-      document.getElementById(&#39;newCategory&#39;).value = &#39;&#39;;
-      document.getElementById(&#39;newCompany&#39;).value = &#39;&#39;;
-      document.getElementById(&#39;newItemName&#39;).value = &#39;&#39;;
-      document.getElementById(&#39;newGoodQty&#39;).value = &#39;0&#39;;
-      document.getElementById(&#39;newDefectQty&#39;).value = &#39;0&#39;;
-      document.getElementById(&#39;newNote&#39;).value = &#39;&#39;;
+      const modal = document.getElementById('addItemModal');
+      document.getElementById('newCategory').value = '';
+      document.getElementById('newCompany').value = '';
+      document.getElementById('newItemName').value = '';
+      document.getElementById('newGoodQty').value = '0';
+      document.getElementById('newDefectQty').value = '0';
+      document.getElementById('newNote').value = '';
 
-      modal.classList.remove(&#39;hidden&#39;);
-      modal.classList.add(&#39;flex&#39;);
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
     }
 
     function closeAddItemModal() {
-      const modal = document.getElementById(&#39;addItemModal&#39;);
-      modal.classList.add(&#39;hidden&#39;);
-      modal.classList.remove(&#39;flex&#39;);
+      const modal = document.getElementById('addItemModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
     }
 
     function saveNewItem() {
-      const cat = document.getElementById(&#39;newCategory&#39;).value.trim();
-      const comp = document.getElementById(&#39;newCompany&#39;).value.trim();
-      const name = document.getElementById(&#39;newItemName&#39;).value.trim();
-      const goodQty = Math.max(0, parseInt(document.getElementById(&#39;newGoodQty&#39;).value, 10) || 0);
-      const defectQty = Math.max(0, parseInt(document.getElementById(&#39;newDefectQty&#39;).value, 10) || 0);
-      const note = document.getElementById(&#39;newNote&#39;).value.trim();
+      const cat = document.getElementById('newCategory').value.trim();
+      const comp = document.getElementById('newCompany').value.trim();
+      const name = document.getElementById('newItemName').value.trim();
+      const goodQty = Math.max(0, parseInt(document.getElementById('newGoodQty').value, 10) || 0);
+      const defectQty = Math.max(0, parseInt(document.getElementById('newDefectQty').value, 10) || 0);
+      const note = document.getElementById('newNote').value.trim();
 
       if (!cat || !comp || !name) {
-        showToast(&#39;구분, 업체 구분, 품목명을 모두 입력해주세요.&#39;, &#39;warning&#39;);
+        showToast('구분, 업체 구분, 품목명을 모두 입력해주세요.', 'warning');
         return;
       }
 
-      const newId = (inventory.length &gt; 0) ? Math.max(...inventory.map(i =&gt; Number(i.id) || 0)) + 1 : 1;
+      const newId = (inventory.length > 0) ? Math.max(...inventory.map(i => Number(i.id) || 0)) + 1 : 1;
       const totalQty = goodQty + defectQty;
 
       inventory.push({
@@ -2124,7 +2124,7 @@
         company: comp,
         name: name,
         itemNote: note,
-        type: &#39;신규등록&#39;,
+        type: '신규등록',
         qty: totalQty,
         reason: `신규 품목 등록 (양품: ${goodQty}, 불량: ${defectQty})`
       });
@@ -2133,56 +2133,56 @@
       closeAddItemModal();
       updateFilterOptions();
       renderAll();
-      showToast(`신규 품목 [${comp}] ${name} 등록 완료`, &#39;success&#39;);
+      showToast(`신규 품목 [${comp}] ${name} 등록 완료`, 'success');
     }
 
     function confirmDeleteItem(id) {
-      const item = inventory.find(i =&gt; Number(i.id) === Number(id));
+      const item = inventory.find(i => Number(i.id) === Number(id));
       if (!item) return;
 
       openSafeConfirm({
-        title: &#39;품목 삭제&#39;,
+        title: '품목 삭제',
         message: `정말로 [${item.company}] ${item.name} 품목을 삭제하시겠습니까?`,
-        onConfirm: () =&gt; {
-          inventory = inventory.filter(i =&gt; Number(i.id) !== Number(id));
+        onConfirm: () => {
+          inventory = inventory.filter(i => Number(i.id) !== Number(id));
           saveState(true);
           updateFilterOptions();
           renderAll();
-          showToast(&#39;품목이 삭제되었습니다.&#39;, &#39;info&#39;);
+          showToast('품목이 삭제되었습니다.', 'info');
         }
       });
     }
 
     function openEditHistoryModal(id) {
-      const entry = historyLedger.find(h =&gt; String(h.id) === String(id));
+      const entry = historyLedger.find(h => String(h.id) === String(id));
       if (!entry) {
-        showToast(&#39;해당 수불 기록을 찾을 수 없습니다.&#39;, &#39;error&#39;);
+        showToast('해당 수불 기록을 찾을 수 없습니다.', 'error');
         return;
       }
-      if (entry.type === &#39;재고조정&#39;) {
-        showToast(&#39;재고조정 내역은 표에서 품목 비고와 사유를 직접 수정해 주세요.&#39;, &#39;info&#39;);
+      if (entry.type === '재고조정') {
+        showToast('재고조정 내역은 표에서 품목 비고와 사유를 직접 수정해 주세요.', 'info');
         return;
       }
 
       activeEditHistoryId = id;
-      selectedEditHistoryType = (entry.type === &#39;신규등록&#39;) ? &#39;입고&#39; : entry.type;
+      selectedEditHistoryType = (entry.type === '신규등록') ? '입고' : entry.type;
 
-      const modal = document.getElementById(&#39;editHistoryModal&#39;);
-      document.getElementById(&#39;editHistoryItemHeader&#39;).textContent = `[${entry.company}] ${entry.name} (${entry.category || &#39;-&#39;})`;
-      document.getElementById(&#39;editHistoryItemMeta&#39;).textContent = `기록일시: ${entry.time} | 기존 처리: ${entry.type} ${Number(entry.qty).toLocaleString()} EA`;
-      document.getElementById(&#39;editHistoryQtyInput&#39;).value = entry.qty || 1;
-      document.getElementById(&#39;editHistoryItemNoteInput&#39;).value = entry.itemNote || &#39;&#39;;
-      document.getElementById(&#39;editHistoryReasonInput&#39;).value = entry.reason || &#39;&#39;;
+      const modal = document.getElementById('editHistoryModal');
+      document.getElementById('editHistoryItemHeader').textContent = `[${entry.company}] ${entry.name} (${entry.category || '-'})`;
+      document.getElementById('editHistoryItemMeta').textContent = `기록일시: ${entry.time} | 기존 처리: ${entry.type} ${Number(entry.qty).toLocaleString()} EA`;
+      document.getElementById('editHistoryQtyInput').value = entry.qty || 1;
+      document.getElementById('editHistoryItemNoteInput').value = entry.itemNote || '';
+      document.getElementById('editHistoryReasonInput').value = entry.reason || '';
 
       updateEditHistoryTypeButtons();
-      modal.classList.remove(&#39;hidden&#39;);
-      modal.classList.add(&#39;flex&#39;);
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
     }
 
     function closeEditHistoryModal() {
-      const modal = document.getElementById(&#39;editHistoryModal&#39;);
-      modal.classList.add(&#39;hidden&#39;);
-      modal.classList.remove(&#39;flex&#39;);
+      const modal = document.getElementById('editHistoryModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
       activeEditHistoryId = null;
     }
 
@@ -2193,42 +2193,42 @@
 
     function updateEditHistoryTypeButtons() {
       const map = [
-        { id: &#39;btnTypeIn&#39;, type: &#39;입고&#39;, active: &#39;border-blue-600 bg-blue-600 text-white shadow-xs&#39; },
-        { id: &#39;btnTypeOut&#39;, type: &#39;출고&#39;, active: &#39;border-amber-600 bg-amber-600 text-white shadow-xs&#39; },
-        { id: &#39;btnTypeDefect&#39;, type: &#39;불량&#39;, active: &#39;border-rose-600 bg-rose-600 text-white shadow-xs&#39; },
-        { id: &#39;btnTypeDefectOut&#39;, type: &#39;불량출고&#39;, active: &#39;border-fuchsia-600 bg-fuchsia-600 text-white shadow-xs&#39; }
+        { id: 'btnTypeIn', type: '입고', active: 'border-blue-600 bg-blue-600 text-white shadow-xs' },
+        { id: 'btnTypeOut', type: '출고', active: 'border-amber-600 bg-amber-600 text-white shadow-xs' },
+        { id: 'btnTypeDefect', type: '불량', active: 'border-rose-600 bg-rose-600 text-white shadow-xs' },
+        { id: 'btnTypeDefectOut', type: '불량출고', active: 'border-fuchsia-600 bg-fuchsia-600 text-white shadow-xs' }
       ];
-      map.forEach(m =&gt; {
+      map.forEach(m => {
         const el = document.getElementById(m.id);
         if (!el) return;
         el.className = (selectedEditHistoryType === m.type)
           ? `py-2 rounded-xl border text-xs font-bold flex items-center justify-center cursor-pointer ${m.active}`
-          : &#39;py-2 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-bold transition flex items-center justify-center cursor-pointer&#39;;
+          : 'py-2 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-bold transition flex items-center justify-center cursor-pointer';
       });
     }
 
     function confirmEditHistory() {
       if (!activeEditHistoryId) return;
-      const entry = historyLedger.find(h =&gt; String(h.id) === String(activeEditHistoryId));
+      const entry = historyLedger.find(h => String(h.id) === String(activeEditHistoryId));
       if (!entry) return;
 
-      const qtyInput = document.getElementById(&#39;editHistoryQtyInput&#39;);
-      const itemNoteInput = document.getElementById(&#39;editHistoryItemNoteInput&#39;);
-      const reasonInput = document.getElementById(&#39;editHistoryReasonInput&#39;);
+      const qtyInput = document.getElementById('editHistoryQtyInput');
+      const itemNoteInput = document.getElementById('editHistoryItemNoteInput');
+      const reasonInput = document.getElementById('editHistoryReasonInput');
 
       const newQty = parseInt(qtyInput.value, 10);
       const newItemNote = itemNoteInput.value.trim();
       const newReason = reasonInput.value.trim();
       const newType = selectedEditHistoryType;
 
-      if (isNaN(newQty) || newQty &lt;= 0) {
-        showToast(&#39;올바른 수량을 입력해주세요.&#39;, &#39;warning&#39;);
+      if (isNaN(newQty) || newQty <= 0) {
+        showToast('올바른 수량을 입력해주세요.', 'warning');
         qtyInput.focus();
         return;
       }
 
-      if ((newType === &#39;불량&#39; || newType === &#39;불량출고&#39;) &amp;&amp; !newReason) {
-        showToast(`${newType} 사유를 직접 입력해주세요.`, &#39;warning&#39;);
+      if ((newType === '불량' || newType === '불량출고') && !newReason) {
+        showToast(`${newType} 사유를 직접 입력해주세요.`, 'warning');
         reasonInput.focus();
         return;
       }
@@ -2243,47 +2243,47 @@
         let simDefect = Number(item.defect) || 0;
 
         // 1단계: 기존 기록 원복 시뮬레이션
-        if (oldType === &#39;입고&#39; || oldType === &#39;신규등록&#39;) {
+        if (oldType === '입고' || oldType === '신규등록') {
           simGood -= oldQty;
           simTotal -= oldQty;
-        } else if (oldType === &#39;출고&#39;) {
+        } else if (oldType === '출고') {
           simGood += oldQty;
           simTotal += oldQty;
-        } else if (oldType === &#39;불량&#39;) {
+        } else if (oldType === '불량') {
           simGood += oldQty;
           simDefect -= oldQty;
-        } else if (oldType === &#39;불량출고&#39;) {
+        } else if (oldType === '불량출고') {
           simDefect += oldQty;
           simTotal += oldQty;
         }
 
-        if (simGood &lt; 0 || simDefect &lt; 0 || simTotal &lt; 0) {
-          showToast(&#39;이전 수불 내역 원복 시 음수 재고가 발생하여 수정할 수 없습니다.&#39;, &#39;error&#39;);
+        if (simGood < 0 || simDefect < 0 || simTotal < 0) {
+          showToast('이전 수불 내역 원복 시 음수 재고가 발생하여 수정할 수 없습니다.', 'error');
           return;
         }
 
         // 2단계: 새 유형 적용 사전 검증
-        if ((newType === &#39;출고&#39; || newType === &#39;불량&#39;) &amp;&amp; newQty &gt; simGood) {
-          showToast(`가용 양품 재고(${simGood} EA)를 초과하여 ${newType}(으)로 변경할 수 없습니다.`, &#39;error&#39;);
+        if ((newType === '출고' || newType === '불량') && newQty > simGood) {
+          showToast(`가용 양품 재고(${simGood} EA)를 초과하여 ${newType}(으)로 변경할 수 없습니다.`, 'error');
           qtyInput.focus();
           return;
         }
-        if (newType === &#39;불량출고&#39; &amp;&amp; newQty &gt; simDefect) {
-          showToast(`보유 불량 재고(${simDefect} EA)를 초과하여 불량출고로 변경할 수 없습니다.`, &#39;error&#39;);
+        if (newType === '불량출고' && newQty > simDefect) {
+          showToast(`보유 불량 재고(${simDefect} EA)를 초과하여 불량출고로 변경할 수 없습니다.`, 'error');
           qtyInput.focus();
           return;
         }
 
-        if (newType === &#39;입고&#39;) {
+        if (newType === '입고') {
           simGood += newQty;
           simTotal += newQty;
-        } else if (newType === &#39;출고&#39;) {
+        } else if (newType === '출고') {
           simGood -= newQty;
           simTotal -= newQty;
-        } else if (newType === &#39;불량&#39;) {
+        } else if (newType === '불량') {
           simGood -= newQty;
           simDefect += newQty;
-        } else if (newType === &#39;불량출고&#39;) {
+        } else if (newType === '불량출고') {
           simDefect -= newQty;
           simTotal -= newQty;
         }
@@ -2301,94 +2301,94 @@
       saveState(true);
       closeEditHistoryModal();
       renderAll();
-      showToast(`[${entry.company}] ${entry.name} 수불 내역이 [${newType}]으로 수정되었습니다.`, &#39;success&#39;);
+      showToast(`[${entry.company}] ${entry.name} 수불 내역이 [${newType}]으로 수정되었습니다.`, 'success');
     }
 
     function openEditItemModal(id) {
-      const item = inventory.find(i =&gt; Number(i.id) === Number(id));
+      const item = inventory.find(i => Number(i.id) === Number(id));
       if (!item) return;
 
-      document.getElementById(&#39;editItemTargetId&#39;).value = item.id;
-      document.getElementById(&#39;editItemCategory&#39;).value = item.category || &#39;&#39;;
-      document.getElementById(&#39;editItemCompany&#39;).value = item.company || &#39;&#39;;
-      document.getElementById(&#39;editItemName&#39;).value = item.name || &#39;&#39;;
-      document.getElementById(&#39;editItemGood&#39;).value = Number(item.good) || 0;
-      document.getElementById(&#39;editItemDefect&#39;).value = Number(item.defect) || 0;
-      document.getElementById(&#39;editItemTotal&#39;).value = Number(item.total) || 0;
-      document.getElementById(&#39;editItemNote&#39;).value = item.note || &#39;&#39;;
-      document.getElementById(&#39;editItemReason&#39;).value = &#39;&#39;;
+      document.getElementById('editItemTargetId').value = item.id;
+      document.getElementById('editItemCategory').value = item.category || '';
+      document.getElementById('editItemCompany').value = item.company || '';
+      document.getElementById('editItemName').value = item.name || '';
+      document.getElementById('editItemGood').value = Number(item.good) || 0;
+      document.getElementById('editItemDefect').value = Number(item.defect) || 0;
+      document.getElementById('editItemTotal').value = Number(item.total) || 0;
+      document.getElementById('editItemNote').value = item.note || '';
+      document.getElementById('editItemReason').value = '';
 
       updateEditItemOldVersionMode(false);
 
-      const modal = document.getElementById(&#39;editItemModal&#39;);
-      modal.classList.remove(&#39;hidden&#39;);
-      modal.classList.add(&#39;flex&#39;);
+      const modal = document.getElementById('editItemModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
     }
 
     function closeEditItemModal() {
-      const modal = document.getElementById(&#39;editItemModal&#39;);
-      modal.classList.add(&#39;hidden&#39;);
-      modal.classList.remove(&#39;flex&#39;);
+      const modal = document.getElementById('editItemModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
     }
 
     function updateEditItemOldVersionMode(recalcTotal = true) {
-      const note = document.getElementById(&#39;editItemNote&#39;).value || &#39;&#39;;
+      const note = document.getElementById('editItemNote').value || '';
       const isOldVer = isOldVersionItem(note);
-      const notice = document.getElementById(&#39;editItemOldVerNotice&#39;);
-      const goodEl = document.getElementById(&#39;editItemGood&#39;);
-      const totalEl = document.getElementById(&#39;editItemTotal&#39;);
-      const totalLabel = document.getElementById(&#39;editItemTotalLabel&#39;);
+      const notice = document.getElementById('editItemOldVerNotice');
+      const goodEl = document.getElementById('editItemGood');
+      const totalEl = document.getElementById('editItemTotal');
+      const totalLabel = document.getElementById('editItemTotalLabel');
 
       if (isOldVer) {
-        notice.classList.remove(&#39;hidden&#39;);
+        notice.classList.remove('hidden');
         goodEl.value = 0;
         goodEl.readOnly = true;
-        goodEl.classList.add(&#39;bg-slate-100&#39;, &#39;text-slate-400&#39;, &#39;cursor-not-allowed&#39;);
+        goodEl.classList.add('bg-slate-100', 'text-slate-400', 'cursor-not-allowed');
         totalEl.readOnly = false;
-        totalEl.classList.remove(&#39;bg-slate-100&#39;, &#39;text-slate-700&#39;, &#39;cursor-not-allowed&#39;);
-        totalEl.classList.add(&#39;bg-white&#39;, &#39;text-slate-900&#39;, &#39;focus:border-brand-500&#39;);
-        totalLabel.textContent = &#39;총수량 (구버전 직접 입력)&#39;;
+        totalEl.classList.remove('bg-slate-100', 'text-slate-700', 'cursor-not-allowed');
+        totalEl.classList.add('bg-white', 'text-slate-900', 'focus:border-brand-500');
+        totalLabel.textContent = '총수량 (구버전 직접 입력)';
       } else {
-        notice.classList.add(&#39;hidden&#39;);
+        notice.classList.add('hidden');
         goodEl.readOnly = false;
-        goodEl.classList.remove(&#39;bg-slate-100&#39;, &#39;text-slate-400&#39;, &#39;cursor-not-allowed&#39;);
+        goodEl.classList.remove('bg-slate-100', 'text-slate-400', 'cursor-not-allowed');
         totalEl.readOnly = true;
-        totalEl.classList.add(&#39;bg-slate-100&#39;, &#39;text-slate-700&#39;, &#39;cursor-not-allowed&#39;);
-        totalEl.classList.remove(&#39;bg-white&#39;, &#39;text-slate-900&#39;, &#39;focus:border-brand-500&#39;);
-        totalLabel.textContent = &#39;총수량 (양품+불량 자동 합산)&#39;;
+        totalEl.classList.add('bg-slate-100', 'text-slate-700', 'cursor-not-allowed');
+        totalEl.classList.remove('bg-white', 'text-slate-900', 'focus:border-brand-500');
+        totalLabel.textContent = '총수량 (양품+불량 자동 합산)';
         if (recalcTotal) syncEditItemTotal();
       }
     }
 
     function syncEditItemTotal() {
-      const note = document.getElementById(&#39;editItemNote&#39;).value || &#39;&#39;;
+      const note = document.getElementById('editItemNote').value || '';
       if (isOldVersionItem(note)) return;
-      const g = Math.max(0, parseInt(document.getElementById(&#39;editItemGood&#39;).value, 10) || 0);
-      const d = Math.max(0, parseInt(document.getElementById(&#39;editItemDefect&#39;).value, 10) || 0);
-      document.getElementById(&#39;editItemTotal&#39;).value = g + d;
+      const g = Math.max(0, parseInt(document.getElementById('editItemGood').value, 10) || 0);
+      const d = Math.max(0, parseInt(document.getElementById('editItemDefect').value, 10) || 0);
+      document.getElementById('editItemTotal').value = g + d;
     }
 
     function saveEditItem() {
-      const id = parseInt(document.getElementById(&#39;editItemTargetId&#39;).value, 10);
-      const item = inventory.find(i =&gt; Number(i.id) === Number(id));
+      const id = parseInt(document.getElementById('editItemTargetId').value, 10);
+      const item = inventory.find(i => Number(i.id) === Number(id));
       if (!item) return;
 
-      const cat = document.getElementById(&#39;editItemCategory&#39;).value.trim();
-      const comp = document.getElementById(&#39;editItemCompany&#39;).value.trim();
-      const name = document.getElementById(&#39;editItemName&#39;).value.trim();
-      const note = document.getElementById(&#39;editItemNote&#39;).value.trim();
-      const reasonInput = document.getElementById(&#39;editItemReason&#39;);
+      const cat = document.getElementById('editItemCategory').value.trim();
+      const comp = document.getElementById('editItemCompany').value.trim();
+      const name = document.getElementById('editItemName').value.trim();
+      const note = document.getElementById('editItemNote').value.trim();
+      const reasonInput = document.getElementById('editItemReason');
       const adjustReason = reasonInput.value.trim();
 
       const isOldVer = isOldVersionItem(note);
-      const good = isOldVer ? 0 : Math.max(0, parseInt(document.getElementById(&#39;editItemGood&#39;).value, 10) || 0);
-      const defect = Math.max(0, parseInt(document.getElementById(&#39;editItemDefect&#39;).value, 10) || 0);
+      const good = isOldVer ? 0 : Math.max(0, parseInt(document.getElementById('editItemGood').value, 10) || 0);
+      const defect = Math.max(0, parseInt(document.getElementById('editItemDefect').value, 10) || 0);
       const total = isOldVer
-        ? Math.max(0, parseInt(document.getElementById(&#39;editItemTotal&#39;).value, 10) || 0)
+        ? Math.max(0, parseInt(document.getElementById('editItemTotal').value, 10) || 0)
         : (good + defect);
 
       if (!cat || !comp || !name) {
-        showToast(&#39;구분, 업체 구분, 품목명을 입력해주세요.&#39;, &#39;warning&#39;);
+        showToast('구분, 업체 구분, 품목명을 입력해주세요.', 'warning');
         return;
       }
 
@@ -2397,8 +2397,8 @@
       const oldTotal = Number(item.total) || 0;
       const qtyChanged = (good !== oldGood) || (defect !== oldDefect) || (total !== oldTotal);
 
-      if (qtyChanged &amp;&amp; !adjustReason) {
-        showToast(&#39;수량이 변경되었습니다. 재고 조정 사유를 필수 입력해주세요.&#39;, &#39;warning&#39;);
+      if (qtyChanged && !adjustReason) {
+        showToast('수량이 변경되었습니다. 재고 조정 사유를 필수 입력해주세요.', 'warning');
         reasonInput.focus();
         return;
       }
@@ -2428,7 +2428,7 @@
           company: comp,
           name: name,
           itemNote: note,
-          type: &#39;재고조정&#39;,
+          type: '재고조정',
           qty: diffQty,
           reason: summaryText
         });
@@ -2438,74 +2438,74 @@
       closeEditItemModal();
       updateFilterOptions();
       renderAll();
-      showToast(qtyChanged ? `[${comp}] ${name} 재고조정 완료 (수불 대장에 기록됨)` : `[${comp}] ${name} 품목 정보 수정 완료`, &#39;success&#39;);
+      showToast(qtyChanged ? `[${comp}] ${name} 재고조정 완료 (수불 대장에 기록됨)` : `[${comp}] ${name} 품목 정보 수정 완료`, 'success');
     }
 
     function updateHistoryItemNote(id, newItemNote) {
-      const entry = historyLedger.find(h =&gt; String(h.id) === String(id));
+      const entry = historyLedger.find(h => String(h.id) === String(id));
       if (entry) {
         entry.itemNote = newItemNote.trim();
         saveState(true);
-        showToast(&#39;수불 대장 품목 비고가 저장되었습니다.&#39;, &#39;info&#39;);
+        showToast('수불 대장 품목 비고가 저장되었습니다.', 'info');
       }
     }
 
     function updateHistoryReason(id, newReason) {
-      const entry = historyLedger.find(h =&gt; String(h.id) === String(id));
+      const entry = historyLedger.find(h => String(h.id) === String(id));
       if (entry) {
         entry.reason = newReason.trim();
         saveState(true);
-        showToast(&#39;수불 상세 사유가 저장되었습니다.&#39;, &#39;info&#39;);
+        showToast('수불 상세 사유가 저장되었습니다.', 'info');
       }
     }
 
     function confirmDeleteHistory(id) {
-      const entry = historyLedger.find(h =&gt; String(h.id) === String(id));
+      const entry = historyLedger.find(h => String(h.id) === String(id));
       if (!entry) return;
 
-      const isAdjust = (entry.type === &#39;재고조정&#39;);
+      const isAdjust = (entry.type === '재고조정');
       const msg = isAdjust
         ? `[${formatHistoryDate(entry.time)}] ${entry.company} ${entry.name} (재고조정) 기록을 삭제하시겠습니까?\n\n※ 재고조정 기록 삭제 시 현재 품목 재고 수량은 변경되지 않고 기록만 삭제됩니다.`
         : `[${formatHistoryDate(entry.time)}] ${entry.company} ${entry.name} (${entry.type} ${entry.qty} EA) 기록을 삭제하시겠습니까?\n\n※ 해당 수불로 처리되었던 품목 재고가 이전 상태로 자동 원복되며 구글 시트에서도 반영됩니다.`;
 
       openSafeConfirm({
-        title: isAdjust ? &#39;재고조정 기록 삭제&#39; : &#39;수불 기록 삭제 및 재고 원복&#39;,
+        title: isAdjust ? '재고조정 기록 삭제' : '수불 기록 삭제 및 재고 원복',
         message: msg,
-        onConfirm: () =&gt; {
+        onConfirm: () => {
           if (!isAdjust) {
             const item = findItemForHistory(entry);
             if (item) {
               const qty = Number(entry.qty) || 0;
-              if (entry.type === &#39;입고&#39; || entry.type === &#39;신규등록&#39;) {
+              if (entry.type === '입고' || entry.type === '신규등록') {
                 item.good = Math.max(0, (Number(item.good) || 0) - qty);
                 item.total = Math.max(0, (Number(item.total) || 0) - qty);
-              } else if (entry.type === &#39;출고&#39;) {
+              } else if (entry.type === '출고') {
                 item.good = (Number(item.good) || 0) + qty;
                 item.total = (Number(item.total) || 0) + qty;
-              } else if (entry.type === &#39;불량&#39;) {
+              } else if (entry.type === '불량') {
                 item.good = (Number(item.good) || 0) + qty;
                 item.defect = Math.max(0, (Number(item.defect) || 0) - qty);
-              } else if (entry.type === &#39;불량출고&#39;) {
+              } else if (entry.type === '불량출고') {
                 item.defect = (Number(item.defect) || 0) + qty;
                 item.total = (Number(item.total) || 0) + qty;
               }
             }
           }
-          historyLedger = historyLedger.filter(h =&gt; String(h.id) !== String(id));
+          historyLedger = historyLedger.filter(h => String(h.id) !== String(id));
           saveState(false);
           hasPendingChanges = true;
           pushToSheets(true, false);
           renderAll();
-          showToast(isAdjust ? &#39;재고조정 기록이 삭제되었습니다.&#39; : &#39;수불 기록이 삭제되고 재고가 원복되었습니다.&#39;, &#39;info&#39;);
+          showToast(isAdjust ? '재고조정 기록이 삭제되었습니다.' : '수불 기록이 삭제되고 재고가 원복되었습니다.', 'info');
         }
       });
     }
 
     function clearAllHistory() {
       openSafeConfirm({
-        title: &#39;수불 대장 전체 비우기&#39;,
-        message: &#39;수불 대장의 모든 내역을 비우고 구글 스프레드시트의 수불 기록도 영구 삭제하시겠습니까?\n\n※ 품목 재고 수량은 현재 상태 그대로 유지됩니다.&#39;,
-        onConfirm: () =&gt; {
+        title: '수불 대장 전체 비우기',
+        message: '수불 대장의 모든 내역을 비우고 구글 스프레드시트의 수불 기록도 영구 삭제하시겠습니까?\n\n※ 품목 재고 수량은 현재 상태 그대로 유지됩니다.',
+        onConfirm: () => {
           historyLedger = [];
           saveState(false);
           hasPendingChanges = true;
@@ -2516,172 +2516,172 @@
     }
 
     function openExcelPreviewModal() {
-      const modal = document.getElementById(&#39;excelPreviewModal&#39;);
-      modal.classList.remove(&#39;hidden&#39;);
-      modal.classList.add(&#39;flex&#39;);
+      const modal = document.getElementById('excelPreviewModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
       currentExcelPreviewSheet = 1;
       renderExcelPreview();
     }
 
     function closeExcelPreviewModal() {
-      const modal = document.getElementById(&#39;excelPreviewModal&#39;);
-      modal.classList.add(&#39;hidden&#39;);
-      modal.classList.remove(&#39;flex&#39;);
+      const modal = document.getElementById('excelPreviewModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
     }
 
     function switchExcelPreviewSheet(sheetNumber) {
       currentExcelPreviewSheet = sheetNumber;
-      const tab1 = document.getElementById(&#39;excelTab1&#39;);
-      const tab2 = document.getElementById(&#39;excelTab2&#39;);
+      const tab1 = document.getElementById('excelTab1');
+      const tab2 = document.getElementById('excelTab2');
 
       if (sheetNumber === 1) {
-        tab1.className = &#39;px-4 py-2 rounded-t-lg text-xs font-bold bg-white text-brand-800 border-t-2 border-brand-600 shadow-xs flex items-center gap-1.5 cursor-pointer&#39;;
-        tab2.className = &#39;px-4 py-2 rounded-t-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-white/70 flex items-center gap-1.5 cursor-pointer&#39;;
+        tab1.className = 'px-4 py-2 rounded-t-lg text-xs font-bold bg-white text-brand-800 border-t-2 border-brand-600 shadow-xs flex items-center gap-1.5 cursor-pointer';
+        tab2.className = 'px-4 py-2 rounded-t-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-white/70 flex items-center gap-1.5 cursor-pointer';
       } else {
-        tab2.className = &#39;px-4 py-2 rounded-t-lg text-xs font-bold bg-white text-emerald-800 border-t-2 border-emerald-600 shadow-xs flex items-center gap-1.5 cursor-pointer&#39;;
-        tab1.className = &#39;px-4 py-2 rounded-t-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-white/70 flex items-center gap-1.5 cursor-pointer&#39;;
+        tab2.className = 'px-4 py-2 rounded-t-lg text-xs font-bold bg-white text-emerald-800 border-t-2 border-emerald-600 shadow-xs flex items-center gap-1.5 cursor-pointer';
+        tab1.className = 'px-4 py-2 rounded-t-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-white/70 flex items-center gap-1.5 cursor-pointer';
       }
       renderExcelPreview();
     }
 
     function renderExcelPreview() {
-      const container = document.getElementById(&#39;excelPreviewContent&#39;);
+      const container = document.getElementById('excelPreviewContent');
       if (!container) return;
 
       const asm = calculateAssembly();
 
       if (currentExcelPreviewSheet === 1) {
         let totalSum = 0, defectSum = 0, goodSum = 0;
-        inventory.forEach(i =&gt; {
+        inventory.forEach(i => {
           totalSum += (Number(i.total) || 0);
           defectSum += (Number(i.defect) || 0);
           if (!isOldVersionItem(i)) goodSum += (Number(i.good) || 0);
         });
 
-        const rowsHtml = inventory.map((i, idx) =&gt; {
+        const rowsHtml = inventory.map((i, idx) => {
           const oldVer = isOldVersionItem(i);
           return `
-            &lt;tr class=&quot;${idx % 2 === 1 ? &#39;bg-slate-50/60&#39; : &#39;bg-white&#39;} border-b border-slate-200&quot;&gt;
-              &lt;td class=&quot;p-2 border-r border-slate-200 text-center text-slate-500 font-mono&quot;&gt;${idx + 1}&lt;/td&gt;
-              &lt;td class=&quot;p-2 border-r border-slate-200 font-medium&quot;&gt;${escapeHtml(i.category)}&lt;/td&gt;
-              &lt;td class=&quot;p-2 border-r border-slate-200 text-center font-medium&quot;&gt;${escapeHtml(i.company)}&lt;/td&gt;
-              &lt;td class=&quot;p-2 border-r border-slate-200 font-bold&quot;&gt;${escapeHtml(i.name)}&lt;/td&gt;
-              &lt;td class=&quot;p-2 border-r border-slate-200 text-right font-mono font-bold&quot;&gt;${(Number(i.total) || 0).toLocaleString()}&lt;/td&gt;
-              &lt;td class=&quot;p-2 border-r border-slate-200 text-right font-mono ${i.defect &gt; 0 ? &#39;text-rose-600 font-bold bg-rose-50/50&#39; : &#39;text-slate-400&#39;}&quot;&gt;${i.defect &gt; 0 ? Number(i.defect).toLocaleString() : &#39;-&#39;}&lt;/td&gt;
-              &lt;td class=&quot;p-2 border-r border-slate-200 text-right font-mono font-bold ${!oldVer &amp;&amp; i.good &gt; 0 ? &#39;text-emerald-700 bg-emerald-50/40&#39; : &#39;text-slate-400&#39;}&quot;&gt;${oldVer ? &#39;-&#39; : Number(i.good).toLocaleString()}&lt;/td&gt;
-              &lt;td class=&quot;p-2 text-slate-600 text-xs&quot;&gt;${escapeHtml(i.note || &#39;&#39;)}&lt;/td&gt;
-            &lt;/tr&gt;
+            <tr class="${idx % 2 === 1 ? 'bg-slate-50/60' : 'bg-white'} border-b border-slate-200">
+              <td class="p-2 border-r border-slate-200 text-center text-slate-500 font-mono">${idx + 1}</td>
+              <td class="p-2 border-r border-slate-200 font-medium">${escapeHtml(i.category)}</td>
+              <td class="p-2 border-r border-slate-200 text-center font-medium">${escapeHtml(i.company)}</td>
+              <td class="p-2 border-r border-slate-200 font-bold">${escapeHtml(i.name)}</td>
+              <td class="p-2 border-r border-slate-200 text-right font-mono font-bold">${(Number(i.total) || 0).toLocaleString()}</td>
+              <td class="p-2 border-r border-slate-200 text-right font-mono ${i.defect > 0 ? 'text-rose-600 font-bold bg-rose-50/50' : 'text-slate-400'}">${i.defect > 0 ? Number(i.defect).toLocaleString() : '-'}</td>
+              <td class="p-2 border-r border-slate-200 text-right font-mono font-bold ${!oldVer && i.good > 0 ? 'text-emerald-700 bg-emerald-50/40' : 'text-slate-400'}">${oldVer ? '-' : Number(i.good).toLocaleString()}</td>
+              <td class="p-2 text-slate-600 text-xs">${escapeHtml(i.note || '')}</td>
+            </tr>
           `;
-        }).join(&#39;&#39;);
+        }).join('');
 
         container.innerHTML = `
-          &lt;div class=&quot;p-4 bg-gradient-to-r from-brand-900 to-brand-800 text-white flex items-center justify-between flex-wrap gap-2&quot;&gt;
-            &lt;div&gt;
-              &lt;h4 class=&quot;text-base font-extrabold tracking-tight&quot;&gt;AMIGO 기구물 및 자재 보유 재고 현황&lt;/h4&gt;
-              &lt;p class=&quot;text-[11px] text-brand-200 mt-0.5&quot;&gt;출력 기준일: ${new Date().toISOString().slice(0, 10)} | 결합 병목 한도 반영&lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;flex items-center gap-3 text-xs flex-wrap&quot;&gt;
-              &lt;div class=&quot;bg-brand-800/80 px-3 py-1.5 rounded border border-brand-700/60&quot;&gt;
-                &lt;span class=&quot;text-brand-300&quot;&gt;완제품 가능 총량:&lt;/span&gt;
-                &lt;span class=&quot;font-mono font-bold text-white ml-1&quot;&gt;${asm.totalBuildable.toLocaleString()} SET&lt;/span&gt;
-              &lt;/div&gt;
-              &lt;div class=&quot;bg-brand-800/80 px-3 py-1.5 rounded border border-brand-700/60&quot;&gt;
-                &lt;span class=&quot;text-emerald-300&quot;&gt;공통 실질:&lt;/span&gt;
-                &lt;span class=&quot;font-mono font-bold text-emerald-400 ml-1&quot;&gt;${asm.commonComp.actualBuildable.toLocaleString()} SET&lt;/span&gt;
-              &lt;/div&gt;
-              &lt;div class=&quot;bg-brand-800/80 px-3 py-1.5 rounded border border-brand-700/60&quot;&gt;
-                &lt;span class=&quot;text-indigo-300&quot;&gt;타업체 실질:&lt;/span&gt;
-                &lt;span class=&quot;font-mono font-bold text-indigo-300 ml-1&quot;&gt;${asm.totalOtherActualBuildable.toLocaleString()} SET&lt;/span&gt;
-              &lt;/div&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
+          <div class="p-4 bg-gradient-to-r from-brand-900 to-brand-800 text-white flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h4 class="text-base font-extrabold tracking-tight">AMIGO 기구물 및 자재 보유 재고 현황</h4>
+              <p class="text-[11px] text-brand-200 mt-0.5">출력 기준일: ${new Date().toISOString().slice(0, 10)} | 결합 병목 한도 반영</p>
+            </div>
+            <div class="flex items-center gap-3 text-xs flex-wrap">
+              <div class="bg-brand-800/80 px-3 py-1.5 rounded border border-brand-700/60">
+                <span class="text-brand-300">완제품 가능 총량:</span>
+                <span class="font-mono font-bold text-white ml-1">${asm.totalBuildable.toLocaleString()} SET</span>
+              </div>
+              <div class="bg-brand-800/80 px-3 py-1.5 rounded border border-brand-700/60">
+                <span class="text-emerald-300">공통 실질:</span>
+                <span class="font-mono font-bold text-emerald-400 ml-1">${asm.commonComp.actualBuildable.toLocaleString()} SET</span>
+              </div>
+              <div class="bg-brand-800/80 px-3 py-1.5 rounded border border-brand-700/60">
+                <span class="text-indigo-300">타업체 실질:</span>
+                <span class="font-mono font-bold text-indigo-300 ml-1">${asm.totalOtherActualBuildable.toLocaleString()} SET</span>
+              </div>
+            </div>
+          </div>
 
-          &lt;table class=&quot;w-full text-xs border-collapse&quot;&gt;
-            &lt;thead&gt;
-              &lt;tr class=&quot;bg-slate-800 text-white font-bold border-b border-slate-700&quot;&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-center w-12&quot;&gt;No&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-left w-36&quot;&gt;구분&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-center w-28&quot;&gt;업체 구분&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-left&quot;&gt;품목명&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-right w-24&quot;&gt;총수량&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-right w-20 text-rose-300&quot;&gt;불량&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-right w-24 text-emerald-300&quot;&gt;양품 (가용)&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 text-left w-64&quot;&gt;세부 내역 및 비고&lt;/th&gt;
-              &lt;/tr&gt;
-            &lt;/thead&gt;
-            &lt;tbody&gt;${rowsHtml}&lt;/tbody&gt;
-            &lt;tfoot&gt;
-              &lt;tr class=&quot;bg-slate-100 font-bold border-t-2 border-slate-400 border-b-4 border-slate-400&quot;&gt;
-                &lt;td colspan=&quot;4&quot; class=&quot;p-2.5 border-r border-slate-200 text-center font-bold text-slate-800&quot;&gt;합 계 (Total Summary)&lt;/td&gt;
-                &lt;td class=&quot;p-2.5 border-r border-slate-200 text-right font-mono font-extrabold text-slate-900&quot;&gt;${totalSum.toLocaleString()}&lt;/td&gt;
-                &lt;td class=&quot;p-2.5 border-r border-slate-200 text-right font-mono font-extrabold text-rose-600&quot;&gt;${defectSum.toLocaleString()}&lt;/td&gt;
-                &lt;td class=&quot;p-2.5 border-r border-slate-200 text-right font-mono font-extrabold text-emerald-700&quot;&gt;${goodSum.toLocaleString()}&lt;/td&gt;
-                &lt;td class=&quot;p-2.5 text-slate-500 text-xs italic&quot;&gt;완제품 조립 가능 총량: ${asm.totalBuildable.toLocaleString()} SET&lt;/td&gt;
-              &lt;/tr&gt;
-            &lt;/tfoot&gt;
-          &lt;/table&gt;
+          <table class="w-full text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-800 text-white font-bold border-b border-slate-700">
+                <th class="p-2.5 border-r border-slate-700 text-center w-12">No</th>
+                <th class="p-2.5 border-r border-slate-700 text-left w-36">구분</th>
+                <th class="p-2.5 border-r border-slate-700 text-center w-28">업체 구분</th>
+                <th class="p-2.5 border-r border-slate-700 text-left">품목명</th>
+                <th class="p-2.5 border-r border-slate-700 text-right w-24">총수량</th>
+                <th class="p-2.5 border-r border-slate-700 text-right w-20 text-rose-300">불량</th>
+                <th class="p-2.5 border-r border-slate-700 text-right w-24 text-emerald-300">양품 (가용)</th>
+                <th class="p-2.5 text-left w-64">세부 내역 및 비고</th>
+              </tr>
+            </thead>
+            <tbody>${rowsHtml}</tbody>
+            <tfoot>
+              <tr class="bg-slate-100 font-bold border-t-2 border-slate-400 border-b-4 border-slate-400">
+                <td colspan="4" class="p-2.5 border-r border-slate-200 text-center font-bold text-slate-800">합 계 (Total Summary)</td>
+                <td class="p-2.5 border-r border-slate-200 text-right font-mono font-extrabold text-slate-900">${totalSum.toLocaleString()}</td>
+                <td class="p-2.5 border-r border-slate-200 text-right font-mono font-extrabold text-rose-600">${defectSum.toLocaleString()}</td>
+                <td class="p-2.5 border-r border-slate-200 text-right font-mono font-extrabold text-emerald-700">${goodSum.toLocaleString()}</td>
+                <td class="p-2.5 text-slate-500 text-xs italic">완제품 조립 가능 총량: ${asm.totalBuildable.toLocaleString()} SET</td>
+              </tr>
+            </tfoot>
+          </table>
         `;
       } else {
-        const rowsHtml = historyLedger.map((h, idx) =&gt; `
-          &lt;tr class=&quot;${idx % 2 === 1 ? &#39;bg-slate-50/60&#39; : &#39;bg-white&#39;} border-b border-slate-200&quot;&gt;
-            &lt;td class=&quot;p-2 border-r border-slate-200 text-center text-slate-500 font-mono&quot;&gt;${idx + 1}&lt;/td&gt;
-            &lt;td class=&quot;p-2 border-r border-slate-200 font-mono text-xs text-slate-600 whitespace-nowrap&quot;&gt;${escapeHtml(h.time)}&lt;/td&gt;
-            &lt;td class=&quot;p-2 border-r border-slate-200&quot;&gt;${escapeHtml(h.category || &#39;-&#39;)}&lt;/td&gt;
-            &lt;td class=&quot;p-2 border-r border-slate-200 font-medium&quot;&gt;${escapeHtml(h.company)}&lt;/td&gt;
-            &lt;td class=&quot;p-2 border-r border-slate-200 font-bold&quot;&gt;${escapeHtml(h.name)}&lt;/td&gt;
-            &lt;td class=&quot;p-2 border-r border-slate-200 text-slate-600&quot;&gt;${escapeHtml(h.itemNote || &#39;-&#39;)}&lt;/td&gt;
-            &lt;td class=&quot;p-2 border-r border-slate-200 text-center font-bold&quot;&gt;${getHistoryTypeBadgeHtml(h.type)}&lt;/td&gt;
-            &lt;td class=&quot;p-2 border-r border-slate-200 text-right font-mono font-bold&quot;&gt;${(Number(h.qty) || 0).toLocaleString()}&lt;/td&gt;
-            &lt;td class=&quot;p-2 text-slate-600 text-xs&quot;&gt;${escapeHtml(h.reason || &#39;-&#39;)}&lt;/td&gt;
-          &lt;/tr&gt;
-        `).join(&#39;&#39;);
+        const rowsHtml = historyLedger.map((h, idx) => `
+          <tr class="${idx % 2 === 1 ? 'bg-slate-50/60' : 'bg-white'} border-b border-slate-200">
+            <td class="p-2 border-r border-slate-200 text-center text-slate-500 font-mono">${idx + 1}</td>
+            <td class="p-2 border-r border-slate-200 font-mono text-xs text-slate-600 whitespace-nowrap">${escapeHtml(h.time)}</td>
+            <td class="p-2 border-r border-slate-200">${escapeHtml(h.category || '-')}</td>
+            <td class="p-2 border-r border-slate-200 font-medium">${escapeHtml(h.company)}</td>
+            <td class="p-2 border-r border-slate-200 font-bold">${escapeHtml(h.name)}</td>
+            <td class="p-2 border-r border-slate-200 text-slate-600">${escapeHtml(h.itemNote || '-')}</td>
+            <td class="p-2 border-r border-slate-200 text-center font-bold">${getHistoryTypeBadgeHtml(h.type)}</td>
+            <td class="p-2 border-r border-slate-200 text-right font-mono font-bold">${(Number(h.qty) || 0).toLocaleString()}</td>
+            <td class="p-2 text-slate-600 text-xs">${escapeHtml(h.reason || '-')}</td>
+          </tr>
+        `).join('');
 
         container.innerHTML = `
-          &lt;div class=&quot;p-4 bg-gradient-to-r from-slate-900 to-slate-800 text-white flex items-center justify-between&quot;&gt;
-            &lt;div&gt;
-              &lt;h4 class=&quot;text-base font-extrabold tracking-tight&quot;&gt;AMIGO 기구물 및 자재 수불 및 출고 / 불량 상세 내역 대장&lt;/h4&gt;
-              &lt;p class=&quot;text-[11px] text-slate-400 mt-0.5&quot;&gt;총 누적 기록 건수: ${historyLedger.length}건&lt;/p&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
+          <div class="p-4 bg-gradient-to-r from-slate-900 to-slate-800 text-white flex items-center justify-between">
+            <div>
+              <h4 class="text-base font-extrabold tracking-tight">AMIGO 기구물 및 자재 수불 및 출고 / 불량 상세 내역 대장</h4>
+              <p class="text-[11px] text-slate-400 mt-0.5">총 누적 기록 건수: ${historyLedger.length}건</p>
+            </div>
+          </div>
 
-          &lt;table class=&quot;w-full text-xs border-collapse&quot;&gt;
-            &lt;thead&gt;
-              &lt;tr class=&quot;bg-slate-800 text-white font-bold border-b border-slate-700&quot;&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-center w-12&quot;&gt;No&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-left w-36&quot;&gt;일시&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-left w-24&quot;&gt;구분&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-left w-24&quot;&gt;업체 구분&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-left&quot;&gt;품목명&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-left w-40&quot;&gt;품목 비고&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-center w-20&quot;&gt;수불 유형&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 border-r border-slate-700 text-right w-20&quot;&gt;수량&lt;/th&gt;
-                &lt;th class=&quot;p-2.5 text-left w-64&quot;&gt;상세 내역 및 사유&lt;/th&gt;
-              &lt;/tr&gt;
-            &lt;/thead&gt;
-            &lt;tbody&gt;
-              ${rowsHtml.length &gt; 0 ? rowsHtml : &#39;&lt;tr&gt;&lt;td colspan=&quot;9&quot; class=&quot;text-center py-8 text-slate-400&quot;&gt;등록된 수불 내역이 없습니다.&lt;/td&gt;&lt;/tr&gt;&#39;}
-            &lt;/tbody&gt;
-          &lt;/table&gt;
+          <table class="w-full text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-800 text-white font-bold border-b border-slate-700">
+                <th class="p-2.5 border-r border-slate-700 text-center w-12">No</th>
+                <th class="p-2.5 border-r border-slate-700 text-left w-36">일시</th>
+                <th class="p-2.5 border-r border-slate-700 text-left w-24">구분</th>
+                <th class="p-2.5 border-r border-slate-700 text-left w-24">업체 구분</th>
+                <th class="p-2.5 border-r border-slate-700 text-left">품목명</th>
+                <th class="p-2.5 border-r border-slate-700 text-left w-40">품목 비고</th>
+                <th class="p-2.5 border-r border-slate-700 text-center w-20">수불 유형</th>
+                <th class="p-2.5 border-r border-slate-700 text-right w-20">수량</th>
+                <th class="p-2.5 text-left w-64">상세 내역 및 사유</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml.length > 0 ? rowsHtml : '<tr><td colspan="9" class="text-center py-8 text-slate-400">등록된 수불 내역이 없습니다.</td></tr>'}
+            </tbody>
+          </table>
         `;
       }
     }
 
     async function exportToExcel() {
-      showToast(&#39;엑셀 파일 생성 중...&#39;, &#39;info&#39;);
+      showToast('엑셀 파일 생성 중...', 'info');
 
       const asm = calculateAssembly();
       const now = new Date();
-      const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, &#39;0&#39;)}-${String(now.getDate()).padStart(2, &#39;0&#39;)}`;
+      const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
       const filename = `AMIGO_기구물_자재_재고현황_${todayStr}.xlsx`;
 
       try {
         if (window.ExcelJS) {
           const workbook = new ExcelJS.Workbook();
-          workbook.creator = &#39;AMIGO Inventory System&#39;;
+          workbook.creator = 'AMIGO Inventory System';
           workbook.created = now;
 
           // Sheet 1: 재고 현황
-          const ws1 = workbook.addWorksheet(&#39;재고 현황&#39;, { views: [{ showGridLines: true }] });
+          const ws1 = workbook.addWorksheet('재고 현황', { views: [{ showGridLines: true }] });
           ws1.columns = [
             { width: 8 },
             { width: 22 },
@@ -2693,41 +2693,41 @@
             { width: 45 }
           ];
 
-          ws1.mergeCells(&#39;B2:H2&#39;);
-          const titleCell = ws1.getCell(&#39;B2&#39;);
-          titleCell.value = &#39;AMIGO 기구물 및 자재 보유 재고 현황&#39;;
-          titleCell.font = { name: &#39;Malgun Gothic&#39;, size: 16, bold: true, color: { argb: &#39;FFFFFFFF&#39; } };
-          titleCell.fill = { type: &#39;pattern&#39;, pattern: &#39;solid&#39;, fgColor: { argb: &#39;FF1E3A8A&#39; } };
-          titleCell.alignment = { vertical: &#39;middle&#39;, horizontal: &#39;center&#39; };
+          ws1.mergeCells('B2:H2');
+          const titleCell = ws1.getCell('B2');
+          titleCell.value = 'AMIGO 기구물 및 자재 보유 재고 현황';
+          titleCell.font = { name: 'Malgun Gothic', size: 16, bold: true, color: { argb: 'FFFFFFFF' } };
+          titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1E3A8A' } };
+          titleCell.alignment = { vertical: 'middle', horizontal: 'center' };
           ws1.getRow(2).height = 36;
 
-          ws1.mergeCells(&#39;B3:H3&#39;);
-          const subCell = ws1.getCell(&#39;B3&#39;);
+          ws1.mergeCells('B3:H3');
+          const subCell = ws1.getCell('B3');
           subCell.value = `기준일: ${todayStr} | 완제품 가능 총량: ${asm.totalBuildable} SET (공통 실질: ${asm.commonComp.actualBuildable} SET / 타업체 실질: ${asm.totalOtherActualBuildable} SET)`;
-          subCell.font = { name: &#39;Malgun Gothic&#39;, size: 10, italic: true, color: { argb: &#39;FF1E293B&#39; } };
-          subCell.fill = { type: &#39;pattern&#39;, pattern: &#39;solid&#39;, fgColor: { argb: &#39;FFE2E8F0&#39; } };
-          subCell.alignment = { vertical: &#39;middle&#39;, horizontal: &#39;center&#39; };
+          subCell.font = { name: 'Malgun Gothic', size: 10, italic: true, color: { argb: 'FF1E293B' } };
+          subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE2E8F0' } };
+          subCell.alignment = { vertical: 'middle', horizontal: 'center' };
           ws1.getRow(3).height = 22;
 
-          const headers = [&#39;No&#39;, &#39;구분&#39;, &#39;업체 구분&#39;, &#39;품목명&#39;, &#39;총수량&#39;, &#39;불량&#39;, &#39;양품 (가용)&#39;, &#39;세부 내역 및 비고&#39;];
+          const headers = ['No', '구분', '업체 구분', '품목명', '총수량', '불량', '양품 (가용)', '세부 내역 및 비고'];
           const headerRow = ws1.getRow(5);
-          headers.forEach((h, idx) =&gt; {
+          headers.forEach((h, idx) => {
             const cell = headerRow.getCell(idx + 1);
             cell.value = h;
-            cell.font = { name: &#39;Malgun Gothic&#39;, size: 10, bold: true, color: { argb: &#39;FFFFFFFF&#39; } };
-            cell.fill = { type: &#39;pattern&#39;, pattern: &#39;solid&#39;, fgColor: { argb: &#39;FF0F172A&#39; } };
-            cell.alignment = { vertical: &#39;middle&#39;, horizontal: idx === 0 || idx === 2 ? &#39;center&#39; : (idx &gt;= 4 &amp;&amp; idx &lt;= 6 ? &#39;right&#39; : &#39;left&#39;) };
+            cell.font = { name: 'Malgun Gothic', size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
+            cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF0F172A' } };
+            cell.alignment = { vertical: 'middle', horizontal: idx === 0 || idx === 2 ? 'center' : (idx >= 4 && idx <= 6 ? 'right' : 'left') };
             cell.border = {
-              top: { style: &#39;medium&#39;, color: { argb: &#39;FF0F172A&#39; } },
-              bottom: { style: &#39;medium&#39;, color: { argb: &#39;FF0F172A&#39; } },
-              left: { style: &#39;thin&#39;, color: { argb: &#39;FF334155&#39; } },
-              right: { style: &#39;thin&#39;, color: { argb: &#39;FF334155&#39; } }
+              top: { style: 'medium', color: { argb: 'FF0F172A' } },
+              bottom: { style: 'medium', color: { argb: 'FF0F172A' } },
+              left: { style: 'thin', color: { argb: 'FF334155' } },
+              right: { style: 'thin', color: { argb: 'FF334155' } }
             };
           });
           headerRow.height = 26;
 
           let rIdx = 6;
-          inventory.forEach((item, i) =&gt; {
+          inventory.forEach((item, i) => {
             const r = ws1.getRow(rIdx);
             const oldVer = isOldVersionItem(item);
             r.getCell(1).value = i + 1;
@@ -2737,36 +2737,36 @@
             r.getCell(5).value = Number(item.total) || 0;
             r.getCell(6).value = Number(item.defect) || 0;
             r.getCell(7).value = oldVer ? null : (Number(item.good) || 0);
-            r.getCell(8).value = item.note || &#39;&#39;;
+            r.getCell(8).value = item.note || '';
 
-            r.getCell(1).alignment = { horizontal: &#39;center&#39;, vertical: &#39;middle&#39; };
-            r.getCell(2).alignment = { horizontal: &#39;left&#39;, vertical: &#39;middle&#39; };
-            r.getCell(3).alignment = { horizontal: &#39;center&#39;, vertical: &#39;middle&#39; };
-            r.getCell(4).alignment = { horizontal: &#39;left&#39;, vertical: &#39;middle&#39; };
-            r.getCell(5).alignment = { horizontal: &#39;right&#39;, vertical: &#39;middle&#39; };
-            r.getCell(6).alignment = { horizontal: &#39;right&#39;, vertical: &#39;middle&#39; };
-            r.getCell(7).alignment = { horizontal: &#39;right&#39;, vertical: &#39;middle&#39; };
-            r.getCell(8).alignment = { horizontal: &#39;left&#39;, vertical: &#39;middle&#39; };
+            r.getCell(1).alignment = { horizontal: 'center', vertical: 'middle' };
+            r.getCell(2).alignment = { horizontal: 'left', vertical: 'middle' };
+            r.getCell(3).alignment = { horizontal: 'center', vertical: 'middle' };
+            r.getCell(4).alignment = { horizontal: 'left', vertical: 'middle' };
+            r.getCell(5).alignment = { horizontal: 'right', vertical: 'middle' };
+            r.getCell(6).alignment = { horizontal: 'right', vertical: 'middle' };
+            r.getCell(7).alignment = { horizontal: 'right', vertical: 'middle' };
+            r.getCell(8).alignment = { horizontal: 'left', vertical: 'middle' };
 
-            r.getCell(5).numFmt = &#39;#,##0&#39;;
-            r.getCell(6).numFmt = &#39;#,##0;-#,##0;&quot;-&quot;&#39;;
-            if (Number(item.defect) &gt; 0) {
-              r.getCell(6).font = { color: { argb: &#39;FFDC2626&#39; }, bold: true };
+            r.getCell(5).numFmt = '#,##0';
+            r.getCell(6).numFmt = '#,##0;-#,##0;"-"';
+            if (Number(item.defect) > 0) {
+              r.getCell(6).font = { color: { argb: 'FFDC2626' }, bold: true };
             }
             if (!oldVer) {
-              r.getCell(7).numFmt = &#39;#,##0&#39;;
-              r.getCell(7).font = { color: { argb: &#39;FF047857&#39; }, bold: true };
+              r.getCell(7).numFmt = '#,##0';
+              r.getCell(7).font = { color: { argb: 'FF047857' }, bold: true };
             }
 
-            const bgArgb = (i % 2 === 1) ? &#39;FFF8FAFC&#39; : &#39;FFFFFFFF&#39;;
-            for (let c = 1; c &lt;= 8; c++) {
+            const bgArgb = (i % 2 === 1) ? 'FFF8FAFC' : 'FFFFFFFF';
+            for (let c = 1; c <= 8; c++) {
               const cell = r.getCell(c);
-              cell.fill = { type: &#39;pattern&#39;, pattern: &#39;solid&#39;, fgColor: { argb: bgArgb } };
+              cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: bgArgb } };
               cell.border = {
-                top: { style: &#39;thin&#39;, color: { argb: &#39;FFE2E8F0&#39; } },
-                bottom: { style: &#39;thin&#39;, color: { argb: &#39;FFE2E8F0&#39; } },
-                left: { style: &#39;thin&#39;, color: { argb: &#39;FFE2E8F0&#39; } },
-                right: { style: &#39;thin&#39;, color: { argb: &#39;FFE2E8F0&#39; } }
+                top: { style: 'thin', color: { argb: 'FFE2E8F0' } },
+                bottom: { style: 'thin', color: { argb: 'FFE2E8F0' } },
+                left: { style: 'thin', color: { argb: 'FFE2E8F0' } },
+                right: { style: 'thin', color: { argb: 'FFE2E8F0' } }
               };
             }
             r.height = 22;
@@ -2774,9 +2774,9 @@
           });
 
           const sumRow = ws1.getRow(rIdx);
-          sumRow.getCell(1).value = &#39;&#39;;
-          sumRow.getCell(2).value = &#39;합계 (Total Summary)&#39;;
-          if (inventory.length &gt; 0) {
+          sumRow.getCell(1).value = '';
+          sumRow.getCell(2).value = '합계 (Total Summary)';
+          if (inventory.length > 0) {
             sumRow.getCell(5).value = { formula: `SUM(E6:E${rIdx - 1})` };
             sumRow.getCell(6).value = { formula: `SUM(F6:F${rIdx - 1})` };
             sumRow.getCell(7).value = { formula: `SUM(G6:G${rIdx - 1})` };
@@ -2787,22 +2787,22 @@
           }
           sumRow.getCell(8).value = `완제품 조립 가능 총량: ${asm.totalBuildable} SET`;
 
-          for (let c = 1; c &lt;= 8; c++) {
+          for (let c = 1; c <= 8; c++) {
             const cell = sumRow.getCell(c);
-            cell.font = { name: &#39;Malgun Gothic&#39;, size: 10, bold: true, color: { argb: &#39;FF0F172A&#39; } };
-            cell.fill = { type: &#39;pattern&#39;, pattern: &#39;solid&#39;, fgColor: { argb: &#39;FFF1F5F9&#39; } };
+            cell.font = { name: 'Malgun Gothic', size: 10, bold: true, color: { argb: 'FF0F172A' } };
+            cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF1F5F9' } };
             cell.border = {
-              top: { style: &#39;medium&#39;, color: { argb: &#39;FF94A3B8&#39; } },
-              bottom: { style: &#39;double&#39;, color: { argb: &#39;FF0F172A&#39; } }
+              top: { style: 'medium', color: { argb: 'FF94A3B8' } },
+              bottom: { style: 'double', color: { argb: 'FF0F172A' } }
             };
           }
-          sumRow.getCell(5).numFmt = &#39;#,##0&#39;;
-          sumRow.getCell(6).numFmt = &#39;#,##0&#39;;
-          sumRow.getCell(7).numFmt = &#39;#,##0&#39;;
+          sumRow.getCell(5).numFmt = '#,##0';
+          sumRow.getCell(6).numFmt = '#,##0';
+          sumRow.getCell(7).numFmt = '#,##0';
           sumRow.height = 24;
 
           // Sheet 2: 수불 대장 (품목 비고 열 포함)
-          const ws2 = workbook.addWorksheet(&#39;수불 대장&#39;, { views: [{ showGridLines: true }] });
+          const ws2 = workbook.addWorksheet('수불 대장', { views: [{ showGridLines: true }] });
           ws2.columns = [
             { width: 8 },
             { width: 20 },
@@ -2815,79 +2815,79 @@
             { width: 42 }
           ];
 
-          ws2.mergeCells(&#39;B2:I2&#39;);
-          const s2Title = ws2.getCell(&#39;B2&#39;);
-          s2Title.value = &#39;AMIGO 기구물 및 자재 수불 및 출고 / 불량 상세 내역 대장&#39;;
-          s2Title.font = { name: &#39;Malgun Gothic&#39;, size: 14, bold: true, color: { argb: &#39;FFFFFFFF&#39; } };
-          s2Title.fill = { type: &#39;pattern&#39;, pattern: &#39;solid&#39;, fgColor: { argb: &#39;FF0F766E&#39; } };
-          s2Title.alignment = { vertical: &#39;middle&#39;, horizontal: &#39;center&#39; };
+          ws2.mergeCells('B2:I2');
+          const s2Title = ws2.getCell('B2');
+          s2Title.value = 'AMIGO 기구물 및 자재 수불 및 출고 / 불량 상세 내역 대장';
+          s2Title.font = { name: 'Malgun Gothic', size: 14, bold: true, color: { argb: 'FFFFFFFF' } };
+          s2Title.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF0F766E' } };
+          s2Title.alignment = { vertical: 'middle', horizontal: 'center' };
           ws2.getRow(2).height = 32;
 
-          const s2Headers = [&#39;No&#39;, &#39;일시&#39;, &#39;구분&#39;, &#39;업체 구분&#39;, &#39;품목명&#39;, &#39;품목 비고&#39;, &#39;유형&#39;, &#39;수량&#39;, &#39;상세 내역 및 사유&#39;];
+          const s2Headers = ['No', '일시', '구분', '업체 구분', '품목명', '품목 비고', '유형', '수량', '상세 내역 및 사유'];
           const s2HeaderRow = ws2.getRow(4);
-          s2Headers.forEach((h, idx) =&gt; {
+          s2Headers.forEach((h, idx) => {
             const cell = s2HeaderRow.getCell(idx + 1);
             cell.value = h;
-            cell.font = { name: &#39;Malgun Gothic&#39;, size: 10, bold: true, color: { argb: &#39;FFFFFFFF&#39; } };
-            cell.fill = { type: &#39;pattern&#39;, pattern: &#39;solid&#39;, fgColor: { argb: &#39;FF134E4A&#39; } };
-            cell.alignment = { vertical: &#39;middle&#39;, horizontal: (idx === 0 || idx === 1 || idx === 6) ? &#39;center&#39; : (idx === 7 ? &#39;right&#39; : &#39;left&#39;) };
+            cell.font = { name: 'Malgun Gothic', size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
+            cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF134E4A' } };
+            cell.alignment = { vertical: 'middle', horizontal: (idx === 0 || idx === 1 || idx === 6) ? 'center' : (idx === 7 ? 'right' : 'left') };
           });
           s2HeaderRow.height = 24;
 
-          historyLedger.forEach((h, i) =&gt; {
+          historyLedger.forEach((h, i) => {
             const row = ws2.getRow(5 + i);
             row.getCell(1).value = i + 1;
             row.getCell(2).value = h.time;
-            row.getCell(3).value = h.category || &#39;&#39;;
+            row.getCell(3).value = h.category || '';
             row.getCell(4).value = h.company;
             row.getCell(5).value = h.name;
-            row.getCell(6).value = h.itemNote || &#39;&#39;;
+            row.getCell(6).value = h.itemNote || '';
             row.getCell(7).value = h.type;
             row.getCell(8).value = Number(h.qty) || 0;
-            row.getCell(9).value = h.reason || &#39;&#39;;
+            row.getCell(9).value = h.reason || '';
 
-            row.getCell(1).alignment = { horizontal: &#39;center&#39;, vertical: &#39;middle&#39; };
-            row.getCell(2).alignment = { horizontal: &#39;center&#39;, vertical: &#39;middle&#39; };
+            row.getCell(1).alignment = { horizontal: 'center', vertical: 'middle' };
+            row.getCell(2).alignment = { horizontal: 'center', vertical: 'middle' };
             row.getCell(5).font = { bold: true };
-            row.getCell(7).alignment = { horizontal: &#39;center&#39;, vertical: &#39;middle&#39; };
-            row.getCell(8).alignment = { horizontal: &#39;right&#39;, vertical: &#39;middle&#39; };
-            row.getCell(8).numFmt = &#39;#,##0&#39;;
+            row.getCell(7).alignment = { horizontal: 'center', vertical: 'middle' };
+            row.getCell(8).alignment = { horizontal: 'right', vertical: 'middle' };
+            row.getCell(8).numFmt = '#,##0';
 
-            const bgArgb = (i % 2 === 1) ? &#39;FFF8FAFC&#39; : &#39;FFFFFFFF&#39;;
-            for (let c = 1; c &lt;= 9; c++) {
+            const bgArgb = (i % 2 === 1) ? 'FFF8FAFC' : 'FFFFFFFF';
+            for (let c = 1; c <= 9; c++) {
               const cell = row.getCell(c);
-              cell.fill = { type: &#39;pattern&#39;, pattern: &#39;solid&#39;, fgColor: { argb: bgArgb } };
+              cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: bgArgb } };
               cell.border = {
-                top: { style: &#39;thin&#39;, color: { argb: &#39;FFE2E8F0&#39; } },
-                bottom: { style: &#39;thin&#39;, color: { argb: &#39;FFE2E8F0&#39; } },
-                left: { style: &#39;thin&#39;, color: { argb: &#39;FFE2E8F0&#39; } },
-                right: { style: &#39;thin&#39;, color: { argb: &#39;FFE2E8F0&#39; } }
+                top: { style: 'thin', color: { argb: 'FFE2E8F0' } },
+                bottom: { style: 'thin', color: { argb: 'FFE2E8F0' } },
+                left: { style: 'thin', color: { argb: 'FFE2E8F0' } },
+                right: { style: 'thin', color: { argb: 'FFE2E8F0' } }
               };
             }
             row.height = 20;
           });
 
           const buffer = await workbook.xlsx.writeBuffer();
-          const blob = new Blob([buffer], { type: &#39;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&#39; });
-          const link = document.createElement(&#39;a&#39;);
+          const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+          const link = document.createElement('a');
           link.href = URL.createObjectURL(blob);
           link.download = filename;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
-          showToast(&#39;서식 엑셀 파일(.xlsx)이 다운로드되었습니다!&#39;, &#39;success&#39;);
+          showToast('서식 엑셀 파일(.xlsx)이 다운로드되었습니다!', 'success');
         } else {
           exportToCsvFallback(filename);
         }
       } catch (err) {
-        console.error(&#39;ExcelJS error:&#39;, err);
+        console.error('ExcelJS error:', err);
         exportToCsvFallback(filename);
       }
     }
 
     function downloadTextFile(content, downloadName, mime) {
       const blob = new Blob([content], { type: mime });
-      const link = document.createElement(&#39;a&#39;);
+      const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
       link.download = downloadName;
       document.body.appendChild(link);
@@ -2896,22 +2896,22 @@
     }
 
     function exportToCsvFallback(filename) {
-      const csvEsc = v =&gt; `&quot;${String(v == null ? &#39;&#39; : v).replace(/&quot;/g, &#39;&quot;&quot;&#39;)}&quot;`;
+      const csvEsc = v => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`;
 
-      let invCsv = &#39;\uFEFF구분,업체 구분,품목명,총수량,불량,양품(가용),세부 내역 및 비고\n&#39;;
-      inventory.forEach(i =&gt; {
-        const goodVal = isOldVersionItem(i) ? &#39;&#39; : (Number(i.good) || 0);
-        invCsv += [csvEsc(i.category), csvEsc(i.company), csvEsc(i.name), i.total, i.defect, goodVal, csvEsc(i.note)].join(&#39;,&#39;) + &#39;\n&#39;;
+      let invCsv = '\uFEFF구분,업체 구분,품목명,총수량,불량,양품(가용),세부 내역 및 비고\n';
+      inventory.forEach(i => {
+        const goodVal = isOldVersionItem(i) ? '' : (Number(i.good) || 0);
+        invCsv += [csvEsc(i.category), csvEsc(i.company), csvEsc(i.name), i.total, i.defect, goodVal, csvEsc(i.note)].join(',') + '\n';
       });
-      downloadTextFile(invCsv, filename.replace(&#39;.xlsx&#39;, &#39;_재고현황.csv&#39;), &#39;text/csv;charset=utf-8;&#39;);
+      downloadTextFile(invCsv, filename.replace('.xlsx', '_재고현황.csv'), 'text/csv;charset=utf-8;');
 
-      let histCsv = &#39;\uFEFF일시,구분,업체 구분,품목명,품목 비고,유형,수량,상세 내역 및 사유\n&#39;;
-      historyLedger.forEach(h =&gt; {
-        histCsv += [csvEsc(h.time), csvEsc(h.category), csvEsc(h.company), csvEsc(h.name), csvEsc(h.itemNote), csvEsc(h.type), h.qty, csvEsc(h.reason)].join(&#39;,&#39;) + &#39;\n&#39;;
+      let histCsv = '\uFEFF일시,구분,업체 구분,품목명,품목 비고,유형,수량,상세 내역 및 사유\n';
+      historyLedger.forEach(h => {
+        histCsv += [csvEsc(h.time), csvEsc(h.category), csvEsc(h.company), csvEsc(h.name), csvEsc(h.itemNote), csvEsc(h.type), h.qty, csvEsc(h.reason)].join(',') + '\n';
       });
-      downloadTextFile(histCsv, filename.replace(&#39;.xlsx&#39;, &#39;_수불대장.csv&#39;), &#39;text/csv;charset=utf-8;&#39;);
+      downloadTextFile(histCsv, filename.replace('.xlsx', '_수불대장.csv'), 'text/csv;charset=utf-8;');
 
-      showToast(&#39;CSV 파일(재고현황 + 수불대장 2개)로 다운로드되었습니다.&#39;, &#39;success&#39;);
+      showToast('CSV 파일(재고현황 + 수불대장 2개)로 다운로드되었습니다.', 'success');
     }
 
     function renderAll() {
@@ -2923,54 +2923,54 @@
     }
 
     function updateFilterOptions() {
-      const catSelect = document.getElementById(&#39;filterCategory&#39;);
-      const compSelect = document.getElementById(&#39;filterCompany&#39;);
-      const catDatalist = document.getElementById(&#39;categoryOptions&#39;);
-      const compDatalist = document.getElementById(&#39;companyOptions&#39;);
-      const itemDatalist = document.getElementById(&#39;itemNameOptions&#39;);
+      const catSelect = document.getElementById('filterCategory');
+      const compSelect = document.getElementById('filterCompany');
+      const catDatalist = document.getElementById('categoryOptions');
+      const compDatalist = document.getElementById('companyOptions');
+      const itemDatalist = document.getElementById('itemNameOptions');
 
-      const cats = [...new Set(inventory.map(i =&gt; (i.category || &#39;&#39;).trim()).filter(Boolean))].sort();
-      const comps = [...new Set(inventory.map(i =&gt; (i.company || &#39;&#39;).trim()).filter(Boolean))].sort();
-      const itemNames = [...new Set(inventory.map(i =&gt; (i.name || &#39;&#39;).trim()).filter(Boolean))].sort();
+      const cats = [...new Set(inventory.map(i => (i.category || '').trim()).filter(Boolean))].sort();
+      const comps = [...new Set(inventory.map(i => (i.company || '').trim()).filter(Boolean))].sort();
+      const itemNames = [...new Set(inventory.map(i => (i.name || '').trim()).filter(Boolean))].sort();
 
       if (catSelect) {
         const curCat = catSelect.value;
-        catSelect.innerHTML = &#39;&lt;option value=&quot;&quot;&gt;구분 전체&lt;/option&gt;&#39; +
-          cats.map(c =&gt; `&lt;option value=&quot;${escapeHtml(c)}&quot; ${c === curCat ? &#39;selected&#39; : &#39;&#39;}&gt;${escapeHtml(c)}&lt;/option&gt;`).join(&#39;&#39;);
+        catSelect.innerHTML = '<option value="">구분 전체</option>' +
+          cats.map(c => `<option value="${escapeHtml(c)}" ${c === curCat ? 'selected' : ''}>${escapeHtml(c)}</option>`).join('');
       }
       if (compSelect) {
         const curComp = compSelect.value;
-        compSelect.innerHTML = &#39;&lt;option value=&quot;&quot;&gt;업체 구분 전체&lt;/option&gt;&#39; +
-          comps.map(c =&gt; `&lt;option value=&quot;${escapeHtml(c)}&quot; ${c === curComp ? &#39;selected&#39; : &#39;&#39;}&gt;${escapeHtml(c)}&lt;/option&gt;`).join(&#39;&#39;);
+        compSelect.innerHTML = '<option value="">업체 구분 전체</option>' +
+          comps.map(c => `<option value="${escapeHtml(c)}" ${c === curComp ? 'selected' : ''}>${escapeHtml(c)}</option>`).join('');
       }
-      if (catDatalist) catDatalist.innerHTML = cats.map(c =&gt; `&lt;option value=&quot;${escapeHtml(c)}&quot;&gt;`).join(&#39;&#39;);
-      if (compDatalist) compDatalist.innerHTML = comps.map(c =&gt; `&lt;option value=&quot;${escapeHtml(c)}&quot;&gt;`).join(&#39;&#39;);
-      if (itemDatalist) itemDatalist.innerHTML = itemNames.map(n =&gt; `&lt;option value=&quot;${escapeHtml(n)}&quot;&gt;`).join(&#39;&#39;);
+      if (catDatalist) catDatalist.innerHTML = cats.map(c => `<option value="${escapeHtml(c)}">`).join('');
+      if (compDatalist) compDatalist.innerHTML = comps.map(c => `<option value="${escapeHtml(c)}">`).join('');
+      if (itemDatalist) itemDatalist.innerHTML = itemNames.map(n => `<option value="${escapeHtml(n)}">`).join('');
     }
 
     function backupDataToJson() {
       const backupObj = {
-        version: &#39;AMIGO_v4.0&#39;,
+        version: 'AMIGO_v4.0',
         timestamp: new Date().toISOString(),
         inventory: inventory,
         history: historyLedger,
         allocationPolicy: allocationPolicy
       };
       const now = new Date();
-      const dateStr = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, &#39;0&#39;)}${String(now.getDate()).padStart(2, &#39;0&#39;)}_${String(now.getHours()).padStart(2, &#39;0&#39;)}${String(now.getMinutes()).padStart(2, &#39;0&#39;)}`;
-      downloadTextFile(JSON.stringify(backupObj, null, 2), `AMIGO_재고전체백업_${dateStr}.json`, &#39;application/json&#39;);
-      showToast(&#39;현재 재고 및 수불대장이 JSON 백업 파일로 저장되었습니다.&#39;, &#39;success&#39;);
+      const dateStr = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`;
+      downloadTextFile(JSON.stringify(backupObj, null, 2), `AMIGO_재고전체백업_${dateStr}.json`, 'application/json');
+      showToast('현재 재고 및 수불대장이 JSON 백업 파일로 저장되었습니다.', 'success');
     }
 
     function restoreDataFromJson(event) {
-      const file = event.target.files &amp;&amp; event.target.files[0];
+      const file = event.target.files && event.target.files[0];
       if (!file) return;
 
       const reader = new FileReader();
       reader.onload = function(e) {
         try {
           const parsed = JSON.parse(e.target.result);
-          if (parsed &amp;&amp; Array.isArray(parsed.inventory) &amp;&amp; parsed.inventory.length &gt; 0) {
+          if (parsed && Array.isArray(parsed.inventory) && parsed.inventory.length > 0) {
             inventory = parsed.inventory;
             historyLedger = Array.isArray(parsed.history) ? parsed.history : [];
             if (parsed.allocationPolicy) allocationPolicy = parsed.allocationPolicy;
@@ -2979,35 +2979,35 @@
             updateFilterOptions();
             renderAll();
             pushToSheets(false, true);
-            showToast(&#39;백업 파일로부터 데이터가 정상 복원되었습니다!&#39;, &#39;success&#39;);
+            showToast('백업 파일로부터 데이터가 정상 복원되었습니다!', 'success');
           } else {
-            showToast(&#39;올바른 AMIGO 백업 파일이 아닙니다.&#39;, &#39;error&#39;);
+            showToast('올바른 AMIGO 백업 파일이 아닙니다.', 'error');
           }
         } catch (err) {
-          console.error(&#39;JSON restore error:&#39;, err);
-          showToast(&#39;백업 파일을 읽는 중 오류가 발생했습니다.&#39;, &#39;error&#39;);
+          console.error('JSON restore error:', err);
+          showToast('백업 파일을 읽는 중 오류가 발생했습니다.', 'error');
         }
       };
       reader.readAsText(file);
-      event.target.value = &#39;&#39;;
+      event.target.value = '';
     }
 
     function escapeHtml(str) {
-      if (typeof str !== &#39;string&#39;) return String(str == null ? &#39;&#39; : str);
-      return str.replace(/[&amp;&lt;&gt;&quot;&#39;]/g, function(m) {
+      if (typeof str !== 'string') return String(str == null ? '' : str);
+      return str.replace(/[&<>"']/g, function(m) {
         switch (m) {
-          case &#39;&amp;&#39;: return &#39;&amp;amp;&#39;;
-          case &#39;&lt;&#39;: return &#39;&amp;lt;&#39;;
-          case &#39;&gt;&#39;: return &#39;&amp;gt;&#39;;
-          case &#39;&quot;&#39;: return &#39;&amp;quot;&#39;;
-          case &quot;&#39;&quot;: return &#39;&amp;#39;&#39;;
+          case '&': return '&amp;';
+          case '<': return '&lt;';
+          case '>': return '&gt;';
+          case '"': return '&quot;';
+          case "'": return '&#39;';
           default: return m;
         }
       });
     }
 
-    window.addEventListener(&#39;keydown&#39;, (e) =&gt; {
-      if (e.key === &#39;Escape&#39;) {
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
         closeActionModal();
         closeAddItemModal();
         closeEditHistoryModal();
@@ -3027,11 +3027,11 @@
       startAutoSync();
     }
 
-    if (document.readyState === &#39;loading&#39;) {
-      document.addEventListener(&#39;DOMContentLoaded&#39;, initSystem);
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSystem);
     } else {
       initSystem();
     }
-  &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+  </script>
+</body>
+</html>
