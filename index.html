@@ -1813,7 +1813,7 @@
             <td class="py-2 px-3 text-center whitespace-nowrap">
               <div class="flex items-center justify-center gap-1">
                 ${editBtnHtml}
-                <button type="button" onclick="confirmDeleteHistory('${safeId}')" title="${isAdjust ? '재고조정 기록만 삭제 (현재 재고 유지)' : '이 수불 기록 삭제 및 재고 원복'}" class="w-6 h-6 rounded text-slate-300 hover:text-rose-600 hover:bg-rose-50 inline-flex items-center justify-center transition cursor-pointer">
+                <button type="button" onclick="confirmDeleteHistory('${safeId}')" title="이 수불 기록 삭제 및 재고 원복" class="w-6 h-6 rounded text-slate-300 hover:text-rose-600 hover:bg-rose-50 inline-flex items-center justify-center transition cursor-pointer">
                   <i class="fa-regular fa-trash-can text-xs"></i>
                 </button>
               </div>
@@ -2467,22 +2467,60 @@
       }
     }
 
+    function parseAdjustRollback(entry) {
+      if (!entry || !entry.reason) return null;
+      const bracketMatch = String(entry.reason).match(/\[([^\]]+)\]/);
+      if (!bracketMatch) return null;
+      const inside = bracketMatch[1];
+      const delta = { good: null, defect: null, total: null };
+
+      const mGood = inside.match(/양품\s*(\d+)\s*→\s*(\d+)/);
+      if (mGood) delta.good = Number(mGood[2]) - Number(mGood[1]);
+
+      const mDefect = inside.match(/불량\s*(\d+)\s*→\s*(\d+)/);
+      if (mDefect) delta.defect = Number(mDefect[2]) - Number(mDefect[1]);
+
+      const mTotal = inside.match(/총\s*(\d+)\s*→\s*(\d+)/);
+      if (mTotal) delta.total = Number(mTotal[2]) - Number(mTotal[1]);
+
+      if (delta.good === null && delta.defect === null && delta.total === null) return null;
+      return delta;
+    }
+
     function confirmDeleteHistory(id) {
       const entry = historyLedger.find(h => String(h.id) === String(id));
       if (!entry) return;
 
       const isAdjust = (entry.type === '재고조정');
-      const msg = isAdjust
-        ? `[${formatHistoryDate(entry.time)}] ${entry.company} ${entry.name} (재고조정) 기록을 삭제하시겠습니까?\n\n※ 재고조정 기록 삭제 시 현재 품목 재고 수량은 변경되지 않고 기록만 삭제됩니다.`
-        : `[${formatHistoryDate(entry.time)}] ${entry.company} ${entry.name} (${entry.type} ${entry.qty} EA) 기록을 삭제하시겠습니까?\n\n※ 해당 수불로 처리되었던 품목 재고가 이전 상태로 자동 원복되며 구글 시트에서도 반영됩니다.`;
+      const adjustDelta = isAdjust ? parseAdjustRollback(entry) : null;
+
+      let msg = '';
+      if (isAdjust) {
+        msg = adjustDelta
+          ? `[${formatHistoryDate(entry.time)}] ${entry.company} ${entry.name} (재고조정) 기록을 삭제하시겠습니까?\n\n※ 해당 재고조정으로 변경되었던 수량이 이전 상태로 자동 원복되며 구글 시트에도 반영됩니다.`
+          : `[${formatHistoryDate(entry.time)}] ${entry.company} ${entry.name} (재고조정) 기록을 삭제하시겠습니까?\n\n※ 사유에서 변경 수량 정보([양품 A→B] 등)를 찾을 수 없어 현재 재고는 유지되고 기록만 삭제됩니다.`;
+      } else {
+        msg = `[${formatHistoryDate(entry.time)}] ${entry.company} ${entry.name} (${entry.type} ${entry.qty} EA) 기록을 삭제하시겠습니까?\n\n※ 해당 수불로 처리되었던 품목 재고가 이전 상태로 자동 원복되며 구글 시트에서도 반영됩니다.`;
+      }
 
       openSafeConfirm({
-        title: isAdjust ? '재고조정 기록 삭제' : '수불 기록 삭제 및 재고 원복',
+        title: '수불 기록 삭제 및 재고 원복',
         message: msg,
         onConfirm: () => {
-          if (!isAdjust) {
-            const item = findItemForHistory(entry);
-            if (item) {
+          const item = findItemForHistory(entry);
+          if (item) {
+            if (isAdjust && adjustDelta) {
+              const oldVer = isOldVersionItem(item);
+              if (oldVer) {
+                if (adjustDelta.total !== null) item.total = Math.max(0, (Number(item.total) || 0) - adjustDelta.total);
+                if (adjustDelta.defect !== null) item.defect = Math.max(0, (Number(item.defect) || 0) - adjustDelta.defect);
+                item.good = 0;
+              } else {
+                if (adjustDelta.good !== null) item.good = Math.max(0, (Number(item.good) || 0) - adjustDelta.good);
+                if (adjustDelta.defect !== null) item.defect = Math.max(0, (Number(item.defect) || 0) - adjustDelta.defect);
+                item.total = (Number(item.good) || 0) + (Number(item.defect) || 0);
+              }
+            } else if (!isAdjust) {
               const qty = Number(entry.qty) || 0;
               if (entry.type === '입고' || entry.type === '신규등록') {
                 item.good = Math.max(0, (Number(item.good) || 0) - qty);
@@ -2504,7 +2542,7 @@
           hasPendingChanges = true;
           pushToSheets(true, false);
           renderAll();
-          showToast(isAdjust ? '재고조정 기록이 삭제되었습니다.' : '수불 기록이 삭제되고 재고가 원복되었습니다.', 'info');
+          showToast(isAdjust && !adjustDelta ? '재고조정 기록이 삭제되었습니다.' : '수불 기록이 삭제되고 재고가 원복되었습니다.', 'info');
         }
       });
     }
