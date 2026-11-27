@@ -2416,9 +2416,17 @@
           ? Math.abs(total - oldTotal)
           : Math.max(Math.abs(good - oldGood), Math.abs(defect - oldDefect));
 
-        const summaryText = isOldVer
-          ? `[총 ${oldTotal}→${total}, 불량 ${oldDefect}→${defect}] ${adjustReason}`
-          : `[양품 ${oldGood}→${good}, 불량 ${oldDefect}→${defect}, 총 ${oldTotal}→${total}] ${adjustReason}`;
+        const changeParts = [];
+        if (isOldVer) {
+          if (total !== oldTotal) changeParts.push(`총 ${oldTotal}→${total}`);
+          if (defect !== oldDefect) changeParts.push(`불량 ${oldDefect}→${defect}`);
+        } else {
+          if (good !== oldGood) changeParts.push(`양품 ${oldGood}→${good}`);
+          if (defect !== oldDefect) changeParts.push(`불량 ${oldDefect}→${defect}`);
+        }
+        const summaryText = changeParts.length > 0
+          ? `[${changeParts.join(', ')}] ${adjustReason}`
+          : adjustReason;
 
         historyLedger.unshift({
           id: generateHistoryId(),
